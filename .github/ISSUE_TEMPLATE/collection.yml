@@ -1,0 +1,66 @@
+name: "コレクション登録"
+description: "ゲーム・CD・本・本体・周辺機器など、個別の所持品を登録"
+title: "[登録] "
+body:
+  - type: markdown
+    attributes:
+      value: "1個体につき1 Issue。個人情報や保管場所の記載には注意してください。"
+  - type: input
+    id: title
+    attributes:
+      label: タイトル
+      placeholder: 真・女神転生III NOCTURNE
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: カテゴリ
+      options:
+        - ゲームソフト
+        - ゲーム機本体
+        - 周辺機器
+        - CD・音楽
+        - 書籍
+        - その他
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: プラットフォーム・対応機種
+      placeholder: PS2
+  - type: input
+    id: edition
+    attributes:
+      label: エディション
+      placeholder: 通常版
+  - type: input
+    id: serial
+    attributes:
+      label: 品番・型番
+      description: "PS2カバー画像は品番（例：SLPM-65242）で特定します。"
+  - type: dropdown
+    id: ownership
+    attributes:
+      label: 所持状態
+      options:
+        - 所有
+        - 未確認
+        - 譲渡・売却済み
+    validations:
+      required: true
+  - type: textarea
+    id: condition
+    attributes:
+      label: 状態・付属品・動作確認
+      description: "ケース、説明書、帯、ディスク、動作確認など"
+  - type: input
+    id: cover
+    attributes:
+      label: 画像URL（任意）
+      description: "PS2例：https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65242.jpg"
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考・現物画像
