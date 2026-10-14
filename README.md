@@ -14,7 +14,7 @@ GitHubのみで運用する個人コレクション台帳。ゲームソフト�
 | <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65462.jpg" width="80" alt="真・女神転生III NOCTURNE マニアクス"> | INV-004 | 真・女神転生III NOCTURNE マニアクス | 通常版 | SLPM-65462 | [#4](../../issues/4) |
 | <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-66679.jpg" width="80" alt="デビルサマナー 葛葉ライドウ対アバドン王 Plus"> | INV-005 | デビルサマナー 葛葉ライドウ対アバドン王 Plus | Plus版 | SLPM-66679 | [#5](../../issues/5) |
 
-| <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25042.jpg" width="80" alt="魔剣爻 初回限定版 参考ジャケット"> | INV-034 | 魔剣爻 | 初回限定版 | SLPS-25042（参考） | [#34](../../issues/34) |
+| <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25042.jpg" width="80" height="110" alt="魔剣爻 初回限定版 参考ジャケット"> | INV-034 | 魔剣爻 | 初回限定版 | SLPS-25042（参考） | [#34](../../issues/34) |
 
 > 所有はユーザー確認済み。型番は製品情報に基づく参考値で、現物の背表紙との照合はまだです。ジャケットは [xlenore/ps2-covers](https://github.com/xlenore/ps2-covers) の外部参照で、画像の存在とエディション一致は未検証です。今回の現物写真はリポジトリへ保存していません。
 
