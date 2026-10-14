@@ -39,7 +39,7 @@ body:
     id: serial
     attributes:
       label: 品番・型番
-      description: "PS2カバー画像は品番（例：SLPM-65242）で特定します。"
+      description: "PS1/PS2の参考カバー画像は品番（例：SLPS-00500、SLPM-65241）で特定します。現物と版の一致を確認してください。"
   - type: dropdown
     id: ownership
     attributes:
@@ -59,7 +59,7 @@ body:
     id: cover
     attributes:
       label: 画像URL（任意）
-      description: "PS2例：https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65242.jpg"
+      description: "PS1例：https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPS-00500.jpg （PS2はps2-covers）"
   - type: textarea
     id: notes
     attributes:
