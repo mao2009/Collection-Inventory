@@ -2,9 +2,9 @@
 
 GitHubのみで運用する個人コレクション台帳。ゲームソフト・ゲーム機・CD・書籍・周辺機器などを管理します。
 
-## 所持品一覧（33点）
+## 所持品一覧（36点）
 
-### PlayStation 2（5点）
+### PlayStation 2（6点）
 
 | ジャケット | 管理番号 | タイトル | エディション | 参考型番 | 個別情報 |
 | --- | --- | --- | --- | --- | --- |
@@ -13,6 +13,8 @@ GitHubのみで運用する個人コレクション台帳。ゲームソフト�
 | <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-74205.jpg" width="80" alt="真・女神転生III NOCTURNE"> | INV-003 | 真・女神転生III NOCTURNE | PlayStation 2 the Best | SLPM-74205 | [#3](../../issues/3) |
 | <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65462.jpg" width="80" alt="真・女神転生III NOCTURNE マニアクス"> | INV-004 | 真・女神転生III NOCTURNE マニアクス | 通常版 | SLPM-65462 | [#4](../../issues/4) |
 | <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-66679.jpg" width="80" alt="デビルサマナー 葛葉ライドウ対アバドン王 Plus"> | INV-005 | デビルサマナー 葛葉ライドウ対アバドン王 Plus | Plus版 | SLPM-66679 | [#5](../../issues/5) |
+
+| 画像未収録 | INV-034 | 魔剣爻 | 初回限定版 | 未確認 | [#34](../../issues/34) |
 
 > 所有はユーザー確認済み。型番は製品情報に基づく参考値で、現物の背表紙との照合はまだです。ジャケットは [xlenore/ps2-covers](https://github.com/xlenore/ps2-covers) の外部参照で、画像の存在とエディション一致は未検証です。今回の現物写真はリポジトリへ保存していません。
 
@@ -50,6 +52,15 @@ GitHubのみで運用する個人コレクション台帳。ゲームソフト�
 | <img src="https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPS-01341.jpg" width="80" alt="レブス（型番に対応する参考ジャケット）"> | INV-033 | レブス | 未確認 | SLPS-01341 | [#33](../../issues/33) |
 
 > PS1は2026-10-14に所有が確認された28本（27登録項目、作品名でまとめると25作品）を、**1本につき1 Issue**で管理しています。同型番の重複所持と版違いも分離しています。カバー画像は [xlenore/psx-covers](https://github.com/xlenore/psx-covers) の外部参照で、型番に一致する画像ファイルの存在を確認済みです。ただし、画像と現物の版一致は未照合です。「参考」と記載した2件は**現物型番・エディションとも未確認**で、通常版の画像を暫定的に掲載しています。画像未収録の3件は無理に代替していません。ディスクやケース、帯、説明書などは各Issueに明記した項目以外は未確認です。
+
+### PCエンジン（2点）
+
+| ジャケット | 管理番号 | タイトル | エディション | 参考型番 | 個別情報 |
+| --- | --- | --- | --- | --- | --- |
+| 画像未収録 | INV-035 | 真・女神転生 | 未確認 | 未確認 | [#35](../../issues/35) |
+| 画像未収録 | INV-036 | 天外魔境II 卍MARU | 未確認 | 未確認 | [#36](../../issues/36) |
+
+> 2026-10-14の購入報告・写真で所有確認。現物型番・帯・説明書・動作状況は未確認。ジャケット画像は未設定。
 
 ## 新規登録・運用
 
