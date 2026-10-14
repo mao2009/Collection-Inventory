@@ -41,7 +41,7 @@ GitHubのみで運用する個人コレクション台帳。ゲームソフト�
 | <img src="https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPM-86341.jpg" width="80" alt="BAROQUE 歪んだ妄想（通常版参考画像・所持版未確認）">（参考） | INV-024 | BAROQUE 歪んだ妄想 | 未確認 | 未確認（通常版の参考型番：SLPM-86341） | [#24](../../issues/24) |
 | 画像未収録 | INV-025 | ブシドーブレード 弐 | 未確認 | SLPS-01294 | [#25](../../issues/25) |
 | <img src="https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPS-00990.jpg" width="80" alt="ブレス オブ ファイア III（型番に対応する参考ジャケット）"> | INV-026 | ブレス オブ ファイア III | 未確認 | SLPS-00990 | [#26](../../issues/26) |
-| <img src="https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPS-02728.jpg" width="80" alt="ブレス オブ ファイア IV うたかたのうたぐり（型番に対応する参考ジャケット）"> | INV-027 | ブレス オブ ファイア IV うたかのうたぐり | 未確認 | SLPS-02728 | [#27](../../issues/27) |
+| <img src="https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPS-02728.jpg" width="80" alt="ブレス オブ ファイア IV うたかたのうたぐり（型番に対応する参考ジャケット）"> | INV-027 | ブレス オブ ファイア IV うたかたのうたぐり | 未確認 | SLPS-02728 | [#27](../../issues/27) |
 | <img src="https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPS-00500.jpg" width="80" alt="女神異聞録ペルソナ（型番に対応する参考ジャケット）"> | INV-028 | 女神異聞録ペルソナ | 通常版・帯付き | SLPS-00500 | [#28](../../issues/28) |
 | <img src="https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPS-00500.jpg" width="80" alt="女神異聞録ペルソナ（型番に対応する参考ジャケット）"> | INV-029 | 女神異聞録ペルソナ | 通常版・帯未確認 | SLPS-00500 | [#29](../../issues/29) |
 | <img src="https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/SLPS-91029.jpg" width="80" alt="女神異聞録ペルソナ（型番に対応する参考ジャケット）"> | INV-030 | 女神異聞録ペルソナ | PlayStation the Best | SLPS-91029 | [#30](../../issues/30) |
