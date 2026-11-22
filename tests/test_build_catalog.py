@@ -1132,7 +1132,7 @@ https://example.org/game.jpg
                 f"- タイトル：{title}\n- 分類：ゲームソフト\n"
                 f"- 機種：{platform}\n- エディション：{edition}\n"
                 + ("- 箱：なし\n- 説明書：なし\n"
-                   if platform in ("ファミリーコンピュータ", "スーパーファミコン")
+                   if platform in ("ファミリーコンピュータ", "スーパーファミコン", "NINTENDO64")
                    else "- 箱：未確認\n- 説明書：未確認\n"),
             )
             item = inventory_item(issue)
@@ -1140,7 +1140,7 @@ https://example.org/game.jpg
             self.assertEqual(item["edition"], edition)
             self.assertEqual(item["cover_source"], source)
             self.assertTrue(item["cover"].endswith(cover_end), title)
-            if platform in ("ファミリーコンピュータ", "スーパーファミコン"):
+            if platform in ("ファミリーコンピュータ", "スーパーファミコン", "NINTENDO64"):
                 self.assertEqual(item["case"], "なし")
                 self.assertEqual(item["manual"], "なし")
             else:
@@ -1172,6 +1172,105 @@ https://example.org/game.jpg
         self.assertEqual(item["manual"], "なし（ユーザー申告）")
         self.assertEqual(item["cover_source"], "libretro")
         self.assertIn("Wonder%20Project%20J", item["cover"])
+
+    def test_wonder_project_j_boxed_and_loose_are_separate_owned_items(self):
+        title = "ワンダープロジェクトJ 機械の少年ピーノ"
+        copies = (
+            (191, "なし（ユーザー申告）", "なし（ユーザー申告）"),
+            (254, "あり（ユーザー申告）", "あり（ユーザー申告）"),
+        )
+        issues = []
+        for number, box_state, manual_state in copies:
+            issues.append(self.issue(
+                number,
+                f"- タイトル：{title}\n"
+                "- 機種：スーパーファミコン\n"
+                "- エディション：未確認\n"
+                f"- ケース・箱：{box_state}\n"
+                f"- 説明書：{manual_state}\n",
+            ))
+        items = build(issues)["items"]
+        self.assertEqual({x["id"] for x in items}, {"INV-191", "INV-254"})
+        self.assertEqual(len(items), 2)
+        self.assertEqual(items[0]["case"], "なし（ユーザー申告）")
+        self.assertEqual(items[0]["manual"], "なし（ユーザー申告）")
+        self.assertEqual(items[1]["case"], "あり（ユーザー申告）")
+        self.assertEqual(items[1]["manual"], "あり（ユーザー申告）")
+        self.assertEqual(items[0]["cover"], items[1]["cover"])
+        self.assertEqual({x["cover_source"] for x in items}, {"libretro"})
+
+    def test_mario64_owner_confirms_no_box_and_no_manual(self):
+        item = inventory_item(self.issue(
+            252,
+            "- タイトル：スーパーマリオ64\n"
+            "- 機種：NINTENDO64\n"
+            "- エディション：未確認（初版／振動パック対応版の別未確認）\n"
+            "- 箱：なし（ユーザー申告、2026-11-22）\n"
+            "- 説明書：なし（ユーザー申告、2026-11-22）\n",
+        ))
+        self.assertEqual(item["case"], "なし（ユーザー申告、2026-11-22）")
+        self.assertEqual(item["manual"], "なし（ユーザー申告、2026-11-22）")
+        self.assertEqual(item["platform"], "NINTENDO64")
+        self.assertEqual(item["cover_source"], "libretro")
+
+    def test_nocturne_hd_loose_discs_are_added_to_ps4_special_editions(self):
+        title = "真・女神転生III NOCTURNE HD REMASTER"
+        ps4_url = "https://mediaworld.co.jp/cdn/shop/files/cg10442053_6aa84820-f8b3-4db8-aa9b-76878f6c69ab.jpg?v=1792771661&width=1000"
+        ps4 = [
+            self.issue(
+                number,
+                f"- タイトル：{title}\n"
+                "- 機種：PlayStation 4\n"
+                f"- エディション：{edition}\n"
+                "- ケース・箱：なし\n- 説明書：なし\n"
+                if number == 255 else
+                f"- タイトル：{title}\n"
+                "- 機種：PlayStation 4\n"
+                f"- エディション：{edition}\n"
+                + f"- 帯：{obi}\n",
+            )
+            for number, edition, obi in [
+                (229, "現実魔界化BOX", "あり"),
+                (230, "現実魔界化BOX", "なし"),
+                (255, "未確認（箱説なし）", "未確認"),
+            ]
+        ]
+        items = build(ps4)["items"]
+        self.assertEqual({x["id"] for x in items}, {"INV-229", "INV-230", "INV-255"})
+        self.assertEqual(len(items), 3)
+        self.assertEqual([x["obi"] for x in items[:2]], ["yes", "no"])
+        self.assertEqual(items[0]["cover"], items[1]["cover"])
+        self.assertNotEqual(items[0]["cover"], items[2]["cover"])
+        self.assertEqual(items[2]["cover"], ps4_url)
+        self.assertEqual(items[2]["cover_source"], "curated")
+        self.assertEqual(items[2]["case"], "なし")
+        self.assertEqual(items[2]["manual"], "なし")
+        # No false inference of limited edition from a bare PS4 game disc.
+        self.assertEqual(items[2]["edition"], "未確認（箱説なし）")
+
+    def test_nocturne_hd_two_switch_loose_carts_are_distinct(self):
+        title = "真・女神転生III NOCTURNE HD REMASTER"
+        switch_url = "https://item-shopping.c.yimg.jp/i/f/media9_4984995903996"
+        issues = [
+            self.issue(
+                number,
+                f"- タイトル：{title}\n"
+                "- 機種：Nintendo Switch\n"
+                "- エディション：未確認（箱説なし）\n"
+                "- ケース・箱：なし（ユーザー申告）\n"
+                "- 説明書：なし（ユーザー申告）\n",
+            )
+            for number in (256, 257)
+        ]
+        items = build(issues)["items"]
+        self.assertEqual(len(items), 2)
+        self.assertEqual({x["id"] for x in items}, {"INV-256", "INV-257"})
+        self.assertEqual({x["platform"] for x in items}, {"Nintendo Switch"})
+        self.assertEqual({x["case"] for x in items}, {"なし（ユーザー申告）"})
+        self.assertEqual({x["manual"] for x in items}, {"なし（ユーザー申告）"})
+        self.assertEqual({x["edition"] for x in items}, {"未確認（箱説なし）"})
+        self.assertEqual({x["cover"] for x in items}, {switch_url})
+        self.assertEqual({x["cover_source"] for x in items}, {"curated"})
 
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
