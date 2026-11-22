@@ -192,6 +192,33 @@ https://example.org/game.jpg
         self.assertEqual(item["cover"], "https://example.org/actual-append.jpg")
         self.assertEqual(item["cover_source"], "issue")
 
+    def test_maken_shao_three_distinct_editions(self):
+        base = "- タイトル：魔剣爻\n- 機種：PlayStation 2\n"
+        cases = {
+            "初回限定版": "SLPS-25042.jpg",
+            "通常版": "SLPS-25043.jpg",
+            "アトラス・ベストコレクション": "SLPM-65144.jpg",
+        }
+        urls = []
+        for edition, filename in cases.items():
+            item = inventory_item(self.issue(
+                139, base + f"- エディション：{edition}\n"
+            ))
+            self.assertEqual(item["cover_source"], "curated")
+            self.assertTrue(item["cover"].endswith("/" + filename))
+            urls.append(item["cover"])
+        self.assertEqual(len(set(urls)), 3)
+
+    def test_maken_shao_issue_image_remains_authoritative(self):
+        item = inventory_item(self.issue(
+            34,
+            "- タイトル：魔剣爻\n- 機種：PlayStation 2\n"
+            "- エディション：初回限定版\n"
+            "![現物写真](https://example.org/actual.jpg)\n",
+        ))
+        self.assertEqual(item["cover_source"], "issue")
+        self.assertEqual(item["cover"], "https://example.org/actual.jpg")
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
