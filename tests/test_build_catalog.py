@@ -402,11 +402,8 @@ https://example.org/game.jpg
         for number, title, platform, suffix, reading in cases:
             issue = self.issue(
                 number,
-                f"- タイトル：{title}\\n- 分類：ゲームソフト\\n- 機種：{platform}\\n"
+                f"- タイトル：{title}\n- 分類：ゲームソフト\n- 機種：{platform}\n"
             )
-            # Convert escaped separators in this source string into newline
-            # characters before passing the synthetic Issue to the parser.
-            issue["body"] = issue["body"].replace("\\\\n", "\\n")
             item = inventory_item(issue)
             self.assertEqual(item["cover_source"], "curated")
             self.assertTrue(item["cover"].endswith(suffix), title)
@@ -417,10 +414,10 @@ https://example.org/game.jpg
     def test_ico_limited_box_is_one_set_not_two_separate_copies(self):
         item = inventory_item(self.issue(
             184,
-            "- タイトル：ICO/ワンダと巨像 Limited Box\\n"
-            "- 機種：PlayStation 3\\n"
-            "- エディション：Limited Box（数量限定セット）\\n"
-            "- 個体：限定セット1箱\\n",
+            "- タイトル：ICO/ワンダと巨像 Limited Box\n"
+            "- 機種：PlayStation 3\n"
+            "- エディション：Limited Box（数量限定セット）\n"
+            "- 個体：限定セット1箱\n",
         ))
         self.assertEqual(item["title"], "ICO/ワンダと巨像 Limited Box")
         self.assertEqual(item["edition"], "Limited Box（数量限定セット）")
