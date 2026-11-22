@@ -504,3 +504,30 @@ in GitHub Issues take priority over the curated fallback mappings.
   `ケース`, `ケース・箱`, or `箱`, so the reported absent boxes
   are represented correctly in the site data without rewriting older
   Issue field conventions.
+
+## 2026-11-22: corrected loose/boxed copy counts for Wonder Project J and Nocturne HD
+
+The owner explicitly corrected prior assumptions about actual physical copies.
+
+- SFC `ワンダープロジェクトJ 機械の少年ピーノ`: Issue #191 remains the
+  **loose cartridge**, no box or instruction manual. Issue #254 is a **second
+  physical copy with box and manual**. Total two; identical Japanese box-art
+  reference is expected and does not mean both copies have boxes.
+- NINTENDO64 `スーパーマリオ64`: existing Issue #252 is now cartridge-only,
+  **no box and no instruction manual**, while initial-version / rumble-pack
+  variation is still unverified. No new record is created for this correction.
+- PS4 `真・女神転生III NOCTURNE HD REMASTER`: existing Issue #229
+  (現実魔界化BOX, with obi) and #230 (same edition, without obi) are unchanged.
+  New Issue #255 is a **third physical copy**, disc-only, without box/manual.
+  An unboxed disc does not independently prove whether it originated from
+  the standard or collector's package; edition stays `未確認（箱説なし）`.
+- Nintendo Switch `真・女神転生III NOCTURNE HD REMASTER`:
+  new Issue #256 and #257 represent **two different physical cartridges**,
+  both without box/manual. No previously identified Switch copy was found in
+  Issues; these two form the documented minimum Switch count. They deliberately
+  share a Japanese Switch standard-edition *reference* cover image.
+- Both platforms' `未確認（箱説なし）` editions have exact platform-specific
+  cover URL mappings: Japanese PS4 usual cover (CERO B) and Japanese Switch
+  usual cover (CERO B). The photos are for title recognition, **not physical
+  evidence that any loose copy has the original box**. Do not use PS4
+  現実魔界化BOX artwork for unboxed PS4 discs.
