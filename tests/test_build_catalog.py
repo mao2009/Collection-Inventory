@@ -1066,6 +1066,42 @@ https://example.org/game.jpg
         self.assertEqual({item["id"] for item in results}, {"INV-152", "INV-239"})
         self.assertNotEqual(results[0]["edition"], results[1]["edition"])
 
+    def test_growlanser_ii_deluxe_candidate_keeps_unverified_edition_distinct(self):
+        title = "グローランサーII"
+        url = "https://www.gavas.jp/upload/save_image/11465.jpg"
+        candidate = inventory_item(self.issue(
+            244, f"- タイトル：{title}\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：デラックスパック（推定）\n"
+            "- 製品型番（資料上）：SLPS-20105\n",
+        ))
+        self.assertEqual(candidate["cover_source"], "curated")
+        self.assertEqual(candidate["cover"], url)
+        self.assertEqual(candidate["edition"], "デラックスパック（推定）")
+        self.assertEqual(candidate["serial"], "SLPS-20105")
+
+        existing = inventory_item(self.issue(
+            151, f"- タイトル：{title}\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：未確認\n",
+        ))
+        self.assertEqual(existing["cover_source"], "libretro")
+        self.assertNotEqual(existing["cover"], url)
+        self.assertEqual(existing["edition"], "未確認")
+        self.assertEqual({i["id"] for i in build([
+            self.issue(151, f"- タイトル：{title}\n"),
+            self.issue(244, f"- タイトル：{title}\n"),
+        ])["items"]}, {"INV-151", "INV-244"})
+
+        explicit = inventory_item(self.issue(
+            244, f"- タイトル：{title}\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：デラックスパック（推定）\n"
+            f"- 画像URL：{url}\n",
+        ))
+        self.assertEqual(explicit["cover"], url)
+        self.assertEqual(explicit["cover_source"], "issue")
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
