@@ -550,3 +550,43 @@ previously recorded loose discs/cartridges.
   while keeping the existing `未確認（箱説なし）` image mapping and
   `現実魔界化BOX` mapping separate. Catalog records must remain distinct
   by Issue ID, even if a standard and unboxed copy display matching art.
+
+## 2026-11-22: initial Steam screenshot inventory (game entries only)
+
+The owner sent four additional Steam Android Library screenshots
+(`1000088577.jpg`, `1000088578.jpg`, `1000088579.jpg`,
+`1000088580.jpg`), after an earlier very narrow scroll screenshot
+proved impossible to read reliably. The actual screenshots are **not**
+uploaded to GitHub. Their titles were manually transcribed into
+`data/steam_screenshot_import_20261122.json`.
+
+- Issues #262 through #330 represent **69 distinct visible Steam entries**,
+  consisting of 68 entries classified as games and 1 explicitly labeled
+  `Metaphor: ReFantazio - Prologue Demo`. The demo is separate from the
+  full `Metaphor: ReFantazio` entry. The manifest is the canonical
+  title-by-title transcription and includes source screenshot identifiers.
+- Exclude `Lossless Scaling` (utility), and do not guess whether unclear
+  `KIKI` is a game. Eleven `G-MODEアーカイブス+` Atlus titles are
+  included individually: these are playable games, not system tools.
+  Other unidentified or low-resolution covers, including the several
+  `HITMAN` variants and some Japanese/indie titles, are explicitly
+  listed under `unresolved` in the manifest; **do not register them as
+  guessed games or claim that the full Steam library was imported**.
+- All imported Issues use platform `Steam`, category `ゲームソフト`,
+  edition `Steam版（デジタル）` (or the demo variant), with box/manual
+  marked not applicable. They are separate from PlayStation, Nintendo,
+  and other physical copies already registered.
+- Seeing an application in a user's Steam Library screenshot is evidence
+  of a library entry only; it does **not** independently prove a
+  completed purchase, type/term of license, installed status or play
+  history. Issue descriptions retain the distinction.
+- No external cover images were assigned to these 69 entries in this
+  pass. Screenshots show artwork visually but do not supply stable
+  per-game image URLs. Do not invent Steam AppIDs or copy a console
+  cover with the wrong edition. Once game-specific Steam store IDs
+  have been individually matched, curated artwork may be added later.
+
+For follow-up inventory reviews, reconcile missing tiles using
+higher-resolution screenshots or an authorized Steam export, retaining
+the 69 already registered entries and adding only newly identified
+games.
