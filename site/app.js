@@ -80,6 +80,18 @@ function imageFor(item, detail = false) {
 
 function cardFor(item) {
   const card = element("article", "item-card");
+  // The whole card is one accessible action; avoid nested clickable controls.
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-haspopup", "dialog");
+  card.setAttribute("aria-label", item.title + " の詳細を見る");
+  card.addEventListener("click", () => showDetail(item));
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      showDetail(item);
+    }
+  });
   card.append(imageFor(item));
   const body = element("div", "card-body");
   const top = element("div", "card-top");
@@ -91,11 +103,8 @@ function cardFor(item) {
   body.append(element("p", "edition", item.edition));
   const foot = element("div", "card-foot");
   foot.append(element("span", "ownership", item.ownership));
-  const detail = element("button", "detail-button", "詳細を見る ↗");
-  detail.type = "button";
-  detail.setAttribute("aria-label", item.title + " の詳細を見る");
-  detail.addEventListener("click", () => showDetail(item));
-  foot.append(detail);
+  // Visual hint only: the surrounding card is the actual click target.
+  foot.append(element("span", "detail-button", "詳細を見る ↗"));
   body.append(foot);
   card.append(body);
   return card;
