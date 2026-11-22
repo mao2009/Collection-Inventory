@@ -70,9 +70,18 @@ function imageFor(item, detail = false) {
   img.decoding = "async";
   img.referrerPolicy = "no-referrer";
   img.src = item.cover;
-  img.addEventListener("error", placeholder, { once: true });
+  // Steam library artwork is preferred; some apps have only store headers.
+  img.addEventListener("error", () => {
+    if (item.cover_source === "steam" && item.cover_fallback && img.src !== item.cover_fallback) {
+      img.src = item.cover_fallback;
+    } else {
+      placeholder();
+    }
+  });
   wrap.append(img);
-  if (item.cover_source === "libretro" || item.cover_source === "curated") {
+  if (item.cover_source === "steam") {
+    wrap.append(element("span", "reference-label", "Steam画像"));
+  } else if (item.cover_source === "libretro" || item.cover_source === "curated") {
     wrap.append(element("span", "reference-label", "参考画像"));
   }
   return wrap;
