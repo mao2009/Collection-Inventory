@@ -819,8 +819,8 @@ https://example.org/game.jpg
     def test_ps2_nocturne_standard_and_deluxe_reference_images_are_separate(self):
         title = "真・女神転生III NOCTURNE"
         cases = (
-            (1, "通常版", "Nocturne%20%28Japan%2C%20Asia%29.png"),
-            (216, "デラックスパック", "Nocturne%20%28Japan%29%20%28Deluxe%20Pack%29.png"),
+            (1, "通常版", "/SLPM-65242.jpg"),
+            (216, "デラックスパック", "/SLPM-65241.jpg"),
         )
         urls = []
         for issue_number, edition, suffix in cases:
@@ -832,16 +832,16 @@ https://example.org/game.jpg
             self.assertTrue(item["cover"].endswith(suffix), edition)
             urls.append(item["cover"])
         self.assertNotEqual(urls[0], urls[1])
+        self.assertEqual(urls[0], "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65242.jpg")
+        self.assertEqual(urls[1], "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65241.jpg")
         # Historical Issue #1 includes an inline reference image, which has
         # higher precedence than a catalog fallback. It must now be normal art.
         historical = inventory_item(self.issue(
             1,
             f"- タイトル：{title}\n- 機種：PlayStation 2\n"
             "- エディション：通常版\n"
-            "![normal](https://raw.githubusercontent.com/libretro-thumbnails/"
-            "Sony_-_PlayStation_2/master/Named_Boxarts/"
-            "Shin%20Megami%20Tensei%20III%20-%20Nocturne"
-            "%20%28Japan%2C%20Asia%29.png)\n",
+            "![normal](https://raw.githubusercontent.com/xlenore/ps2-covers/"
+            "main/covers/default/SLPM-65242.jpg)\n",
         ))
         self.assertEqual(historical["cover_source"], "issue")
         self.assertEqual(historical["cover"], urls[0])
@@ -851,25 +851,25 @@ https://example.org/game.jpg
             (217, "メタファー：リファンタジオ", "PlayStation 5",
              "アトラスブランド35thアニバーサリーエディション", "/s-l1200.jpg"),
             (218, "ペルソナ3 リロード", "PlayStation 5",
-             "PERSONA3 RELOAD LIMITED BOX", "set_id=880000500F"),
+             "PERSONA3 RELOAD LIMITED BOX", "0000021594021-01.jpg?v=1757155393&width=3024"),
             (219, "ペルソナ5", "PlayStation 4",
-             "20thアニバーサリー・エディション", "/s-l500.jpg"),
+             "20thアニバーサリー・エディション", "persona-5-20th-anniversary-limited-edition-ps4-used-good-condition-es.jpg"),
             (220, "ペルソナ5 ザ・ロイヤル", "PlayStation 4",
              "ストレートフラッシュ・エディション", "600x600.webp"),
             (221, "ペルソナ5 スクランブル ザ ファントム ストライカーズ", "PlayStation 4",
              "オタカラBOX", "700x700.jpg?v=1614071482"),
             (223, "ユニコーンオーバーロード", "Nintendo Switch",
-             "モナークエディション", "cg10463028.jpg?v=1709881994"),
+             "モナークエディション", "4351978.jpg"),
             (224, "真・女神転生V", "Nintendo Switch",
-             "禁断のナホビノBOX", "forbidden-nahobido-box-limited-edition-switch-japan-rpg-atlusnintendo.jpg"),
+             "禁断のナホビノBOX", "1076002169839024_01_7545w.jpeg"),
             (226, "幻影異聞録♯FE", "Wii U",
              "Fortissimo Edition", "/5092405.jpg"),
             (227, "ソウルハッカーズ2", "PlayStation 5",
              "25thアニバーサリーエディション", "1078002052333135_02_8697w.jpeg"),
             (228, "ペルソナダンシング デラックス・ツインプラス", "PlayStation Vita",
-             "デラックス・ツインプラス", "promo-image.jpg?t=1721772920286"),
+             "デラックス・ツインプラス", "persona-dancing-deluxe-twin-plus-limited-edition-sony-playstation-vita-psvita-japan-occasion.jpg"),
             (229, "真・女神転生III NOCTURNE HD REMASTER", "PlayStation 4",
-             "現実魔界化BOX", "00000008252288_A01.jpg?sr.dh=600&sr.dw=600&sr.jqh=60&sr.mat=1"),
+             "現実魔界化BOX", "CIMG6234111-700x525.jpg"),
         )
         issues = []
         for number, title, platform, edition, suffix in cases:

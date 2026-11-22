@@ -13,7 +13,7 @@ GitHubのみで運用する個人コレクション台帳。ゲームソフト�
 
 | ジャケット | 管理番号 | タイトル | エディション | 参考型番 | 個別情報 |
 | --- | --- | --- | --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65241.jpg" width="80" alt="真・女神転生III NOCTURNE"> | INV-001 | 真・女神転生III NOCTURNE | 通常版 | SLPM-65241 | [#1](../../issues/1) |
+| <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65242.jpg" width="80" alt="真・女神転生III NOCTURNE 日本版通常版"> | INV-001 | 真・女神転生III NOCTURNE | 通常版 | SLPM-65242 | [#1](../../issues/1) |
 | <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65259.jpg" width="80" alt="真・女神転生III NOCTURNE"> | INV-002 | 真・女神転生III NOCTURNE | TSUTAYAオリジナル版 | SLPM-65259 | [#2](../../issues/2) |
 | <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-74205.jpg" width="80" alt="真・女神転生III NOCTURNE"> | INV-003 | 真・女神転生III NOCTURNE | PlayStation 2 the Best | SLPM-74205 | [#3](../../issues/3) |
 | <img src="https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65462.jpg" width="80" alt="真・女神転生III NOCTURNE マニアクス"> | INV-004 | 真・女神転生III NOCTURNE マニアクス | 通常版 | SLPM-65462 | [#4](../../issues/4) |
