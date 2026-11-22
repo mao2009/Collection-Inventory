@@ -777,7 +777,7 @@ https://example.org/game.jpg
         self.assertEqual(item["platform"], "PlayStation 4")
         self.assertEqual(item["cover_source"], "curated")
         self.assertTrue(item["cover"].endswith(
-            "/v5_limited_84aa156dcf9070d72966b2c8e9289ee5.png"
+            "/eOMAAOSwPjFm2XtL/s-l1200.png"
         ))
         self.assertEqual(item["reading"], "キャサリン フルボディ")
         switch = inventory_item(self.issue(
