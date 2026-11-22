@@ -1628,6 +1628,38 @@ https://example.org/game.jpg
         self.assertNotIn("BLJM60442.JPG", ps3["urls"]["ペルソナ4 ジ・アルティメット イン マヨナカアリーナ"])
         self.assertIn("/BLJM61209.JPG", ps3["urls"]["ペルソナ4 ジ・アルティマックス ウルトラスープレックスホールド"])
 
+    def test_xbox_360_japanese_covers_replace_english_only_art(self):
+        import json
+        from pathlib import Path
+        from scripts.build_catalog import REFERENCE_COVERS
+        audit = json.loads(
+            (Path(__file__).resolve().parent.parent /
+             "data/japanese_console_cover_audit_20261122.json").read_text(encoding="utf-8")
+        )
+        x360 = REFERENCE_COVERS["Xbox 360"]["urls"]
+        changed = audit["corrected_unregioned_art"]
+        self.assertEqual(len(changed), 4)
+        for row in changed:
+            self.assertEqual(row["platform"], "Xbox 360")
+            self.assertIn("xenia-manager/x360db", row["old"])
+            self.assertEqual(x360[row["title"]], row["new"])
+            self.assertNotIn("xenia-manager/x360db", row["new"])
+            item = inventory_item(self.issue(
+                900, f"- タイトル：{row['title']}\n"
+                "- 機種：Xbox 360\n- エディション：未確認\n",
+            ))
+            self.assertEqual(item["cover"], row["new"])
+            self.assertEqual(item["cover_source"], "curated")
+        # Xbox 360 Japanese art must not disturb the North American PS2
+        # Nocturne or its owner's issue-specific cover.
+        na = inventory_item(self.issue(
+            235, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：北米版（Shin Megami Tensei: Nocturne）\n"
+            "- 画像URL：https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLUS-20911.jpg\n",
+        ))
+        self.assertTrue(na["cover"].endswith("/SLUS-20911.jpg"))
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
