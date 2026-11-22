@@ -160,6 +160,10 @@ def inventory_item(issue):
     # An owner's explicit reading overrides the catalog's curated Japanese
     # readings. Unmapped names fall back to their original spelling.
     reading = first(fields, "読み", "よみ", "タイトルの読み") or TITLE_READINGS.get(title, title)
+    category = first(fields, "分類", "カテゴリ") or "未分類"
+    # Preserve legacy uncategorized game covers, but never treat merchandise
+    # with the same game title as game software when choosing automatic art.
+    allow_game_artwork = category in ("ゲームソフト", "未分類")
 
     serial = field_prefix(fields, "製品型番") or first(fields, "品番・型番", "現物型番")
     if not serial or serial.startswith("未確認"):
@@ -173,7 +177,8 @@ def inventory_item(issue):
     cover_source = "issue" if cover else ""
     platform = platform_name(first(fields, "機種", "プラットフォーム・対応機種"))
     edition = first(fields, "エディション") or "未確認"
-    edition_urls = REFERENCE_COVERS.get(platform, {}).get("edition_urls", {}).get(title)
+    edition_urls = (REFERENCE_COVERS.get(platform, {}).get("edition_urls", {}).get(title)
+                    if allow_game_artwork else None)
 
     if not cover and edition_urls is not None:
         # An explicit empty edition mapping means "no matching cover": do not
@@ -190,7 +195,7 @@ def inventory_item(issue):
             cover = reference_cover(platform, title)
             if cover:
                 cover_source = "libretro"
-    elif not cover:
+    elif not cover and allow_game_artwork:
         cover = reference_cover(platform, title)
         if cover:
             cover_source = "libretro"
@@ -200,7 +205,7 @@ def inventory_item(issue):
                 cover_source = "curated"
 
     cover_fallback = ""
-    if platform == "Steam" and not cover:
+    if platform == "Steam" and not cover and allow_game_artwork:
         cover, cover_fallback = steam_cover(title)
         if cover:
             cover_source = "steam"
@@ -217,7 +222,7 @@ def inventory_item(issue):
         "id": inventory_id,
         "title": title,
         "reading": reading,
-        "category": first(fields, "分類", "カテゴリ") or "未分類",
+        "category": category,
         "platform": platform,
         "edition": edition,
         "serial": serial or "未確認",
