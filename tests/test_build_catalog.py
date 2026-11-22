@@ -592,6 +592,77 @@ https://example.org/game.jpg
         self.assertEqual(item["reading"], "サンマノメイタンテイ")
         self.assertEqual(item["platform"], "ファミリーコンピュータ")
 
+    def test_legacy_pc_engine_titles_are_games_not_uncategorized(self):
+        legacy = [
+            self.issue(35,
+                "- 管理番号: INV-035\n"
+                "- 機種: PCエンジン\n"
+                "- 分類: ゲームソフト\n"
+                "- タイトル: 真・女神転生\n"),
+            self.issue(36,
+                "- 管理番号: INV-036\n"
+                "- 機種: PCエンジン\n"
+                "- 分類: ゲームソフト\n"
+                "- タイトル: 天外魔境II 卍MARU\n"),
+        ]
+        items = build(legacy)["items"]
+        self.assertEqual(len(items), 2)
+        self.assertEqual({i["id"] for i in items}, {"INV-035", "INV-036"})
+        self.assertEqual({i["category"] for i in items}, {"ゲームソフト"})
+        self.assertEqual({i["platform"] for i in items}, {"PCエンジン"})
+
+    def test_pce_gba_and_n64_own_titles_have_correct_platform_covers(self):
+        cases = (
+            (199, "イースI・II", "PCエンジン",
+             "NEC_-_PC_Engine_CD_-_TurboGrafx-CD",
+             "Ys%20I%20_%20II%20%28Japan%29.png", "イース1・2"),
+            (200, "真・女神転生", "ゲームボーイアドバンス",
+             "Nintendo_-_Game_Boy_Advance",
+             "Shin%20Megami%20Tensei%20%28Japan%29.png", "シンメガミテンセイ"),
+            (201, "真・女神転生II", "ゲームボーイアドバンス",
+             "Nintendo_-_Game_Boy_Advance",
+             "Shin%20Megami%20Tensei%20II%20%28Japan%29.png", "シンメガミテンセイ2"),
+            (202, "ブレス オブ ファイア", "ゲームボーイアドバンス",
+             "Nintendo_-_Game_Boy_Advance",
+             "Breath%20of%20Fire%20-%20Ryuu%20no%20Senshi%20%28Japan%29.png",
+             "ブレスオブファイア"),
+            (203, "MOTHER 1+2", "ゲームボーイアドバンス",
+             "Nintendo_-_Game_Boy_Advance",
+             "Mother%201%2B2%20%28Japan%29.png", "マザー1+2"),
+            (204, "ワンダープロジェクトJ2 コルロの森のジョゼット", "NINTENDO64",
+             "Nintendo_-_Nintendo_64",
+             "Wonder%20Project%20J2%20-%20Koruro%20no%20Mori%20no%20Jozet%20%28Japan%29.png",
+             "ワンダープロジェクトジェイ2 コルロノモリノジョゼット"),
+        )
+        issues = []
+        for number, title, platform, repository, image, reading in cases:
+            issue = self.issue(
+                number, f"- タイトル：{title}\n"
+                "- 分類：ゲームソフト\n"
+                + f"- 機種：{platform}\n"
+                "- エディション：未確認\n",
+            )
+            item = inventory_item(issue)
+            self.assertEqual(item["id"], f"INV-{number}")
+            self.assertEqual(item["platform"], platform)
+            self.assertEqual(item["category"], "ゲームソフト")
+            self.assertEqual(item["cover_source"], "libretro")
+            self.assertIn(repository, item["cover"])
+            self.assertTrue(item["cover"].endswith(image), title)
+            self.assertEqual(item["reading"], reading)
+            issues.append(issue)
+        self.assertEqual(len(build(issues)["items"]), 6)
+
+    def test_same_title_gba_not_confused_with_sfc(self):
+        gba = inventory_item(self.issue(
+            200, "- タイトル：真・女神転生\n- 機種：ゲームボーイアドバンス\n"
+        ))
+        sfc = inventory_item(self.issue(
+            97, "- タイトル：真・女神転生\n- 機種：スーパーファミコン\n"
+        ))
+        self.assertNotEqual(gba["platform"], sfc["platform"])
+        self.assertNotEqual(gba["cover"], sfc["cover"])
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"

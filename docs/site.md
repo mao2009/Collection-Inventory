@@ -235,3 +235,33 @@ Then visit http://localhost:8000/. For offline tests you can pass
   The spoken request was interpreted as this title; the issue notes that the transcription-based title can be corrected if the user intended a different game.
   A title-exact Japan boxart reference from Libretro is used; package contents and version remain unverified.
 - The new Famicom title is included in `data/title_readings.json` for default gojuon sorting.
+
+## PC Engine category repair, GBA titles, and NINTENDO64 (2026-11-22)
+
+- The original PC Engine \`真・女神転生\` (Issue #35) and \`天外魔境II 卍MARU\`
+  (Issue #36) were classified by the static site as "未分類" because the
+  original Issue bodies omitted the \`- 分類: ゲームソフト\` field. Both
+  source-of-truth Issues have now been repaired; the exact catalog parser
+  accepts either ASCII \`:\` or full-width \`：\` in the field.
+- Added one PC Engine **CD-ROM²** title, \`イースI・II\` (Issue #199,
+  reference product code HCD9009). Although it contains both Ys I and II,
+  it is a single physical CD package and counts as one inventory item.
+- Added four separate owned Game Boy Advance titles: \`真・女神転生\`
+  (#200), \`真・女神転生II\` (#201), \`ブレス オブ ファイア\` (#202),
+  and \`MOTHER 1+2\` (#203). The latter is a single physical
+  compilation package (reference code AGB-P-A2UJ), not two owned games.
+  The GBA Shin Megami Tensei titles are separate physical editions from
+  the user's already-registered SFC / PlayStation copies.
+- Added \`ワンダープロジェクトJ2 コルロの森のジョゼット\` on
+  NINTENDO64 (#204; reference cartridge ID NUS-P-NJ2J). Its original
+  retail package may have bundled a Controller Pak, but the presence
+  of that accessory in the owner's copy is unverified. Keep the N64 sequel
+  separate from the SFC original \`ワンダープロジェクトJ\` (#191).
+- Verified all six exact-name, exact-platform Japanese Libretro reference
+  boxarts through existing GitHub files and registered them in
+  \`data/cover_references.json\`. Reference art is not a photo of the
+  owner's physical copy. Packaging, booklet, actual serial and edition
+  remain unverified.
+- Added missing kana readings for proper Japanese 50-on sorting.
+  Tests now check both repaired PC Engine categories and the six new
+  item/platform/cover mappings.

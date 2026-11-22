@@ -244,6 +244,27 @@
       "images": {
         "ブレス オブ ファイア III": "Breath of Fire III (Japan).png"
       }
+    },
+    "PCエンジン": {
+      "repo": "NEC_-_PC_Engine_CD_-_TurboGrafx-CD",
+      "images": {
+        "イースI・II": "Ys I _ II (Japan).png"
+      }
+    },
+    "ゲームボーイアドバンス": {
+      "repo": "Nintendo_-_Game_Boy_Advance",
+      "images": {
+        "真・女神転生": "Shin Megami Tensei (Japan).png",
+        "真・女神転生II": "Shin Megami Tensei II (Japan).png",
+        "ブレス オブ ファイア": "Breath of Fire - Ryuu no Senshi (Japan).png",
+        "MOTHER 1+2": "Mother 1+2 (Japan).png"
+      }
+    },
+    "NINTENDO64": {
+      "repo": "Nintendo_-_Nintendo_64",
+      "images": {
+        "ワンダープロジェクトJ2 コルロの森のジョゼット": "Wonder Project J2 - Koruro no Mori no Jozet (Japan).png"
+      }
     }
   },
   "additional_cover_sources": [
