@@ -590,3 +590,40 @@ For follow-up inventory reviews, reconcile missing tiles using
 higher-resolution screenshots or an authorized Steam export, retaining
 the 69 already registered entries and adding only newly identified
 games.
+
+## 2026-11-22: follow-up sharper Steam library screenshots
+
+Two additional owner-supplied Steam Android Library screenshots
+(`1000088583.jpg` and `1000088584.jpg`) resolve **17** game titles
+previously unreadable in screenshot `1000088579.jpg`. The screenshot
+images themselves remain in the conversation, not GitHub.
+
+- New independent Steam library Issues **#332–#348** represent **17 games**:
+  four distinct HITMAN entries (`HITMAN World of Assassination`,
+  `Hitman: Absolution`, `HITMAN (2016)`, `HITMAN 2`);
+  `Shin Megami Tensei III Nocturne HD Remaster`;
+  `ブレス オブ ファイアIV うつろわざるもの`;
+  `The Life and Suffering of Sir Brante`;
+  `METAL GEAR SOLID V: GROUND ZEROES` and
+  `METAL GEAR SOLID V: THE PHANTOM PAIN`;
+  `Rat Quest`, `シロナガス島への帰還 -Return to Shironagasu Island-`,
+  `Rise of Rebellion～地罰上らば竜の降る～`, `STEINS;GATE`,
+  `Tell Me Why`, `Ultimate Epic Battle Simulator`,
+  `Undercroft Warriors`, and `真・女神転生V Vengeance`.
+- Earlier **69** Steam library entries (#262–#330) remain independent.
+  There are therefore **86 transcribed Steam entries**: **85 games**
+  and **1 demo**. The demo is a separately labeled Metaphor prologue.
+- Excluded tools: `Lossless Scaling`, `RetroArch` (emulator
+  frontend), and `RPG Maker XP` (development utility).
+  `KIKI` remains unimported because its app identity/classification
+  could not be linked with enough confidence from the tile alone.
+- Earlier `8579`-specific unresolved captions have been resolved or
+  identified as tools. The manifest retains other genuinely unresolved
+  captions from screenshots `8577` and `8580` rather than guessing.
+- All new items are digital `Steam` library entries; box/manual are
+  marked not applicable. Steam screenshot presence alone does not
+  prove purchase, license duration, installation, or play history.
+  No specific Steam cover URLs are assigned without checking the
+  matching store artwork.
+
+Record source and flags: `data/steam_screenshot_import_20261122.json`.

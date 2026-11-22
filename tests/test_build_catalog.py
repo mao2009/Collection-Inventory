@@ -1337,15 +1337,15 @@ https://example.org/game.jpg
              "data/steam_screenshot_import_20261122.json").read_text(encoding="utf-8")
         )
         records = manifest["records"]
-        self.assertEqual(len(records), 69)
+        self.assertEqual(len(records), 86)
         self.assertEqual(len([r for r in records if r["kind"] == "demo"]), 1)
-        self.assertEqual(len([r for r in records if r["kind"] == "game"]), 68)
-        self.assertEqual(len({r["title"] for r in records}), 69)
+        self.assertEqual(len([r for r in records if r["kind"] == "game"]), 85)
+        self.assertEqual(len({r["title"] for r in records}), 86)
         self.assertEqual(len([r for r in records if r["title"].startswith("G-MODEアーカイブス+")]), 11)
         for item in records:
-            self.assertIn(item["screenshot"], {"8577", "8578", "8579", "8580"})
+            self.assertIn(item["screenshot"], {"8577", "8578", "8579", "8580", "8583", "8584"})
             self.assertTrue(item["title"])
-            self.assertNotIn(item["title"], {"Lossless Scaling", "KIKI"})
+            self.assertNotIn(item["title"], {"Lossless Scaling", "KIKI", "RetroArch", "RPG Maker XP"})
         titles = {r["title"] for r in records}
         for title in (
             "G-MODEアーカイブス+ 真・女神転生-20XX",
@@ -1357,6 +1357,61 @@ https://example.org/game.jpg
             "RAIDOU Remastered: 超力兵団奇譚",
         ):
             self.assertIn(title, titles)
+
+        # Two sharper screenshots resolve 17 previously uncertain game tiles.
+        followup = [r for r in records if r["screenshot"] in ("8583", "8584")]
+        self.assertEqual(len(followup), 17)
+        self.assertEqual(len([r for r in followup if r["screenshot"] == "8583"]), 9)
+        self.assertEqual(len([r for r in followup if r["screenshot"] == "8584"]), 8)
+        new_titles = {r["title"] for r in followup}
+        self.assertEqual(len(new_titles), 17)
+        for title in (
+            "HITMAN World of Assassination", "Hitman: Absolution",
+            "HITMAN (2016)", "HITMAN 2",
+            "Shin Megami Tensei III Nocturne HD Remaster",
+            "ブレス オブ ファイアIV うつろわざるもの",
+            "The Life and Suffering of Sir Brante",
+            "METAL GEAR SOLID V: GROUND ZEROES",
+            "METAL GEAR SOLID V: THE PHANTOM PAIN",
+            "Rat Quest", "シロナガス島への帰還 -Return to Shironagasu Island-",
+            "Rise of Rebellion～地罰上らば竜の降る～",
+            "STEINS;GATE", "Tell Me Why",
+            "Ultimate Epic Battle Simulator",
+            "Undercroft Warriors", "真・女神転生V Vengeance",
+        ):
+            self.assertIn(title, new_titles)
+        for tool in ("Lossless Scaling", "RetroArch", "RPG Maker XP", "KIKI"):
+            self.assertNotIn(tool, {r["title"] for r in records})
+        # Four HITMAN entries are distinguishable applications and retained
+        # separately; World of Assassination does not automatically replace
+        # the older 2016, 2, or Absolution entries.
+        self.assertEqual(
+            len([r for r in followup if r["title"].lower().startswith("hitman")]), 4
+        )
+        self.assertTrue(manifest["unresolved"])
+        self.assertFalse(any("8579" in item for item in manifest["unresolved"]))
+
+        # Steam-only records are independent of prior console editions.
+        steam_smt3 = inventory_item(self.issue(
+            336,
+            "- タイトル：Shin Megami Tensei III Nocturne HD Remaster\n"
+            "- 分類：ゲームソフト\n- 機種：Steam\n"
+            "- エディション：Steam版（デジタル）\n"
+            "- ケース・箱：対象外（デジタル版）\n",
+        ))
+        self.assertEqual(steam_smt3["platform"], "Steam")
+        self.assertEqual(steam_smt3["case"], "対象外（デジタル版）")
+        self.assertEqual(steam_smt3["cover"], "")
+        physical_smt3 = self.issue(259,
+            "- タイトル：真・女神転生III NOCTURNE HD REMASTER\n"
+            "- 機種：PlayStation 4\n- エディション：通常版\n")
+        self.assertEqual(
+            {x["id"] for x in build([physical_smt3, self.issue(
+                336, "- タイトル：Shin Megami Tensei III Nocturne HD Remaster\n"
+                "- 機種：Steam\n- エディション：Steam版（デジタル）\n",
+            )])["items"]},
+            {"INV-259", "INV-336"},
+        )
 
         # Each game is a distinct digital library entry, separate from an
         # existing console or physical copy of the same title.
