@@ -49,12 +49,22 @@
         "ペルソナ2 罪": "Shin Megami Tensei - Persona 2 - Innocent Sin (USA).png",
         "ペルソナ2 罰": "Persona 2 - Batsu (Japan).png",
         "ペルソナ3 ポータブル": "Persona 3 Portable (Japan).png"
+      },
+      "urls": {
+        "ロックマンDASH 鋼の冒険心": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05030.png",
+        "ロックマンDASH2 エピソード2 大いなる遺産": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05037.png",
+        "真・女神転生 デビルサマナー": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05053.png"
       }
     },
     "PlayStation Vita": {
       "repo": "Sony_-_PlayStation_Vita",
       "images": {
         "ペルソナ4 ザ・ゴールデン": "Persona 4 Golden (USA).png"
+      },
+      "urls": {
+        "朧村正": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00150.png",
+        "ペルソナ4 ダンシング・オールナイト": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00364.png",
+        "オーディンスフィア レイヴスラシル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00524.png"
       }
     },
     "Xbox": {
@@ -67,6 +77,11 @@
       "repo": "Microsoft_-_Xbox_360",
       "images": {
         "キャサリン": "Catherine (USA).png"
+      },
+      "urls": {
+        "アーマード・コア フォーアンサー": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/465307DA/artwork/boxart.jpg",
+        "ロストオデッセイ": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/4D5307FA/artwork/boxart.jpg",
+        "ペルソナ4 ジ・アルティメット イン マヨナカアリーナ": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/453907D2/artwork/boxart.jpg"
       }
     },
     "セガサターン": {
@@ -111,6 +126,16 @@
         "キャサリン": "Catherine (Japan).png",
         "ダークソウル": "Dark Souls (Japan).png",
         "デモンズソウル": "Demon's Souls (USA).png"
+      },
+      "urls": {
+        "ドラゴンズクラウン": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61041.JPG",
+        "デビル メイ クライ 4": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60056.JPG",
+        "ダークサイダーズ 審判の時": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60204.JPG",
+        "428 ～封鎖された渋谷で～": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJS10057.JPG",
+        "オーディンスフィア レイヴスラシル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61239.JPG",
+        "機動戦士ガンダム ターゲットインサイト": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJS10002.JPG",
+        "ゴッド・オブ・ウォーIII": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS37001.JPG",
+        "ゴッド・オブ・ウォー コレクション": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60200.JPG"
       }
     },
     "Wii": {
@@ -146,5 +171,10 @@
         "ブレス オブ ファイア III": "Breath of Fire III (Japan).png"
       }
     }
-  }
+  },
+  "additional_cover_sources": [
+    "https://github.com/SvenGDK/PSMT-Covers",
+    "https://github.com/xenia-manager/x360db",
+    "https://github.com/andiweli/hexflow-covers"
+  ]
 }

@@ -115,6 +115,52 @@ https://example.org/game.jpg
         self.assertEqual(item["cover_source"], "issue")
         self.assertEqual(item["cover"], "https://example.org/my-cover.png")
 
+    def test_verified_ps3_reference_cover(self):
+        item = inventory_item(self.issue(
+            114,
+            "- タイトル：ドラゴンズクラウン\n- 機種：PlayStation 3\n"
+        ))
+        self.assertEqual(item["cover_source"], "curated")
+        self.assertEqual(item["cover"], "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61041.JPG")
+
+    def test_verified_vita_reference_cover(self):
+        item = inventory_item(self.issue(
+            78, "- タイトル：朧村正\n- 機種：PlayStation Vita\n"
+        ))
+        self.assertEqual(item["cover_source"], "curated")
+        self.assertTrue(item["cover"].endswith("/PSVita/PCSG00150.png"))
+        self.assertEqual(
+            inventory_item(self.issue(90, "- タイトル：朧村正\n- 機種：Wii\n"))["cover_source"],
+            "libretro",
+        )
+
+    def test_psp_reference_cover(self):
+        item = inventory_item(self.issue(
+            75, "- タイトル：ロックマンDASH 鋼の冒険心\n- 機種：PSP\n"
+        ))
+        self.assertEqual(item["cover_source"], "curated")
+        self.assertTrue(item["cover"].endswith("/Covers/PSP/ULJM05030.png"))
+
+    def test_xbox_reference_cover_and_duplicate_copy(self):
+        for number in (82, 133):
+            item = inventory_item(self.issue(
+                number,
+                "- タイトル：アーマード・コア フォーアンサー\n"
+                "- 機種：Xbox 360\n"
+            ))
+            self.assertEqual(item["cover_source"], "curated")
+            self.assertTrue(item["cover"].endswith("/titles/465307DA/artwork/boxart.jpg"))
+
+    def test_issue_image_precedes_supplemental_cover(self):
+        item = inventory_item(self.issue(
+            114,
+            "- タイトル：ドラゴンズクラウン\n"
+            "- 機種：PlayStation 3\n"
+            "- 画像URL：https://example.org/owned.jpg\n"
+        ))
+        self.assertEqual(item["cover_source"], "issue")
+        self.assertEqual(item["cover"], "https://example.org/owned.jpg")
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"

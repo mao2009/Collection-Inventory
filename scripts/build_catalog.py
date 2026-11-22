@@ -99,6 +99,12 @@ def reference_cover(platform, title):
     )
 
 
+def supplemental_cover(platform, title):
+    """Use an exact-title, exact-platform URL verified in our curated data."""
+    url = REFERENCE_COVERS.get(platform, {}).get("urls", {}).get(title, "")
+    return safe_https(url)
+
+
 def inventory_item(issue):
     if "pull_request" in issue:
         return None
@@ -140,6 +146,10 @@ def inventory_item(issue):
         cover = reference_cover(platform_name(first(fields, "機種", "プラットフォーム・対応機種")), title)
         if cover:
             cover_source = "libretro"
+    if not cover:
+        cover = supplemental_cover(platform_name(first(fields, "機種", "プラットフォーム・対応機種")), title)
+        if cover:
+            cover_source = "curated"
 
     ownership = first(fields, "所持状態", "所有", "所持")
     if "譲渡・売却済み" in ownership:
