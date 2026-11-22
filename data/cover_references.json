@@ -46,6 +46,10 @@
         "真・女神転生IV FINAL": {
           "未確認": "https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_3DS/master/Named_Boxarts/Shin%20Megami%20Tensei%20IV%20-%20Final%20%28Japan%29.png",
           "通常版": "https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_3DS/master/Named_Boxarts/Shin%20Megami%20Tensei%20IV%20-%20Final%20%28Japan%29.png"
+        },
+        "真・女神転生 DEEP STRANGE JOURNEY": {
+          "未確認": "https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_3DS/master/Named_Boxarts/Shin%20Megami%20Tensei%20-%20Deep%20Strange%20Journey%20%28Japan%29.png",
+          "真・女神転生25周年記念スペシャルボックス（初回生産限定版）": "https://www.furu1.online/storage/product/10130126/00.webp"
         }
       }
     },
@@ -91,6 +95,10 @@
         "ペルソナ4 ザ・ゴールデン": {
           "通常版": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00004.png",
           "PlayStation Vita the Best": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00563.png"
+        },
+        "ペルソナ4 ダンシング・オールナイト": {
+          "限定版（正式なパック名は未照合）": "https://st.cdjapan.co.jp/pictures/l/10/13/ATS-1506.jpg?v=2",
+          "通常版": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00364.png"
         }
       }
     },
@@ -279,6 +287,15 @@
       "repo": "Nintendo_-_Game_Boy_Color",
       "images": {
         "真・女神転生トレーディングカード カードサマナー": "Shin Megami Tensei Trading Card - Card Summoner (Japan).png"
+      }
+    },
+    "PlayStation 4": {
+      "urls": {},
+      "images": {},
+      "edition_urls": {
+        "キャサリン・フルボディ": {
+          "ダイナマイト・フルボディ BOX（初回生産限定版）": "https://fullbody.jp/resources/img/sp/shopguide/v5_limited_84aa156dcf9070d72966b2c8e9289ee5.png"
+        }
       }
     }
   },
