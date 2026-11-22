@@ -87,6 +87,12 @@
       "repo": "Microsoft_-_Xbox",
       "images": {
         "真・女神転生 NINE": "Shin Megami Tensei - NINE (Japan).png"
+      },
+      "edition_urls": {
+        "真・女神転生 NINE": {
+          "通常版（スタンドアローン版）": "https://raw.githubusercontent.com/libretro-thumbnails/Microsoft_-_Xbox/master/Named_Boxarts/Shin%20Megami%20Tensei%20-%20NINE%20%28Japan%29.png",
+          "限定デラックスパック": "https://genkivideogames.com/wp-content/uploads/2024/09/m9000003newfront.jpg"
+        }
       }
     },
     "Xbox 360": {
@@ -97,7 +103,8 @@
       "urls": {
         "アーマード・コア フォーアンサー": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/465307DA/artwork/boxart.jpg",
         "ロストオデッセイ": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/4D5307FA/artwork/boxart.jpg",
-        "ペルソナ4 ジ・アルティメット イン マヨナカアリーナ": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/453907D2/artwork/boxart.jpg"
+        "ペルソナ4 ジ・アルティメット イン マヨナカアリーナ": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/453907D2/artwork/boxart.jpg",
+        "ブルードラゴン": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/4D5307DF/artwork/boxart.jpg"
       }
     },
     "セガサターン": {
