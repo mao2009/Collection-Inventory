@@ -65,7 +65,7 @@ function imageFor(item, detail = false) {
   img.src = item.cover;
   img.addEventListener("error", placeholder, { once: true });
   wrap.append(img);
-  if (item.cover_source === "libretro" || item.cover_source === "psmt") {
+  if (item.cover_source === "libretro" || item.cover_source === "curated") {
     wrap.append(element("span", "reference-label", "参考画像"));
   }
   return wrap;
