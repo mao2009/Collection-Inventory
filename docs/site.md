@@ -396,3 +396,23 @@ The corresponding Issues' explicit image URLs must match the curated mappings
 because the Issue URL takes precedence during catalog export.
 These images are external references, not photographs of the owner's copies;
 obi and accessory-completeness states remain independently tracked.
+
+## 2026-11-22: Mega-CD SMT and North American PS2 Nocturne
+
+- GitHub Issue #234 represents one owner's physical copy of the Japanese
+  **Mega-CD** version of `真・女神転生` (reference serial `T-44044`).
+  The catalog displays its platform as `メガドライブ（メガCD）`, explicitly
+  identifying the Mega-CD add-on rather than a Mega Drive cartridge.
+  The box art is the Japanese Mega-CD release, not the Super Famicom or PC
+  Engine art.
+- GitHub Issue #235 represents the North American PlayStation 2 release of
+  `Shin Megami Tensei: Nocturne` (reference serial `SLUS-20911`).
+  The canonical collection title remains `真・女神転生III NOCTURNE`,
+  but the edition label explicitly records the North American localization.
+  The red NTSC-U/C cover must not fall back to the Japanese blue standard
+  (`SLPM-65242`), Japanese black Deluxe Pack (`SLPM-65241`),
+  or European `Lucifer's Call` artwork.
+- Region-specific cover URLs are attached in Issues and are also curated in
+  `data/cover_references.json`; both entry points must agree. Each Issue
+  remains a distinct physical item, with all condition/extra/obi details
+  unverified unless the owner separately confirms them.

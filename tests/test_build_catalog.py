@@ -846,6 +846,69 @@ https://example.org/game.jpg
         self.assertEqual(historical["cover_source"], "issue")
         self.assertEqual(historical["cover"], urls[0])
 
+    def test_mega_cd_smt_and_ps2_us_nocturne_covers_are_distinct(self):
+        mega_cd_url = (
+            "https://raw.githubusercontent.com/libretro-thumbnails/"
+            "Sega_-_Mega-CD_-_Sega_CD/master/Named_Boxarts/"
+            "Shin%20Megami%20Tensei%20%28Japan%29.png"
+        )
+        us_nocturne_url = (
+            "https://raw.githubusercontent.com/xlenore/ps2-covers/"
+            "main/covers/default/SLUS-20911.jpg"
+        )
+        mega = inventory_item(self.issue(
+            234, "- タイトル：真・女神転生\n"
+            "- 機種：メガドライブ（メガCD）\n"
+            "- エディション：日本版（メガCD専用）\n"
+            "- 製品型番（資料上）：T-44044\n",
+        ))
+        us = inventory_item(self.issue(
+            235, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：北米版（Shin Megami Tensei: Nocturne）\n"
+            "- 製品型番（資料上）：SLUS-20911\n",
+        ))
+        self.assertEqual(mega["platform"], "メガドライブ（メガCD）")
+        self.assertEqual(mega["serial"], "T-44044")
+        self.assertEqual(mega["cover"], mega_cd_url)
+        self.assertEqual(mega["cover_source"], "curated")
+        self.assertEqual(us["serial"], "SLUS-20911")
+        self.assertEqual(us["cover"], us_nocturne_url)
+        self.assertEqual(us["cover_source"], "curated")
+        self.assertEqual(mega["reading"], "シンメガミテンセイ")
+        self.assertEqual(us["reading"], "シンメガミテンセイ3 ノクターン")
+
+        # GitHub Issue image URLs take precedence and must match the edition.
+        explicit = inventory_item(self.issue(
+            235, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：北米版（Shin Megami Tensei: Nocturne）\n"
+            + "- 画像URL：" + us_nocturne_url + "\n",
+        ))
+        self.assertEqual(explicit["cover"], us_nocturne_url)
+        self.assertEqual(explicit["cover_source"], "issue")
+
+        jp_standard = inventory_item(self.issue(
+            1, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n- エディション：通常版\n",
+        ))
+        jp_deluxe = inventory_item(self.issue(
+            216, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n- エディション：デラックスパック\n",
+        ))
+        all_items = build([
+            self.issue(1, "- タイトル：真・女神転生III NOCTURNE\n"),
+            self.issue(216, "- タイトル：真・女神転生III NOCTURNE\n"),
+            self.issue(234, "- タイトル：真・女神転生\n"),
+            self.issue(235, "- タイトル：真・女神転生III NOCTURNE\n"),
+        ])["items"]
+        self.assertEqual(len(all_items), 4)
+        self.assertEqual(len({item["id"] for item in all_items}), 4)
+        self.assertEqual(len({
+            jp_standard["cover"], jp_deluxe["cover"],
+            mega["cover"], us["cover"]
+        }), 4)
+
     def test_new_limited_box_art_and_platforms(self):
         cases = (
             (213, "キャサリン・フルボディ", "PlayStation 4",
