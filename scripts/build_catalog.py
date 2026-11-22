@@ -21,6 +21,9 @@ INV = re.compile(r"\bINV-\d+\b", re.I)
 REFERENCE_COVERS = json.loads(
     (Path(__file__).resolve().parent.parent / "data/cover_references.json").read_text(encoding="utf-8")
 )["platforms"]
+TITLE_READINGS = json.loads(
+    (Path(__file__).resolve().parent.parent / "data/title_readings.json").read_text(encoding="utf-8")
+)["readings"]
 
 
 def plain(value):
@@ -131,6 +134,9 @@ def inventory_item(issue):
         title = re.sub(r"^(?:\[[^\]]+\]\s*|INV-\d+\s*)+", "", issue.get("title") or "").strip()
     if not title:
         return None
+    # An owner's explicit reading overrides the catalog's curated Japanese
+    # readings. Unmapped names fall back to their original spelling.
+    reading = first(fields, "読み", "よみ", "タイトルの読み") or TITLE_READINGS.get(title, title)
 
     serial = field_prefix(fields, "製品型番") or first(fields, "品番・型番", "現物型番")
     if not serial or serial.startswith("未確認"):
@@ -172,6 +178,7 @@ def inventory_item(issue):
     return {
         "id": inventory_id,
         "title": title,
+        "reading": reading,
         "category": first(fields, "分類", "カテゴリ") or "未分類",
         "platform": platform,
         "edition": edition,

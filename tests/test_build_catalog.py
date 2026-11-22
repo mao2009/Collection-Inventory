@@ -269,6 +269,74 @@ https://example.org/game.jpg
         self.assertIsNone(inventory_item(item))
         self.assertEqual(build([item])["items"], [])
 
+    def test_shelf_reference_covers_are_exact_platform_matches(self):
+        examples = {
+            "オーディンスフィア": "Odin%20Sphere%20%28Japan%29.png",
+            "グローランサーII": "Growlanser%20II%20-%20The%20Sense%20of%20Justice%20%28Japan%29.png",
+            "グローランサーIII": "Growlanser%20III%20-%20The%20Dual%20Darkness%20%28Japan%29.png",
+            "幻想水滸伝V": "Gensou%20Suikoden%20V%20%28Japan%29.png",
+            "ステラデウス": "Stella%20Deus%20%28Japan%29.png",
+        }
+        for title, filename in examples.items():
+            item = inventory_item(self.issue(180, f"- タイトル：{title}\n- 機種：PlayStation 2\n"))
+            self.assertEqual(item["cover_source"], "libretro")
+            self.assertTrue(item["cover"].endswith(filename))
+        # Only the PS3 game titled "レイヴスラシル" has its own PS3 cover;
+        # the original PS2 game's plain title must not inherit that image.
+        self.assertEqual(
+            inventory_item(self.issue(
+                181, "- タイトル：オーディンスフィア\n- 機種：PlayStation 3\n"
+            ))["cover_source"],
+            "",
+        )
+        self.assertEqual(
+            inventory_item(self.issue(
+                182, "- タイトル：オーディンスフィア レイヴスラシル\n- 機種：PlayStation 3\n"
+            ))["cover_source"],
+            "curated",
+        )
+
+    def test_curated_kana_readings_for_gojuon_sorting(self):
+        examples = {
+            "真・女神転生II": "シンメガミテンセイ2",
+            "幻想水滸伝III": "ゲンソウスイコデン3",
+            "魔剣爻": "マケンシャオ",
+            "BAROQUE 歪んだ妄想": "バロック ユガンダモウソウ",
+            "BUSIN ～Wizardry Alternative～": "ブシン ウィザードリィオルタナティブ",
+            "DIGITAL DEVIL SAGA アバタール・チューナー": "デジタルデビルサーガ アバタールチューナー",
+        }
+        for title, expected in examples.items():
+            item = inventory_item(self.issue(180, f"- タイトル：{title}\n- 機種：PlayStation 2\n"))
+            self.assertEqual(item["reading"], expected)
+
+    def test_issue_specific_reading_overrides_curated_dictionary(self):
+        item = inventory_item(self.issue(
+            180, "- タイトル：真・女神転生II\n- 読み：シンメガテンツー\n"
+        ))
+        self.assertEqual(item["reading"], "シンメガテンツー")
+        fallback = inventory_item(self.issue(
+            181, "- タイトル：カナヨミミトウロク\n"
+        ))
+        self.assertEqual(fallback["reading"], "カナヨミミトウロク")
+
+    def test_photo_audited_ps2_titles_and_duplicate_physical_copies(self):
+        titles = [
+            ("グローランサーII", 151),
+            ("グローランサーIII", 152),
+            ("幻想水滸伝III", 157),
+            ("DIGITAL DEVIL SAGA アバタール・チューナー", 170),
+            ("FRONT MISSION 4", 168),
+            ("FRONT MISSION 4", 169),
+        ]
+        issues = [
+            self.issue(number, f"- タイトル：{title}\n- 機種：PlayStation 2\n")
+            for title, number in titles
+        ]
+        items = build(issues)["items"]
+        self.assertEqual(len(items), 6)
+        self.assertEqual(len([item for item in items if item["title"] == "FRONT MISSION 4"]), 2)
+        self.assertEqual(len({item["id"] for item in items}), 6)
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"

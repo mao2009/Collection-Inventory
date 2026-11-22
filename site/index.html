@@ -39,7 +39,7 @@
     <section class="filters" aria-label="検索と絞り込み">
       <div class="search-wrap">
         <label for="search">キーワード検索</label>
-        <input id="search" type="search" autocomplete="off" placeholder="タイトル・品番・管理番号で検索…">
+        <input id="search" type="search" autocomplete="off" placeholder="タイトル・読み・品番・管理番号で検索…">
       </div>
       <div class="filter-row">
         <div class="filter-group">
@@ -62,9 +62,8 @@
         <div class="filter-group">
           <label for="sort">並び替え</label>
           <select id="sort">
-            <option value="id">管理番号順</option>
-            <option value="title">タイトル順</option>
-            <option value="platform">機種順</option>
+            <option value="reading" selected>50音順（標準）</option>
+            <option value="platform">機種別・50音順</option>
           </select>
         </div>
       </div>

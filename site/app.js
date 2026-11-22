@@ -3,6 +3,7 @@
 const $ = (id) => document.getElementById(id);
 const controls = ["search", "platform", "category", "obi", "sort"];
 let collection = [];
+const japaneseTitleCollator = new Intl.Collator("ja-JP", { usage: "sort", numeric: true, sensitivity: "base" });
 
 function normalized(value) {
   return String(value ?? "").normalize("NFKC").toLocaleLowerCase("ja-JP");
@@ -31,7 +32,7 @@ function populateFilters() {
 
 function matches(item) {
   const words = normalized($("search").value).split(/\s+/).filter(Boolean);
-  const searchable = normalized([item.id, item.title, item.category, item.platform, item.edition, item.serial].join(" "));
+  const searchable = normalized([item.id, item.title, item.reading, item.category, item.platform, item.edition, item.serial].join(" "));
   return words.every((word) => searchable.includes(word))
     && (!$("platform").value || item.platform === $("platform").value)
     && (!$("category").value || item.category === $("category").value)
@@ -40,8 +41,14 @@ function matches(item) {
 
 function sortable(items) {
   const key = $("sort").value;
-  if (key === "id") return items.sort((a, b) => Number(a.id.slice(4)) - Number(b.id.slice(4)));
-  return items.sort((a, b) => a[key].localeCompare(b[key], "ja") || a.id.localeCompare(b.id));
+  const compareReading = (a, b) => japaneseTitleCollator.compare(a.reading || a.title, b.reading || b.title)
+    || japaneseTitleCollator.compare(a.title, b.title)
+    || japaneseTitleCollator.compare(a.edition, b.edition)
+    || a.id.localeCompare(b.id);
+  if (key === "platform") {
+    return items.sort((a, b) => japaneseTitleCollator.compare(a.platform, b.platform) || compareReading(a, b));
+  }
+  return items.sort(compareReading);
 }
 
 function imageFor(item, detail = false) {
@@ -139,7 +146,7 @@ function render() {
 
 function clearFilters() {
   for (const key of ["search", "platform", "category", "obi"]) $(key).value = "";
-  $("sort").value = "id";
+  $("sort").value = "reading";
   render();
 }
 
