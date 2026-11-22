@@ -1,7 +1,8 @@
 "use strict";
 
 const $ = (id) => document.getElementById(id);
-const controls = ["search", "platform", "category", "obi", "sort"];
+const controls = ["search", "platform", "obi", "sort"];
+const GAME_CATEGORY = "ゲームソフト";
 let collection = [];
 const japaneseTitleCollator = new Intl.Collator("ja-JP", { usage: "sort", numeric: true, sensitivity: "base" });
 
@@ -23,20 +24,40 @@ function option(value, label) {
   return node;
 }
 
-function populateFilters() {
-  for (const key of ["platform", "category"]) {
-    const options = [...new Set(collection.map((item) => item[key]))].sort((a, b) => a.localeCompare(b, "ja"));
-    for (const value of options) $(key).append(option(value, value));
+function gameFiltersActive() {
+  return $("category").value === GAME_CATEGORY;
+}
+
+function syncCategoryFilters() {
+  const active = gameFiltersActive();
+  for (const id of ["platform", "obi"]) {
+    $(id + "-filter").hidden = !active;
+    $(id).disabled = !active;
+    if (!active) $(id).value = "";
   }
+  $("sort-platform-option").hidden = !active;
+  $("sort-platform-option").disabled = !active;
+  if (!active && $("sort").value === "platform") $("sort").value = "reading";
+}
+
+function populateFilters() {
+  const categories = [...new Set(collection.map((item) => item.category).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b, "ja"));
+  for (const category of categories) $("category").append(option(category, category));
+  const platforms = [...new Set(collection
+    .filter((item) => item.category === GAME_CATEGORY)
+    .map((item) => item.platform).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b, "ja"));
+  for (const platform of platforms) $("platform").append(option(platform, platform));
 }
 
 function matches(item) {
   const words = normalized($("search").value).split(/\s+/).filter(Boolean);
   const searchable = normalized([item.id, item.title, item.reading, item.category, item.platform, item.edition, item.serial].join(" "));
   return words.every((word) => searchable.includes(word))
-    && (!$("platform").value || item.platform === $("platform").value)
     && (!$("category").value || item.category === $("category").value)
-    && (!$("obi").value || item.obi === $("obi").value);
+    && (!gameFiltersActive() || (!$("platform").value || item.platform === $("platform").value))
+    && (!gameFiltersActive() || (!$("obi").value || item.obi === $("obi").value));
 }
 
 function sortable(items) {
@@ -104,7 +125,7 @@ function cardFor(item) {
   card.append(imageFor(item));
   const body = element("div", "card-body");
   const top = element("div", "card-top");
-  top.append(element("span", "platform-pill", item.platform));
+  top.append(element("span", "platform-pill", item.category === GAME_CATEGORY ? item.platform : item.category));
   top.append(element("span", "inventory-id", item.id));
   body.append(top);
   const title = element("h3", "card-title", item.title);
@@ -130,18 +151,22 @@ function showDetail(item) {
   const container = element("div", "detail-layout");
   container.append(imageFor(item, true));
   const details = element("div", "detail-info");
-  details.append(element("p", "detail-id", item.id + " · " + item.platform));
+  details.append(element("p", "detail-id", item.id + (item.category === GAME_CATEGORY ? " · " + item.platform : "")));
   const heading = element("h2", "", item.title);
   heading.id = "detail-title";
   details.append(heading);
   const props = element("dl", "properties");
   const obi = { yes: "あり", no: "なし", unknown: "未確認" }[item.obi] || "未確認";
-  for (const [label, value] of [
+  const properties = [
     ["カテゴリ", item.category], ["エディション", item.edition],
     ["型番（参考含む）", item.serial], ["所有状態", item.ownership],
-    ["帯", obi], ["ケース", item.case], ["説明書", item.manual],
+  ];
+  if (item.category === GAME_CATEGORY) properties.push(["機種", item.platform], ["帯", obi]);
+  properties.push(
+    ["ケース", item.case], ["説明書", item.manual],
     ["ディスク", item.disc], ["動作確認", item.tested],
-  ]) props.append(propertyRow(label, value));
+  );
+  for (const [label, value] of properties) props.append(propertyRow(label, value));
   details.append(props);
   const link = element("a", "source-button", "GitHub Issueで原本を見る ↗");
   link.href = item.issue_url;
@@ -165,6 +190,7 @@ function render() {
 function clearFilters() {
   for (const key of ["search", "platform", "category", "obi"]) $(key).value = "";
   $("sort").value = "reading";
+  syncCategoryFilters();
   render();
 }
 
@@ -176,9 +202,16 @@ async function init() {
     if (!Array.isArray(data.items)) throw new Error("Invalid catalog");
     collection = data.items;
     $("total-count").textContent = collection.length.toLocaleString("ja-JP");
-    $("platform-count").textContent = new Set(collection.map((item) => item.platform)).size;
+    $("platform-count").textContent = new Set(collection
+      .filter((item) => item.category === GAME_CATEGORY)
+      .map((item) => item.platform).filter(Boolean)).size;
     populateFilters();
+    syncCategoryFilters();
     for (const id of controls) $(id).addEventListener(id === "search" ? "input" : "change", render);
+    $("category").addEventListener("change", () => {
+      syncCategoryFilters();
+      render();
+    });
     $("reset").addEventListener("click", clearFilters);
     $("empty-reset").addEventListener("click", clearFilters);
     $("close-dialog").addEventListener("click", () => $("detail-dialog").close());
