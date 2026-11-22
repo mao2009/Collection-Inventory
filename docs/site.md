@@ -531,3 +531,22 @@ The owner explicitly corrected prior assumptions about actual physical copies.
   usual cover (CERO B). The photos are for title recognition, **not physical
   evidence that any loose copy has the original box**. Do not use PS4
   現実魔界化BOX artwork for unboxed PS4 discs.
+
+## 2026-11-22: PS4/Switch Nocturne HD standard edition additional copies
+
+The owner separately reported one PS4 standard edition and one Nintendo
+Switch standard edition of `真・女神転生III NOCTURNE HD REMASTER`.
+These are newly reported physical inventory units, **not** updates of the
+previously recorded loose discs/cartridges.
+
+- #259: PS4 `通常版`, distinct from 現実魔界化BOX #229/#230 and
+  unboxed disc #255. Total recorded PS4 copies: **4**.
+- #260: Nintendo Switch `通常版`, distinct from unboxed cartridges
+  #256/#257. Total recorded Switch copies: **3**.
+- Box/manual possession of the new standard editions remains **unconfirmed**.
+  `通常版` identifies the sale edition; it is not proof that the
+  owner has the original retail packaging or a printed manual.
+- Map each `通常版` to its own platform's Japanese standard cover art
+  while keeping the existing `未確認（箱説なし）` image mapping and
+  `現実魔界化BOX` mapping separate. Catalog records must remain distinct
+  by Issue ID, even if a standard and unboxed copy display matching art.
