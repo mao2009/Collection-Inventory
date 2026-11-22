@@ -265,6 +265,21 @@
       "images": {
         "ワンダープロジェクトJ2 コルロの森のジョゼット": "Wonder Project J2 - Koruro no Mori no Jozet (Japan).png"
       }
+    },
+    "Nintendo Switch": {
+      "urls": {
+        "キャサリン・フルボディ for Nintendo Switch": "https://eccdn.geo-online.co.jp/ec_media_images/5150726-01.jpg",
+        "幻影異聞録♯FE Encore": "https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001187541.jpg",
+        "十三機兵防衛圏": "https://item-shopping.c.yimg.jp/i/f/digitalisland_4984995905259",
+        "真・女神転生V Vengeance": "https://item-shopping.c.yimg.jp/i/f/rd-lohaco_rj15719",
+        "RAIDOU Remastered: 超力兵団奇譚": "https://baseec-img-mng.akamaized.net/images/item/origin/beab1151f056d00ba8d3aba74970ab0b.jpg"
+      }
+    },
+    "ゲームボーイカラー": {
+      "repo": "Nintendo_-_Game_Boy_Color",
+      "images": {
+        "真・女神転生トレーディングカード カードサマナー": "Shin Megami Tensei Trading Card - Card Summoner (Japan).png"
+      }
     }
   },
   "additional_cover_sources": [
