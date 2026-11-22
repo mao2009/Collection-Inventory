@@ -25,6 +25,29 @@ TITLE_READINGS = json.loads(
     (Path(__file__).resolve().parent.parent / "data/title_readings.json").read_text(encoding="utf-8")
 )["readings"]
 
+STEAM_PINNED = json.loads(
+    (Path(__file__).resolve().parent.parent / "data/steam_verified_appids.json").read_text(encoding="utf-8")
+)["appids"]
+STEAM_RESOLVED_PATH = Path(__file__).resolve().parent.parent / "site/data/steam_cover_index.json"
+try:
+    STEAM_RESOLVED = json.loads(STEAM_RESOLVED_PATH.read_text(encoding="utf-8")).get("apps", {})
+except (FileNotFoundError, ValueError):
+    STEAM_RESOLVED = {}
+
+
+def steam_cover(title):
+    """Return an artwork/backup pair only after exact title-to-AppID validation."""
+    resolved = STEAM_RESOLVED.get(title)
+    if isinstance(resolved, dict) and isinstance(resolved.get("appid"), int):
+        appid = resolved["appid"]
+    else:
+        appid = STEAM_PINNED.get(title)
+    if not isinstance(appid, int) or not 1 <= appid <= 99999999:
+        return "", ""
+    url = f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{appid}/"
+    return url + "library_600x900.jpg", url + "header.jpg"
+
+
 
 def plain(value):
     return re.sub(r"\*\*|__", "", str(value or "")).strip()
@@ -176,6 +199,12 @@ def inventory_item(issue):
             if cover:
                 cover_source = "curated"
 
+    cover_fallback = ""
+    if platform == "Steam" and not cover:
+        cover, cover_fallback = steam_cover(title)
+        if cover:
+            cover_source = "steam"
+
     ownership = first(fields, "所持状態", "所有", "所持")
     if "譲渡・売却済み" in ownership:
         ownership = "譲渡・売却済み"
@@ -200,6 +229,7 @@ def inventory_item(issue):
         "tested": first(fields, "動作確認") or "未確認",
         "cover": cover,
         "cover_source": cover_source,
+        "cover_fallback": cover_fallback,
         "issue_url": "https://github.com/" + REPO + "/issues/" + str(number),
     }
 

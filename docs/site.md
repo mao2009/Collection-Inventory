@@ -627,3 +627,38 @@ images themselves remain in the conversation, not GitHub.
   matching store artwork.
 
 Record source and flags: `data/steam_screenshot_import_20261122.json`.
+
+## 2026-11-22: Steam artwork, 86 readings and entire-card activation
+
+Owner-requested UI and catalog corrections:
+
+- All **86** Steam library entries from the screenshot inventory have an
+  explicit Japanese katakana sorting/search reading in
+  `data/title_readings.json`. This includes the 11 G-MODE game titles,
+  English/roman-alphabet titles, and the separate Metaphor prologue demo.
+- Steam artwork must represent the actual **Steam game AppID**, not the
+  physically owned PS4/Switch case art of a similarly titled release.
+  `data/steam_verified_appids.json` stores individually verified Steam
+  AppIDs for stable references. At build time
+  `scripts/resolve_steam_covers.py` requests Steam Store search metadata,
+  accepts only exact normalized titles or explicitly named aliases, and
+  writes `site/data/steam_cover_index.json`.
+- The exported Steam card displays the Steam library portrait art
+  `library_600x900.jpg` from Valve's Steam CDN and falls back to the
+  same AppID's `header.jpg` if the library image is missing. If an
+  AppID cannot be matched, leave the art unassigned rather than substituting
+  a title from a different franchise entry or DLC. Other platforms' covers
+  and owner-specified Issue images remain unchanged.
+- Steam image reference URLs are *presentation assets*. Their existence does
+  not imply anything about paid license ownership beyond the screenshot's
+  library entry, nor is the content locally mirrored. Steam connectivity
+  and CDN availability may affect images independently of inventory data.
+- Card `<article>` elements are now the single keyboard- and pointer-
+  accessible detail action (`role=button`, `tabindex=0` with click, Enter
+  and Space). The old nested "詳細を見る" button is rendered as descriptive
+  visual text, avoiding duplicate controls. Hover, focus-visible and touch
+  affordances apply to the whole card. Dialog close controls and Issue link
+  remain separate, within the modal.
+- GitHub Actions resolves Steam metadata before exporting the public
+  collection JSON. It also exercises resolver output on pull request builds
+  to surface unresolvable titles without depending on user Steam credentials.

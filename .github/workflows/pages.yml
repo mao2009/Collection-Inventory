@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Resolve Steam cover IDs for review
+        run: python3 scripts/resolve_steam_covers.py --report
       - run: python3 -m unittest discover -s tests -v
 
   build-and-deploy:
@@ -49,6 +51,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Resolve Steam cover IDs for published artwork
+        run: python3 scripts/resolve_steam_covers.py
 
       - name: Generate public collection JSON from Issues
         env:

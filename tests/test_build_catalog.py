@@ -1401,7 +1401,7 @@ https://example.org/game.jpg
         ))
         self.assertEqual(steam_smt3["platform"], "Steam")
         self.assertEqual(steam_smt3["case"], "対象外（デジタル版）")
-        self.assertEqual(steam_smt3["cover"], "")
+        self.assertIn(steam_smt3["cover_source"], ("", "steam"))
         physical_smt3 = self.issue(259,
             "- タイトル：真・女神転生III NOCTURNE HD REMASTER\n"
             "- 機種：PlayStation 4\n- エディション：通常版\n")
@@ -1429,7 +1429,7 @@ https://example.org/game.jpg
         self.assertEqual(demo["edition"], "Steam版（体験版）")
         self.assertEqual(demo["case"], "対象外（デジタル版）")
         self.assertEqual(demo["manual"], "紙媒体は対象外")
-        self.assertEqual(demo["cover"], "")
+        self.assertIn(demo["cover_source"], ("", "steam"))
 
         physical = self.issue(217,
             "- タイトル：メタファー：リファンタジオ\n"
@@ -1442,6 +1442,92 @@ https://example.org/game.jpg
         self.assertEqual(len(items), 2)
         self.assertEqual({x["id"] for x in items}, {"INV-217", "INV-329"})
         self.assertEqual({x["platform"] for x in items}, {"PlayStation 5", "Steam"})
+
+    def test_every_steam_game_has_explicit_kana_reading(self):
+        import json
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent
+        records = json.loads(
+            (root / "data/steam_screenshot_import_20261122.json")
+            .read_text(encoding="utf-8"))["records"]
+        readings = json.loads(
+            (root / "data/title_readings.json").read_text(encoding="utf-8")
+        )["readings"]
+        self.assertEqual(len(records), 86)
+        pinned = json.loads(
+            (root / "data/steam_verified_appids.json").read_text(encoding="utf-8")
+        )["appids"]
+        self.assertEqual(set(pinned), {record["title"] for record in records})
+        self.assertEqual(len(set(pinned.values())), 86)
+        for number, record in enumerate(records, start=262):
+            title = record["title"]
+            self.assertIn(title, readings)
+            reading = readings[title]
+            self.assertTrue(reading and reading != title, title)
+            self.assertTrue(all(
+                "\u30a0" <= c <= "\u30ff" or c == " " or c.isdigit()
+                for c in reading
+            ), title)
+            item = inventory_item(self.issue(
+                number,
+                f"- タイトル：{title}\n- 分類：ゲームソフト\n"
+                "- 機種：Steam\n- エディション：Steam版（デジタル）\n",
+            ))
+            self.assertEqual(item["reading"], reading)
+            self.assertEqual(item["cover_source"], "steam", title)
+            self.assertIn(f"/{pinned[title]}/library_600x900.jpg", item["cover"])
+            self.assertIn(f"/{pinned[title]}/header.jpg", item["cover_fallback"])
+        # Exact game IDs, not series IDs, must drive Steam image URLs.
+        gmode = inventory_item(self.issue(
+            294, "- タイトル：G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブル\n"
+            "- 機種：Steam\n- エディション：Steam版（デジタル）\n",
+        ))
+        self.assertEqual(gmode["cover_source"], "steam")
+        self.assertIn("/2192670/library_600x900.jpg", gmode["cover"])
+        self.assertIn("/2192670/header.jpg", gmode["cover_fallback"])
+        # No Steam source image may override a user-authored Issue image.
+        override = inventory_item(self.issue(
+            294, "- タイトル：G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブル\n"
+            "- 機種：Steam\n"
+            "- 画像URL：https://example.org/user-cover.jpg\n",
+        ))
+        self.assertEqual(override["cover"], "https://example.org/user-cover.jpg")
+        self.assertEqual(override["cover_source"], "issue")
+
+    def test_steam_cover_resolver_rejects_fuzzy_franchise_substitutes(self):
+        from scripts.resolve_steam_covers import normalized, steam_images
+        self.assertNotEqual(normalized("Persona 3 Reload"), normalized("Persona 4 Revival"))
+        self.assertNotEqual(normalized("HITMAN 2"), normalized("HITMAN"))
+        self.assertEqual(normalized("Persona® 5 Strikers"), normalized("Persona 5 Strikers"))
+        self.assertEqual(
+            normalized("G-MODEアーカイブス＋ 魔神転生 blind thinker"),
+            normalized("G-MODEアーカイブス+ 魔神転生 blind thinker"),
+        )
+        result = steam_images(2192670)
+        self.assertTrue(result["cover"].startswith("https://"))
+        self.assertTrue(result["cover"].endswith("/library_600x900.jpg"))
+        self.assertTrue(result["fallback"].endswith("/header.jpg"))
+        for invalid in (0, -1, 100000000):
+            with self.assertRaises(ValueError):
+                steam_images(invalid)
+
+    def test_cards_are_full_click_targets_with_keyboard_support(self):
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent
+        js = (root / "site/app.js").read_text(encoding="utf-8")
+        css = (root / "site/styles.css").read_text(encoding="utf-8")
+        start = js.index("function cardFor(item) {")
+        end = js.index("\nfunction propertyRow(", start)
+        card = js[start:end]
+        self.assertIn('card.addEventListener("click"', card)
+        self.assertIn('card.addEventListener("keydown"', card)
+        self.assertIn('event.key === "Enter"', card)
+        self.assertIn('event.key === " "', card)
+        self.assertIn('card.setAttribute("role", "button")', card)
+        self.assertIn('card.tabIndex = 0', card)
+        self.assertNotIn('element("button", "detail-button"', card)
+        self.assertIn('.item-card:focus-visible', css)
+        self.assertIn('item.cover_fallback', js)
 
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(

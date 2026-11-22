@@ -70,9 +70,18 @@ function imageFor(item, detail = false) {
   img.decoding = "async";
   img.referrerPolicy = "no-referrer";
   img.src = item.cover;
-  img.addEventListener("error", placeholder, { once: true });
+  // Steam library artwork is preferred; some apps have only store headers.
+  img.addEventListener("error", () => {
+    if (item.cover_source === "steam" && item.cover_fallback && img.src !== item.cover_fallback) {
+      img.src = item.cover_fallback;
+    } else {
+      placeholder();
+    }
+  });
   wrap.append(img);
-  if (item.cover_source === "libretro" || item.cover_source === "curated") {
+  if (item.cover_source === "steam") {
+    wrap.append(element("span", "reference-label", "Steam画像"));
+  } else if (item.cover_source === "libretro" || item.cover_source === "curated") {
     wrap.append(element("span", "reference-label", "参考画像"));
   }
   return wrap;
@@ -80,6 +89,18 @@ function imageFor(item, detail = false) {
 
 function cardFor(item) {
   const card = element("article", "item-card");
+  // The whole card is one accessible action; avoid nested clickable controls.
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-haspopup", "dialog");
+  card.setAttribute("aria-label", item.title + " の詳細を見る");
+  card.addEventListener("click", () => showDetail(item));
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      showDetail(item);
+    }
+  });
   card.append(imageFor(item));
   const body = element("div", "card-body");
   const top = element("div", "card-top");
@@ -91,11 +112,8 @@ function cardFor(item) {
   body.append(element("p", "edition", item.edition));
   const foot = element("div", "card-foot");
   foot.append(element("span", "ownership", item.ownership));
-  const detail = element("button", "detail-button", "詳細を見る ↗");
-  detail.type = "button";
-  detail.setAttribute("aria-label", item.title + " の詳細を見る");
-  detail.addEventListener("click", () => showDetail(item));
-  foot.append(detail);
+  // Visual hint only: the surrounding card is the actual click target.
+  foot.append(element("span", "detail-button", "詳細を見る ↗"));
   body.append(foot);
   card.append(body);
   return card;
