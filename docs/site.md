@@ -207,3 +207,20 @@ Then visit http://localhost:8000/. For offline tests you can pass
   titles were added; these are not photographs of the owner's physical games.
 - Both titles have kana readings in `data/title_readings.json` so the
   site's Japanese 50-on sorting is preserved.
+
+## Saturn Soul Hackers inventory and 3DS SMT IV FINAL artwork (2026-11-22)
+
+- Sega Saturn Devil Summoner Soul Hackers is owned as **two separate physical copies**,
+  Issue #87 and Issue #194, both with **no obi** as reported by the owner.
+  The exact retail editions and other physical contents have not been checked.
+- Sega Saturn "デビルサマナー ソウルハッカーズ 悪魔全書 第二集" is a separate
+  owned item, Issue #195 (reference product code T-14421G), not a third copy
+  of the main game. Its obi status is unknown. It uses its **own** verified
+  Libretro reference boxart file, "Devil Summoner - Soul Hackers -
+  Akuma Zensho Daini-shuu (Japan).png".
+- Nintendo 3DS "真・女神転生IV FINAL" (Issue #49) is explicitly pinned by
+  \`edition_urls\` to the Japanese FINAL reference jacket
+  "Shin Megami Tensei IV - Final (Japan).png", independently from original
+  "真・女神転生IV" (Issue #48) and its Japanese base-game jacket.
+- All artwork is external *reference artwork*, not photographed owned items.
+  Image file existence and platform/title matching were verified.

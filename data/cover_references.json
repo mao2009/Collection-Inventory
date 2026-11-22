@@ -36,6 +36,12 @@
         "ペルソナQ シャドウ オブ ザ ラビリンス": "Persona Q - Shadow of the Labyrinth (Japan).png",
         "ペルソナQ2 ニュー シネマ ラビリンス": "Persona Q2 - New Cinema Labyrinth (Japan).png",
         "ラジアントヒストリア パーフェクトクロノロジー": "Radiant Historia - Perfect Chronology (Japan).png"
+      },
+      "edition_urls": {
+        "真・女神転生IV FINAL": {
+          "未確認": "https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_3DS/master/Named_Boxarts/Shin%20Megami%20Tensei%20IV%20-%20Final%20%28Japan%29.png",
+          "通常版": "https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_3DS/master/Named_Boxarts/Shin%20Megami%20Tensei%20IV%20-%20Final%20%28Japan%29.png"
+        }
       }
     },
     "PSP": {
@@ -111,7 +117,8 @@
       "repo": "Sega_-_Saturn",
       "images": {
         "真・女神転生 デビルサマナー": "Shin Megami Tensei - Devil Summoner (Japan).png",
-        "デビルサマナー ソウルハッカーズ": "Devil Summoner - Soul Hackers (Japan).png"
+        "デビルサマナー ソウルハッカーズ": "Devil Summoner - Soul Hackers (Japan).png",
+        "デビルサマナー ソウルハッカーズ 悪魔全書 第二集": "Devil Summoner - Soul Hackers - Akuma Zensho Daini-shuu (Japan).png"
       }
     },
     "ドリームキャスト": {

@@ -496,6 +496,65 @@ https://example.org/game.jpg
             issues.append(issue)
         self.assertEqual(len(build(issues)["items"]), 2)
 
+    def test_saturn_soul_hackers_two_copies_without_obi(self):
+        copies = [
+            self.issue(n,
+                "- タイトル：デビルサマナー ソウルハッカーズ\n"
+                "- 分類：ゲームソフト\n"
+                "- 機種：セガサターン\n"
+                "- エディション：未確認\n"
+                "- 帯：なし（ユーザー申告）\n")
+            for n in (87, 194)
+        ]
+        data = build(copies)["items"]
+        self.assertEqual(len(data), 2)
+        self.assertEqual({x["id"] for x in data}, {"INV-087", "INV-194"})
+        for item in data:
+            self.assertEqual(item["obi"], "no")
+            self.assertEqual(item["cover_source"], "libretro")
+            self.assertTrue(item["cover"].endswith(
+                "/Devil%20Summoner%20-%20Soul%20Hackers%20%28Japan%29.png"
+            ))
+
+    def test_saturn_akuma_zensho_second_volume_has_own_cover(self):
+        item = inventory_item(self.issue(
+            195,
+            "- タイトル：デビルサマナー ソウルハッカーズ 悪魔全書 第二集\n"
+            "- 分類：ゲームソフト\n"
+            "- 機種：セガサターン\n"
+            "- 帯：未確認\n"
+        ))
+        self.assertEqual(item["platform"], "セガサターン")
+        self.assertEqual(item["obi"], "unknown")
+        self.assertEqual(item["cover_source"], "libretro")
+        self.assertTrue(item["cover"].endswith(
+            "/Devil%20Summoner%20-%20Soul%20Hackers%20-%20Akuma%20Zensho%20Daini-shuu%20%28Japan%29.png"
+        ))
+        self.assertEqual(item["reading"],
+            "デビルサマナー ソウルハッカーズ アクマゼンショ ダイニシュウ")
+
+    def test_smt_iv_final_dedicated_cover_not_regular_iv(self):
+        final = inventory_item(self.issue(
+            49,
+            "- タイトル：真・女神転生IV FINAL\n"
+            "- 機種：ニンテンドー3DS\n"
+            "- エディション：未確認\n"
+        ))
+        original = inventory_item(self.issue(
+            48,
+            "- タイトル：真・女神転生IV\n"
+            "- 機種：ニンテンドー3DS\n"
+            "- エディション：未確認\n"
+        ))
+        self.assertEqual(final["cover_source"], "curated")
+        self.assertTrue(final["cover"].endswith(
+            "/Shin%20Megami%20Tensei%20IV%20-%20Final%20%28Japan%29.png"
+        ))
+        self.assertTrue(original["cover"].endswith(
+            "/Shin%20Megami%20Tensei%20IV%20%28Japan%29.png"
+        ))
+        self.assertNotEqual(final["cover"], original["cover"])
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
