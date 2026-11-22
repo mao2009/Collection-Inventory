@@ -15,6 +15,11 @@
         "救急救命 カドゥケウス2": "Kyuukyuu Kyuumei Caduceus 2 (Japan).png",
         "ノーラと刻の工房 霧の森の魔女": "Nora to Toki no Koubou - Kiri no Mori no Majo (Japan).png",
         "ラジアントヒストリア": "Radiant Historia (Japan).png"
+      },
+      "edition_urls": {
+        "超執刀 カドゥケウス": {
+          "アトラス ベスト コレクション": "https://item-shopping.c.yimg.jp/i/n/media-world_10202011001"
+        }
       }
     },
     "ニンテンドー3DS": {
@@ -136,7 +141,8 @@
       "repo": "Nintendo_-_Nintendo_Entertainment_System",
       "images": {
         "デジタル・デビル物語 女神転生": "Digital Devil Story - Megami Tensei (Japan).png",
-        "デジタル・デビル物語 女神転生II": "Digital Devil Story - Megami Tensei II (Japan).png"
+        "デジタル・デビル物語 女神転生II": "Digital Devil Story - Megami Tensei II (Japan).png",
+        "さんまの名探偵": "Sanma no Meitantei (Japan).png"
       }
     },
     "スーパーファミコン": {
