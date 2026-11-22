@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a2d">
+  <meta name="description" content="ゲームを中心とした個人コレクションの閲覧・検索サイト。機種、版、帯の有無などで絞り込みできます。">
+  <title>Collection Inventory | ゲームコレクション</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="masthead">
+        <span class="site-mark" aria-hidden="true">CI<span class="mark-dot">.</span></span>
+        <a href="https://github.com/mao2009/Collection-Inventory" target="_blank" rel="noopener noreferrer" class="github-link">GitHub リポジトリ ↗</a>
+      </div>
+      <p class="eyebrow">A PERSONAL GAME ARCHIVE</p>
+      <h1>Collection<br><span>Inventory</span></h1>
+      <p class="intro">ゲームの版違いも、重複した1本も。<br>手元にあるコレクションを、一点ずつ記録しています。</p>
+      <div class="hero-stats" aria-live="polite">
+        <div><span class="stat-number" id="total-count">—</span><span class="stat-label">登録アイテム</span></div>
+        <div><span class="stat-number" id="platform-count">—</span><span class="stat-label">プラットフォーム</span></div>
+        <div class="hero-notice"><span class="live-dot" aria-hidden="true"></span> GitHub Issuesから自動更新</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow dark">BROWSE THE ARCHIVE</p>
+        <h2>コレクションを探す</h2>
+      </div>
+      <a class="issue-link" href="https://github.com/mao2009/Collection-Inventory/issues" target="_blank" rel="noopener noreferrer">原本のIssue一覧 ↗</a>
+    </div>
+
+    <section class="filters" aria-label="検索と絞り込み">
+      <div class="search-wrap">
+        <label for="search">キーワード検索</label>
+        <input id="search" type="search" autocomplete="off" placeholder="タイトル・品番・管理番号で検索…">
+      </div>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="platform">機種</label>
+          <select id="platform"><option value="">すべての機種</option></select>
+        </div>
+        <div class="filter-group">
+          <label for="category">カテゴリ</label>
+          <select id="category"><option value="">すべてのカテゴリ</option></select>
+        </div>
+        <div class="filter-group">
+          <label for="obi">帯の状態</label>
+          <select id="obi">
+            <option value="">すべて</option>
+            <option value="yes">帯あり</option>
+            <option value="no">帯なし</option>
+            <option value="unknown">未確認</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sort">並び替え</label>
+          <select id="sort">
+            <option value="id">管理番号順</option>
+            <option value="title">タイトル順</option>
+            <option value="platform">機種順</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <div class="result-bar">
+      <p id="result-count" role="status" aria-live="polite">データを読み込み中…</p>
+      <button id="reset" class="reset-button" type="button">条件をクリア</button>
+    </div>
+    <div id="items" class="card-grid" aria-live="off"></div>
+    <div id="empty" class="empty" hidden>
+      <p>該当するコレクションが見つかりませんでした。</p>
+      <button id="empty-reset" type="button">すべて表示</button>
+    </div>
+    <p id="error" class="error" role="alert" hidden>データを読み込めませんでした。しばらくしてから再読み込みしてください。</p>
+
+    <aside class="disclaimer">
+      <strong>ジャケット画像について</strong>
+      <p>参考画像は外部サイトへのリンクです。現物の版や状態との一致を保証するものではありません。付属品が「未確認」の場合、未所有という意味ではありません。</p>
+    </aside>
+  </main>
+
+  <dialog id="detail-dialog" aria-labelledby="detail-title">
+    <div class="dialog-bar">
+      <span class="eyebrow dark">ITEM DETAILS</span>
+      <button id="close-dialog" type="button" aria-label="閉じる" class="close-button">×</button>
+    </div>
+    <div id="detail-content"></div>
+  </dialog>
+
+  <footer>
+    <span>Collection Inventory · GitHub Pages</span>
+    <span>Source of truth: GitHub Issues</span>
+  </footer>
+</body>
+</html>
