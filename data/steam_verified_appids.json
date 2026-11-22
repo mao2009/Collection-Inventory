@@ -1,0 +1,18 @@
+{
+  "description": "Confirmed title-to-Steam-AppID references. Additional IDs are resolved with strict matching at publish time; unresolved games are never assigned a guessed AppID.",
+  "appids": {
+    "G-MODEアーカイブス+ DIGITAL DEVIL SAGA アバタール・チューナー A's TEST Server完全版": 2627690,
+    "G-MODEアーカイブス+ ステラデウス 漆黒の精霊": 3899160,
+    "G-MODEアーカイブス+ ステラデウス 錬金術の時間": 4166940,
+    "G-MODEアーカイブス+ ペルソナ3 アイギス THE FIRST MISSION": 2850150,
+    "G-MODEアーカイブス+ 女神異聞録ペルソナ 異空の塔編": 2541170,
+    "G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブル": 2192670,
+    "G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブルII 始まりの福音": 2192680,
+    "G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブルIII 夢幻の英雄": 2194300,
+    "G-MODEアーカイブス+ 真・女神転生 東京鎮魂歌": 3713410,
+    "G-MODEアーカイブス+ 真・女神転生-20XX": 3652460,
+    "G-MODEアーカイブス+ 魔神転生 blind thinker": 2541180,
+    "Persona 4 Revival": 2963950,
+    "Persona 5 Royal": 1687950
+  }
+}
