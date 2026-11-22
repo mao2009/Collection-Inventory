@@ -777,7 +777,7 @@ https://example.org/game.jpg
         self.assertEqual(item["platform"], "PlayStation 4")
         self.assertEqual(item["cover_source"], "curated")
         self.assertTrue(item["cover"].endswith(
-            "/v5_limited_84aa156dcf9070d72966b2c8e9289ee5.png"
+            "/eOMAAOSwPjFm2XtL/s-l1200.png"
         ))
         self.assertEqual(item["reading"], "キャサリン フルボディ")
         switch = inventory_item(self.issue(
@@ -848,8 +848,10 @@ https://example.org/game.jpg
 
     def test_new_limited_box_art_and_platforms(self):
         cases = (
+            (213, "キャサリン・フルボディ", "PlayStation 4",
+             "ダイナマイト・フルボディ BOX（初回生産限定版）", "/eOMAAOSwPjFm2XtL/s-l1200.png"),
             (217, "メタファー：リファンタジオ", "PlayStation 5",
-             "アトラスブランド35thアニバーサリーエディション", "/s-l1200.jpg"),
+             "アトラスブランド35thアニバーサリーエディション", "metaphorcollectorjapan.jpg?v=1729096903&width=1100"),
             (218, "ペルソナ3 リロード", "PlayStation 5",
              "PERSONA3 RELOAD LIMITED BOX", "0000021594021-01.jpg?v=1757155393&width=3024"),
             (219, "ペルソナ5", "PlayStation 4",
