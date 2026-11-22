@@ -68,9 +68,6 @@
         "グローランサー": "Growlanser (Japan).png",
         "The 3rd Birthday": "3rd Birthday, The (Japan).png",
         "ダンガンロンパ 希望の学園と絶望の高校生": "Danganronpa - Kibou no Gakuen to Zetsubou no Koukousei (Japan).png",
-        "スターオーシャン1 First Departure": "Star Ocean - First Departure (USA).png",
-        "ペルソナ": "Shin Megami Tensei - Persona (USA).png",
-        "ペルソナ2 罪": "Shin Megami Tensei - Persona 2 - Innocent Sin (USA).png",
         "ペルソナ2 罰": "Persona 2 - Batsu (Japan).png",
         "ペルソナ3 ポータブル": "Persona 3 Portable (Japan).png"
       },
@@ -79,7 +76,11 @@
         "ロックマンDASH2 エピソード2 大いなる遺産": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05037.png",
         "真・女神転生 デビルサマナー": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05053.png",
         "Another Century's Episode Portable": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJS00322.png",
-        "機動戦士ガンダム ギレンの野望 アクシズの脅威V": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJS00178.png"
+        "機動戦士ガンダム ギレンの野望 アクシズの脅威V": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJS00178.png",
+        "スターオーシャン1 First Departure": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05290.png",
+        "ペルソナ": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05422.png",
+        "ペルソナ2 罪": "https://www.japanzon.com/137355-product_large/atlus-persona-2-tsumi-innocent-sin-pour-sony-psp.jpg",
+        "スーパーダンガンロンパ2 さよなら絶望学園": "https://s.pacn.ws/1/p/cf/pa.223671.8.jpg?v=m7r5tu"
       },
       "edition_urls": {
         "ペルソナ3 ポータブル": {
@@ -91,14 +92,13 @@
     },
     "PlayStation Vita": {
       "repo": "Sony_-_PlayStation_Vita",
-      "images": {
-        "ペルソナ4 ザ・ゴールデン": "Persona 4 Golden (USA).png"
-      },
+      "images": {},
       "urls": {
         "朧村正": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00150.png",
         "ペルソナ4 ダンシング・オールナイト": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00364.png",
         "オーディンスフィア レイヴスラシル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00524.png",
-        "朧村正＋元禄怪奇譚 DLC全四篇プロダクトコード入りパッケージ": "https://www.marv.jp/uploads/title/687/67aecdff316a0.jpg"
+        "朧村正＋元禄怪奇譚 DLC全四篇プロダクトコード入りパッケージ": "https://www.marv.jp/uploads/title/687/67aecdff316a0.jpg",
+        "ペルソナ4 ザ・ゴールデン": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00004.png"
       },
       "edition_urls": {
         "ペルソナ4 ザ・ゴールデン": {
@@ -128,14 +128,13 @@
     },
     "Xbox 360": {
       "repo": "Microsoft_-_Xbox_360",
-      "images": {
-        "キャサリン": "Catherine (USA).png"
-      },
+      "images": {},
       "urls": {
         "アーマード・コア フォーアンサー": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/465307DA/artwork/boxart.jpg",
         "ロストオデッセイ": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/4D5307FA/artwork/boxart.jpg",
         "ペルソナ4 ジ・アルティメット イン マヨナカアリーナ": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/453907D2/artwork/boxart.jpg",
-        "ブルードラゴン": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/4D5307DF/artwork/boxart.jpg"
+        "ブルードラゴン": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/4D5307DF/artwork/boxart.jpg",
+        "キャサリン": "https://i.ebayimg.com/images/g/b20AAOSw6-NkAIZ9/s-l1200.jpg"
       }
     },
     "セガサターン": {
@@ -153,8 +152,10 @@
         "機動戦士ガンダム外伝 コロニーの落ちた地で…": "Gundam Side Story 0079 - Rise from the Ashes (Japan).png",
         "ゴジラ GENERATIONS": "Godzilla Generations (Japan).png",
         "ザ・タイピング・オブ・ザ・デッド": "Typing of the Dead, The (Japan).png",
-        "魔剣X": "Maken X (Japan).png",
-        "シーマン": "Seaman (USA).png"
+        "魔剣X": "Maken X (Japan).png"
+      },
+      "urls": {
+        "シーマン": "https://images.launchbox-app.com/53c29b40-0c23-4cd0-8c83-ddc4b3992c8a.png"
       }
     },
     "ファミリーコンピュータ": {
@@ -188,8 +189,7 @@
       "repo": "Sony_-_PlayStation_3",
       "images": {
         "キャサリン": "Catherine (Japan).png",
-        "ダークソウル": "Dark Souls (Japan).png",
-        "デモンズソウル": "Demon's Souls (USA).png"
+        "ダークソウル": "Dark Souls (Japan).png"
       },
       "urls": {
         "ドラゴンズクラウン": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61041.JPG",
@@ -201,7 +201,15 @@
         "ゴッド・オブ・ウォーIII": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS37001.JPG",
         "ゴッド・オブ・ウォー コレクション": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60200.JPG",
         "トゥームレイダー": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60557.JPG",
-        "ICO/ワンダと巨像 Limited Box": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS30073.JPG"
+        "ICO/ワンダと巨像 Limited Box": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS30073.JPG",
+        "デモンズソウル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS30022.JPG",
+        "デウスエクス": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60353.JPG",
+        "ヒットマン": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61003.JPG",
+        "ペルソナ4 ジ・アルティメット イン マヨナカアリーナ": "https://www.retrospiel.com/media/image/product/11082/lg/p4u-persona-4-the-ultimate-in-mayonaka-arena-jp-ovp-sehr-guter-zustand-playstation-3-ps3.png",
+        "ペルソナ4 ジ・アルティマックス ウルトラスープレックスホールド": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61209.JPG",
+        "ペルソナ5": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61346.JPG",
+        "METAL GEAR SOLID HD EDITION": "https://auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0409/users/06ed7b464eb1a943b02d682daddaf54bc9f7e7d3/i-img976x1200-16943361403jfmot339657.jpg",
+        "METAL GEAR SOLID 4 GUNS OF THE PATRIOTS": "https://i.ebayimg.com/images/g/ADcAAOSwGm9aUJyk/s-l1200.jpg"
       }
     },
     "Wii": {
@@ -282,16 +290,35 @@
         },
         "グローランサーII": {
           "デラックスパック（推定）": "https://www.gavas.jp/upload/save_image/11465.jpg"
+        },
+        "アナザーセンチュリーズ エピソード2": {
+          "スペシャルボーカルバージョン": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25829.jpg"
         }
       },
       "urls": {
-        "ブレス オブ ファイアV ドラゴンクォーター": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65196.jpg"
+        "ブレス オブ ファイアV ドラゴンクォーター": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65196.jpg",
+        "グランディア エクストリーム": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65089.jpg",
+        "グリムグリモア": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25771.jpg",
+        "グローランサーIV Return": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-62560.jpg",
+        "幻想水滸伝III": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65074.jpg",
+        "シーマン ～禁断のペット～ ガゼー博士の実験島": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25064.jpg",
+        "シーマン2": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-66685.jpg",
+        "スターオーシャン Till the End of Time": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65209.jpg",
+        "スターオーシャン Till the End of Time ディレクターズカット": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65438.jpg",
+        "BUSIN 0 ～Wizardry Alternative NEO～": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65378.jpg",
+        "FRONT MISSION 4": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65443.jpg",
+        "DIGITAL DEVIL SAGA アバタール・チューナー2": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65795.jpg"
       }
     },
     "PlayStation": {
       "repo": "Sony_-_PlayStation",
       "images": {
         "ブレス オブ ファイア III": "Breath of Fire III (Japan).png"
+      },
+      "urls": {
+        "SDガンダム ジージェネレーション・エフ": "https://i.ebayimg.com/images/g/sA8AAOSwXgVkAdbt/s-l1200.jpg",
+        "グローランサー": "https://cdn2.steamgriddb.com/grid/d77c276bacccae9ccc57c0fd1cbc1169.png",
+        "ブシドーブレード 弐": "https://i.ebayimg.com/00/s/MTIwMFgxMzI3/z/DXwAAOSw2RJcZ2yF/%24_32.JPG?set_id=880000500F"
       }
     },
     "PCエンジン": {
