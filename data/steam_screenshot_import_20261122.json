@@ -1,14 +1,16 @@
 {
-  "source": "Steam library screenshot uploaded by the owner on 2026-11-22",
+  "source": "Steam library screenshots uploaded by the owner on 2026-11-22 (1000088577, 1000088578, 1000088579, 1000088580, 1000088583, 1000088584)",
   "conventions": {
     "category": "ゲームソフト",
     "platform": "Steam",
     "ownership": "Steamライブラリに表示（スクリーンショット確認）",
     "excluded": [
       "Lossless Scaling",
-      "KIKI（ツールかゲームか未判別）"
+      "KIKI（ツールかゲームか未判別）",
+      "RetroArch（エミュレーター用フロントエンド）",
+      "RPG Maker XP（ゲーム制作ツール）"
     ],
-    "notes": "Steamライブラリ表示は購入履歴、継続ライセンス、完全版購入を意味しない。体験版は体験版として記録。"
+    "notes": "Steamライブラリ表示は購入履歴、継続ライセンス、完全版購入を意味しない。体験版は体験版として記録。 追加の8583・8584で以前保留のHITMAN各作やSMT3等を識別済み。"
   },
   "records": [
     {
@@ -355,23 +357,97 @@
       "title": "Metaphor: ReFantazio - Prologue Demo",
       "screenshot": "8580",
       "kind": "demo"
+    },
+    {
+      "title": "HITMAN World of Assassination",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "Hitman: Absolution",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "HITMAN (2016)",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "HITMAN 2",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "Shin Megami Tensei III Nocturne HD Remaster",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "ブレス オブ ファイアIV うつろわざるもの",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "The Life and Suffering of Sir Brante",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "METAL GEAR SOLID V: GROUND ZEROES",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "METAL GEAR SOLID V: THE PHANTOM PAIN",
+      "screenshot": "8583",
+      "kind": "game"
+    },
+    {
+      "title": "Rat Quest",
+      "screenshot": "8584",
+      "kind": "game"
+    },
+    {
+      "title": "シロナガス島への帰還 -Return to Shironagasu Island-",
+      "screenshot": "8584",
+      "kind": "game"
+    },
+    {
+      "title": "Rise of Rebellion～地罰上らば竜の降る～",
+      "screenshot": "8584",
+      "kind": "game"
+    },
+    {
+      "title": "STEINS;GATE",
+      "screenshot": "8584",
+      "kind": "game"
+    },
+    {
+      "title": "Tell Me Why",
+      "screenshot": "8584",
+      "kind": "game"
+    },
+    {
+      "title": "Ultimate Epic Battle Simulator",
+      "screenshot": "8584",
+      "kind": "game"
+    },
+    {
+      "title": "Undercroft Warriors",
+      "screenshot": "8584",
+      "kind": "game"
+    },
+    {
+      "title": "真・女神転生V Vengeance",
+      "screenshot": "8584",
+      "kind": "game"
     }
   ],
   "unresolved": [
     "Arabian Gali? (8577 row3 center)",
-    "8579 HITMAN series covers (multiple variants)",
-    "8579 Killer7? or another game (row3 center)",
-    "8579 row3 right Japanese title",
-    "8579 row5 left unidentified title",
-    "8579 row6 right title",
-    "8579 row7 left title",
-    "8579 row8 right blue mascot title",
-    "8579 row9 center and right titles",
-    "8579 row10 left and center titles",
-    "8579 row11 center and right titles",
-    "8579 row12 right title",
-    "8579 row13 left and right titles",
     "8580 row1 left vertical Japanese title",
-    "8580 Persona 4 Revival app status"
+    "8580 Persona 4 Revival app status",
+    "KIKI（8583: タイトルのロゴは見えるがSteamアプリを確実に特定できていない）"
   ]
 }
