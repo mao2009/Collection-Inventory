@@ -131,3 +131,26 @@ Then visit http://localhost:8000/. For offline tests you can pass
 - PS2 の14タイトルには実在が確認できた Libretro の参考ジャケットを追加。
   アナザーセンチュリーズエピソード2のスペシャルボーカルバージョンや
   確定できない版の画像は別版の画像を流用しない。
+
+## PS3 / PlayStation Vita title and edition corrections (2026-11-22)
+
+- PS3 `トゥームレイダー` is owned (Issue #180). For now the catalog uses
+  the Japan 2013 title (`BLJM-60557`) as a **reference** only, pending
+  physical edition/serial verification. The reference image is an externally
+  hosted exact-code PS3 jacket.
+- PS Vita `ペルソナ4 ザ・ゴールデン` consists of two owned retail
+  packages: standard (Issue #79; reference `VLJM-35001`, game ID
+  `PCSG-00004`) and PlayStation Vita the Best (Issue #181; reference
+  `VLJM-65004`, game ID `PCSG-00563`). Their reference cover images are
+  different, keyed by edition. Physical case codes remain unchecked.
+- The actual owned PS Vita Muramasa is the **`朧村正＋元禄怪奇譚
+  DLC全四篇プロダクトコード入りパッケージ`** (Issue #78; reference
+  `VLJM-30122`), *not* the base 2013 PS Vita retail version. Its external
+  cover image is the matching image from the developer/publisher Marvelous.
+  The package includes DLC download **codes**, not guaranteed game-card
+  content. The publisher's package image states a code expiration of
+  2025-03-18; neither code presence nor redemption is asserted.
+- `data/title_readings.json` also tracks the kana reading of the updated
+  full Muramasa package title, Tomb Raider and P4G to retain proper 50-on sort.
+- The Wii version `朧村正` (#120) remains an independent owned physical
+  copy and keeps its separate reference image.

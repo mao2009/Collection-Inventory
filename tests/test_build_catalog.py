@@ -134,6 +134,54 @@ https://example.org/game.jpg
             "libretro",
         )
 
+    def test_official_genroku_kaikitan_package_art_is_not_standard_muramasa(self):
+        title = "朧村正＋元禄怪奇譚 DLC全四篇プロダクトコード入りパッケージ"
+        item = inventory_item(self.issue(
+            78, f"- タイトル：{title}\n- 機種：PlayStation Vita\n"
+        ))
+        self.assertEqual(item["cover_source"], "curated")
+        self.assertEqual(item["cover"], "https://www.marv.jp/uploads/title/687/67aecdff316a0.jpg")
+        self.assertTrue(item["reading"].startswith("オボロムラマサ"))
+        self.assertNotIn("PCSG00150", item["cover"])
+        wii = inventory_item(self.issue(
+            120, "- タイトル：朧村正\n- 機種：Wii\n"
+        ))
+        self.assertEqual(wii["cover_source"], "libretro")
+
+    def test_p4_golden_vita_standard_and_best_covers_are_distinct(self):
+        cases = [
+            (79, "通常版", "PCSG00004.png"),
+            (181, "PlayStation Vita the Best", "PCSG00563.png"),
+        ]
+        items = []
+        for number, edition, filename in cases:
+            item = inventory_item(self.issue(
+                number, "- タイトル：ペルソナ4 ザ・ゴールデン\n"
+                "- 機種：PlayStation Vita\n" + f"- エディション：{edition}\n"
+            ))
+            self.assertEqual(item["cover_source"], "curated")
+            self.assertTrue(item["cover"].endswith("/PSVita/" + filename))
+            self.assertEqual(item["reading"], "ペルソナ4 ザゴールデン")
+            items.append(item)
+        self.assertEqual(len(build([
+            self.issue(number, "- タイトル：ペルソナ4 ザ・ゴールデン\n"
+                       "- 機種：PlayStation Vita\n" + f"- エディション：{edition}\n")
+            for number, edition, _ in cases
+        ])["items"]), 2)
+        self.assertNotEqual(items[0]["cover"], items[1]["cover"])
+
+    def test_ps3_tomb_raider_reference_is_only_ps3(self):
+        item = inventory_item(self.issue(
+            180, "- タイトル：トゥームレイダー\n- 機種：PlayStation 3\n"
+        ))
+        self.assertEqual(item["cover_source"], "curated")
+        self.assertTrue(item["cover"].endswith("/PS3/BLJM60557.JPG"))
+        self.assertEqual(item["reading"], "トゥームレイダー")
+        other = inventory_item(self.issue(
+            182, "- タイトル：トゥームレイダー\n- 機種：PlayStation 2\n"
+        ))
+        self.assertNotEqual(other["cover"], item["cover"])
+
     def test_psp_reference_cover(self):
         item = inventory_item(self.issue(
             75, "- タイトル：ロックマンDASH 鋼の冒険心\n- 機種：PSP\n"

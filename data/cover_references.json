@@ -71,7 +71,14 @@
       "urls": {
         "朧村正": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00150.png",
         "ペルソナ4 ダンシング・オールナイト": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00364.png",
-        "オーディンスフィア レイヴスラシル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00524.png"
+        "オーディンスフィア レイヴスラシル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00524.png",
+        "朧村正＋元禄怪奇譚 DLC全四篇プロダクトコード入りパッケージ": "https://www.marv.jp/uploads/title/687/67aecdff316a0.jpg"
+      },
+      "edition_urls": {
+        "ペルソナ4 ザ・ゴールデン": {
+          "通常版": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00004.png",
+          "PlayStation Vita the Best": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00563.png"
+        }
       }
     },
     "Xbox": {
@@ -143,7 +150,8 @@
         "オーディンスフィア レイヴスラシル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61239.JPG",
         "機動戦士ガンダム ターゲットインサイト": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJS10002.JPG",
         "ゴッド・オブ・ウォーIII": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS37001.JPG",
-        "ゴッド・オブ・ウォー コレクション": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60200.JPG"
+        "ゴッド・オブ・ウォー コレクション": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60200.JPG",
+        "トゥームレイダー": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60557.JPG"
       }
     },
     "Wii": {
