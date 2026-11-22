@@ -50,6 +50,15 @@
         "真・女神転生 DEEP STRANGE JOURNEY": {
           "未確認": "https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_3DS/master/Named_Boxarts/Shin%20Megami%20Tensei%20-%20Deep%20Strange%20Journey%20%28Japan%29.png",
           "真・女神転生25周年記念スペシャルボックス（初回生産限定版）": "https://www.furu1.online/storage/product/10130126/00.webp"
+        },
+        "ラジアントヒストリア パーフェクトクロノロジー": {
+          "PERFECT EDITION（限定版）": "https://mediaworld.co.jp/cdn/shop/products/cg10220753_dadc7285-08ad-43b5-ab72-edffbb626922.jpg?v=1631173984"
+        },
+        "世界樹と不思議のダンジョン2": {
+          "世界樹の迷宮 10th Anniversary BOX（初回生産限定版）": "https://buy.nojima.co.jp/assets/web/img/product_image/game/nintendo-3ds/5101448.jpg"
+        },
+        "世界樹の迷宮V 長き神話の果て": {
+          "コレクターズパック（限定版）": "https://mediaworld.co.jp/cdn/shop/products/cg10220650_6cb34bac-8318-4984-b9aa-393bfd9456fd.jpg?v=1631245427"
         }
       }
     },
@@ -262,6 +271,9 @@
           "通常版": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65242.jpg",
           "デラックスパック": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65241.jpg",
           "北米版（Shin Megami Tensei: Nocturne）": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLUS-20911.jpg"
+        },
+        "グローランサーIII": {
+          "萌え萌えラッキーパック（限定版）": "https://eccdn.geo-online.co.jp/ec_media_images/0010834-01.jpg"
         }
       },
       "urls": {
