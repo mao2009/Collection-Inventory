@@ -11,13 +11,16 @@ import os
 from pathlib import Path
 import re
 import unicodedata
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 from urllib.request import Request, urlopen
 
 REPO = "mao2009/Collection-Inventory"
 BULLET = re.compile(r"^\s*[-*]\s+([^：:\n]+)[：:]\s*(.*?)\s*$", re.M)
 IMAGE = re.compile(r"!\[[^\]]*\]\((https://[^)\s]+)\)")
 INV = re.compile(r"\bINV-\d+\b", re.I)
+REFERENCE_COVERS = json.loads(
+    (Path(__file__).resolve().parent.parent / "data/cover_references.json").read_text(encoding="utf-8")
+)["platforms"]
 
 
 def plain(value):
@@ -81,6 +84,21 @@ def safe_https(url):
     return ""
 
 
+def reference_cover(platform, title):
+    """Look up only explicitly mapped titles; never infer a cover for a different game."""
+    group = REFERENCE_COVERS.get(platform, {})
+    filename = group.get("images", {}).get(title)
+    repo = group.get("repo")
+    if not filename or not repo:
+        return ""
+    return (
+        "https://raw.githubusercontent.com/libretro-thumbnails/"
+        + quote(repo, safe="")
+        + "/master/Named_Boxarts/"
+        + quote(filename, safe="")
+    )
+
+
 def inventory_item(issue):
     if "pull_request" in issue:
         return None
@@ -117,6 +135,11 @@ def inventory_item(issue):
     if not safe_https(cover):
         cover = images[0] if images else ""
     cover = safe_https(cover)
+    cover_source = "issue" if cover else ""
+    if not cover:
+        cover = reference_cover(platform_name(first(fields, "機種", "プラットフォーム・対応機種")), title)
+        if cover:
+            cover_source = "libretro"
 
     ownership = first(fields, "所持状態", "所有", "所持")
     if "譲渡・売却済み" in ownership:
@@ -140,6 +163,7 @@ def inventory_item(issue):
         "disc": first(fields, "ディスク", "ディスク状態") or "未確認",
         "tested": first(fields, "動作確認") or "未確認",
         "cover": cover,
+        "cover_source": cover_source,
         "issue_url": "https://github.com/" + REPO + "/issues/" + str(number),
     }
 

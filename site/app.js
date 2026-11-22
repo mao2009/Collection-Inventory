@@ -46,8 +46,15 @@ function sortable(items) {
 
 function imageFor(item, detail = false) {
   const wrap = element("div", detail ? "detail-cover" : "cover");
+  const placeholder = () => {
+    const empty = element("div", "cover-placeholder");
+    empty.append(element("span", "placeholder-platform", item.platform || "COLLECTION"));
+    empty.append(element("span", "placeholder-title", item.title));
+    empty.append(element("span", "placeholder-status", "ジャケット画像未登録"));
+    wrap.replaceChildren(empty);
+  };
   if (!item.cover) {
-    wrap.append(element("span", "no-cover", "NO IMAGE"));
+    placeholder();
     return wrap;
   }
   const img = element("img", "", "");
@@ -56,10 +63,11 @@ function imageFor(item, detail = false) {
   img.decoding = "async";
   img.referrerPolicy = "no-referrer";
   img.src = item.cover;
-  img.addEventListener("error", () => {
-    wrap.replaceChildren(element("span", "no-cover", "NO IMAGE"));
-  }, { once: true });
+  img.addEventListener("error", placeholder, { once: true });
   wrap.append(img);
+  if (item.cover_source === "libretro") {
+    wrap.append(element("span", "reference-label", "参考画像"));
+  }
   return wrap;
 }
 

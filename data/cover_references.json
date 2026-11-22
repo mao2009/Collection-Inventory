@@ -1,0 +1,150 @@
+{
+  "source": "Libretro thumbnail reference cover art; physical editions have not been verified",
+  "source_repositories": "https://github.com/libretro-thumbnails",
+  "platforms": {
+    "ニンテンドーDS": {
+      "repo": "Nintendo_-_Nintendo_DS",
+      "images": {
+        "真・女神転生 STRANGE JOURNEY": "Shin Megami Tensei - Strange Journey (Japan).png",
+        "世界樹の迷宮": "Sekaiju no Meikyuu (Japan).png",
+        "世界樹の迷宮II 諸王の聖杯": "Sekaiju no Meikyuu II - Shoou no Seihai (Japan).png",
+        "世界樹の迷宮III 星海の来訪者": "Sekaiju no Meikyuu III - Seikai no Raihousha (Japan).png",
+        "女神異聞録デビルサバイバー": "Megami Ibunroku - Devil Survivor (Japan).png",
+        "デビルサバイバー2": "Devil Survivor 2 (Japan).png",
+        "超執刀 カドゥケウス": "Chou Shittou Caduceus (Japan).png",
+        "救急救命 カドゥケウス2": "Kyuukyuu Kyuumei Caduceus 2 (Japan).png",
+        "ノーラと刻の工房 霧の森の魔女": "Nora to Toki no Koubou - Kiri no Mori no Majo (Japan).png",
+        "ラジアントヒストリア": "Radiant Historia (Japan).png"
+      }
+    },
+    "ニンテンドー3DS": {
+      "repo": "Nintendo_-_Nintendo_3DS",
+      "images": {
+        "真・女神転生IV": "Shin Megami Tensei IV (Japan).png",
+        "真・女神転生IV FINAL": "Shin Megami Tensei IV - Final (Japan).png",
+        "真・女神転生 DEEP STRANGE JOURNEY": "Shin Megami Tensei - Deep Strange Journey (Japan).png",
+        "世界樹の迷宮IV 伝承の巨神": "Sekaiju no Meikyuu IV - Denshou no Kyoshin (Japan).png",
+        "世界樹の迷宮V 長き神話の果て": "Sekaiju no Meikyuu V - Nagaki Shinwa no Hate (Japan) (Rev 1).png",
+        "世界樹の迷宮X": "Sekaiju no Meikyuu X (Japan).png",
+        "新・世界樹の迷宮 ミレニアムの少女": "Shin Sekaiju no Meikyuu - Millennium no Shoujo (Japan).png",
+        "新・世界樹の迷宮2 ファフニールの騎士": "Shin Sekaiju no Meikyuu 2 - Fafnir no Kishi (Japan).png",
+        "世界樹と不思議のダンジョン": "Sekaiju to Fushigi no Dungeon (Japan).png",
+        "世界樹と不思議のダンジョン2": "Sekaiju to Fushigi no Dungeon 2 (Japan).png",
+        "デビルサバイバー オーバークロック": "Devil Survivor - Over Clock (Japan).png",
+        "デビルサバイバー2 ブレイクレコード": "Devil Survivor 2 - Break Record (Japan) (Rev 1).png",
+        "デビルサマナー ソウルハッカーズ": "Devil Summoner - Soul Hackers (Japan).png",
+        "ペルソナQ シャドウ オブ ザ ラビリンス": "Persona Q - Shadow of the Labyrinth (Japan).png",
+        "ペルソナQ2 ニュー シネマ ラビリンス": "Persona Q2 - New Cinema Labyrinth (Japan).png",
+        "ラジアントヒストリア パーフェクトクロノロジー": "Radiant Historia - Perfect Chronology (Japan).png"
+      }
+    },
+    "PSP": {
+      "repo": "Sony_-_PlayStation_Portable",
+      "images": {
+        "グローランサー": "Growlanser (Japan).png",
+        "The 3rd Birthday": "3rd Birthday, The (Japan).png",
+        "ダンガンロンパ 希望の学園と絶望の高校生": "Danganronpa - Kibou no Gakuen to Zetsubou no Koukousei (Japan).png",
+        "スターオーシャン1 First Departure": "Star Ocean - First Departure (USA).png",
+        "ペルソナ": "Shin Megami Tensei - Persona (USA).png",
+        "ペルソナ2 罪": "Shin Megami Tensei - Persona 2 - Innocent Sin (USA).png",
+        "ペルソナ2 罰": "Persona 2 - Batsu (Japan).png",
+        "ペルソナ3 ポータブル": "Persona 3 Portable (Japan).png"
+      }
+    },
+    "PlayStation Vita": {
+      "repo": "Sony_-_PlayStation_Vita",
+      "images": {
+        "ペルソナ4 ザ・ゴールデン": "Persona 4 Golden (USA).png"
+      }
+    },
+    "Xbox": {
+      "repo": "Microsoft_-_Xbox",
+      "images": {
+        "真・女神転生 NINE": "Shin Megami Tensei - NINE (Japan).png"
+      }
+    },
+    "Xbox 360": {
+      "repo": "Microsoft_-_Xbox_360",
+      "images": {
+        "キャサリン": "Catherine (USA).png"
+      }
+    },
+    "セガサターン": {
+      "repo": "Sega_-_Saturn",
+      "images": {
+        "真・女神転生 デビルサマナー": "Shin Megami Tensei - Devil Summoner (Japan).png",
+        "デビルサマナー ソウルハッカーズ": "Devil Summoner - Soul Hackers (Japan).png"
+      }
+    },
+    "ドリームキャスト": {
+      "repo": "Sega_-_Dreamcast",
+      "images": {
+        "エターナルアルカディア": "Eternal Arcadia (Japan) (Disc 1).png",
+        "機動戦士ガンダム外伝 コロニーの落ちた地で…": "Gundam Side Story 0079 - Rise from the Ashes (Japan).png",
+        "ゴジラ GENERATIONS": "Godzilla Generations (Japan).png",
+        "ザ・タイピング・オブ・ザ・デッド": "Typing of the Dead, The (Japan).png",
+        "魔剣X": "Maken X (Japan).png",
+        "シーマン": "Seaman (USA).png"
+      }
+    },
+    "ファミリーコンピュータ": {
+      "repo": "Nintendo_-_Nintendo_Entertainment_System",
+      "images": {
+        "デジタル・デビル物語 女神転生": "Digital Devil Story - Megami Tensei (Japan).png",
+        "デジタル・デビル物語 女神転生II": "Digital Devil Story - Megami Tensei II (Japan).png"
+      }
+    },
+    "スーパーファミコン": {
+      "repo": "Nintendo_-_Super_Nintendo_Entertainment_System",
+      "images": {
+        "真・女神転生": "Shin Megami Tensei (Japan).png",
+        "真・女神転生II": "Shin Megami Tensei II (Japan).png",
+        "真・女神転生if...": "Shin Megami Tensei if... (Japan).png",
+        "旧約・女神転生": "Kyuuyaku Megami Tensei (Japan).png",
+        "魔神転生": "Majin Tensei (Japan).png",
+        "魔神転生II": "Majin Tensei II - Spiral Nemesis (Japan).png"
+      }
+    },
+    "PlayStation 3": {
+      "repo": "Sony_-_PlayStation_3",
+      "images": {
+        "キャサリン": "Catherine (Japan).png",
+        "ダークソウル": "Dark Souls (Japan).png",
+        "デモンズソウル": "Demon's Souls (USA).png"
+      }
+    },
+    "Wii": {
+      "repo": "Nintendo_-_Wii",
+      "images": {
+        "Wii Fit": "Wii Fit (Japan).png",
+        "カドゥケウスZ 2つの超執刀": "Caduceus Z - Futatsu no Chou Shittou (Japan).png",
+        "カドゥケウス NEW BLOOD": "Caduceus - New Blood (Japan).png",
+        "HOSPITAL. 6人の医師": "Hospital. 6-nin no Ishi (Japan).png",
+        "朧村正": "Oboro Muramasa (Japan).png"
+      }
+    },
+    "Wii U": {
+      "repo": "Nintendo_-_Wii_U",
+      "images": {
+        "スプラトゥーン": "Splatoon (Japan) (Rev 2).png"
+      }
+    },
+    "PlayStation 2": {
+      "repo": "Sony_-_PlayStation_2",
+      "images": {
+        "ペルソナ3": "Persona 3 (Japan).png",
+        "ペルソナ3 フェス": "Persona 3 FES (Japan).png",
+        "ペルソナ4": "Persona 4 (Japan).png",
+        "ラジアータ ストーリーズ": "Radiata Stories (Japan).png",
+        "魔剣爻": "Maken Shao (Japan).png",
+        "デビルサマナー 葛葉ライドウ対超力兵団": "Devil Summoner - Kuzunoha Raidou tai Chouriki Heidan (Japan).png"
+      }
+    },
+    "PlayStation": {
+      "repo": "Sony_-_PlayStation",
+      "images": {
+        "ブレス オブ ファイア III": "Breath of Fire III (Japan).png"
+      }
+    }
+  }
+}

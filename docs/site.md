@@ -38,3 +38,17 @@ Then visit http://localhost:8000/. For offline tests you can pass
 - Inventory numbers should be unique. New Issue Form entries default to
   "INV-<issue number>" if no explicit number is present.
 - This site uses no database, external JavaScript library or backend runtime.
+
+## Cover art for imported Issues
+
+- New photo-based Issues initially had no cover URLs; the old interface showed "NO IMAGE".
+- `data/cover_references.json` now maps exact Japanese titles and platforms to
+  existing Libretro `Named_Boxarts` filenames. These **reference images** do
+  not prove the edition or condition of the physically owned item.
+- An explicit `画像URL` or Markdown image in the Issue always takes precedence.
+- Unmapped games display a clearly labeled title/platform placeholder;
+  the site does not guess at artwork from another release or platform.
+- The generated catalog includes `cover_source` (`issue`, `libretro`, or
+  empty) for an on-card reference badge. No image files are copied.
+- Libretro artwork is linked from `raw.githubusercontent.com/libretro-thumbnails`;
+  external hosting and original image rights remain with the respective providers.
