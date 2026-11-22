@@ -55,6 +55,11 @@
       "repo": "Sony_-_PlayStation_Vita",
       "images": {
         "ペルソナ4 ザ・ゴールデン": "Persona 4 Golden (USA).png"
+      },
+      "urls": {
+        "朧村正": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00150.png",
+        "ペルソナ4 ダンシング・オールナイト": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00364.png",
+        "オーディンスフィア レイヴスラシル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00524.png"
       }
     },
     "Xbox": {
@@ -111,6 +116,16 @@
         "キャサリン": "Catherine (Japan).png",
         "ダークソウル": "Dark Souls (Japan).png",
         "デモンズソウル": "Demon's Souls (USA).png"
+      },
+      "urls": {
+        "ドラゴンズクラウン": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61041.JPG",
+        "デビル メイ クライ 4": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60056.JPG",
+        "ダークサイダーズ 審判の時": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60204.JPG",
+        "428 ～封鎖された渋谷で～": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJS10057.JPG",
+        "オーディンスフィア レイヴスラシル": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61239.JPG",
+        "機動戦士ガンダム ターゲットインサイト": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJS10002.JPG",
+        "ゴッド・オブ・ウォーIII": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS37001.JPG",
+        "ゴッド・オブ・ウォー コレクション": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60200.JPG"
       }
     },
     "Wii": {
@@ -146,5 +161,6 @@
         "ブレス オブ ファイア III": "Breath of Fire III (Japan).png"
       }
     }
-  }
+  },
+  "supplemental_cover_source": "https://github.com/SvenGDK/PSMT-Covers"
 }
