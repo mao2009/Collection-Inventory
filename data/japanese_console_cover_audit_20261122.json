@@ -1,0 +1,206 @@
+{
+  "reviewed_on": "2026-11-22",
+  "policy": "Japanese-region console assets by exact title/platform/edition. Preserve North American physical entries including PS2 Nocturne #235; separate collector boxes and unverified variants.",
+  "corrected_foreign_art": [
+    {
+      "platform": "PSP",
+      "title": "スターオーシャン1 First Departure",
+      "old": "Star Ocean - First Departure (USA).png",
+      "new": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05290.png"
+    },
+    {
+      "platform": "PSP",
+      "title": "ペルソナ",
+      "old": "Shin Megami Tensei - Persona (USA).png",
+      "new": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05422.png"
+    },
+    {
+      "platform": "PSP",
+      "title": "ペルソナ2 罪",
+      "old": "Shin Megami Tensei - Persona 2 - Innocent Sin (USA).png",
+      "new": "https://www.japanzon.com/137355-product_large/atlus-persona-2-tsumi-innocent-sin-pour-sony-psp.jpg"
+    },
+    {
+      "platform": "PlayStation Vita",
+      "title": "ペルソナ4 ザ・ゴールデン",
+      "old": "Persona 4 Golden (USA).png",
+      "new": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00004.png"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "デモンズソウル",
+      "old": "Demon's Souls (USA).png",
+      "new": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS30022.JPG"
+    },
+    {
+      "platform": "ドリームキャスト",
+      "title": "シーマン",
+      "old": "Seaman (USA).png",
+      "new": "https://images.launchbox-app.com/53c29b40-0c23-4cd0-8c83-ddc4b3992c8a.png"
+    },
+    {
+      "platform": "Xbox 360",
+      "title": "キャサリン",
+      "old": "Catherine (USA).png",
+      "new": "https://i.ebayimg.com/images/g/b20AAOSw6-NkAIZ9/s-l1200.jpg"
+    }
+  ],
+  "filled_missing_art": [
+    {
+      "platform": "PlayStation",
+      "title": "SDガンダム ジージェネレーション・エフ",
+      "url": "https://i.ebayimg.com/images/g/sA8AAOSwXgVkAdbt/s-l1200.jpg"
+    },
+    {
+      "platform": "PlayStation",
+      "title": "グローランサー",
+      "url": "https://cdn2.steamgriddb.com/grid/d77c276bacccae9ccc57c0fd1cbc1169.png"
+    },
+    {
+      "platform": "PlayStation",
+      "title": "ブシドーブレード 弐",
+      "url": "https://i.ebayimg.com/00/s/MTIwMFgxMzI3/z/DXwAAOSw2RJcZ2yF/%24_32.JPG?set_id=880000500F"
+    },
+    {
+      "platform": "PSP",
+      "title": "スーパーダンガンロンパ2 さよなら絶望学園",
+      "url": "https://s.pacn.ws/1/p/cf/pa.223671.8.jpg?v=m7r5tu"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "グランディア エクストリーム",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65089.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "グリムグリモア",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25771.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "グローランサーIV Return",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-62560.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "幻想水滸伝III",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65074.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "シーマン ～禁断のペット～ ガゼー博士の実験島",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25064.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "シーマン2",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-66685.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "スターオーシャン Till the End of Time",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65209.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "スターオーシャン Till the End of Time ディレクターズカット",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65438.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "BUSIN 0 ～Wizardry Alternative NEO～",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65378.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "FRONT MISSION 4",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65443.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "DIGITAL DEVIL SAGA アバタール・チューナー2",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65795.jpg"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "デウスエクス",
+      "url": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60353.JPG"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "ヒットマン",
+      "url": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61003.JPG"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "ペルソナ4 ジ・アルティメット イン マヨナカアリーナ",
+      "url": "https://www.retrospiel.com/media/image/product/11082/lg/p4u-persona-4-the-ultimate-in-mayonaka-arena-jp-ovp-sehr-guter-zustand-playstation-3-ps3.png"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "ペルソナ4 ジ・アルティマックス ウルトラスープレックスホールド",
+      "url": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61209.JPG"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "ペルソナ5",
+      "url": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM61346.JPG"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "METAL GEAR SOLID HD EDITION",
+      "url": "https://auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0409/users/06ed7b464eb1a943b02d682daddaf54bc9f7e7d3/i-img976x1200-16943361403jfmot339657.jpg"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "METAL GEAR SOLID 4 GUNS OF THE PATRIOTS",
+      "url": "https://i.ebayimg.com/images/g/ADcAAOSwGm9aUJyk/s-l1200.jpg"
+    },
+    {
+      "platform": "PlayStation 2",
+      "title": "アナザーセンチュリーズ エピソード2",
+      "edition": "スペシャルボーカルバージョン",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25829.jpg"
+    }
+  ],
+  "north_america_preserved": [
+    {
+      "issue": 235,
+      "platform": "PlayStation 2",
+      "title": "真・女神転生III NOCTURNE",
+      "edition": "北米版（Shin Megami Tensei: Nocturne）",
+      "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLUS-20911.jpg"
+    }
+  ],
+  "excluded_unsafe_matches": [
+    {
+      "title": "FRONT MISSION 4",
+      "bad": "SLPM-65450.jpg",
+      "reason": "Actually a different PS2 game: 探偵学園Q"
+    },
+    {
+      "title": "ブシドーブレード 弐",
+      "bad": "SLPS-01355.jpg",
+      "reason": "Actually a different PS1 game: FOX JUNCTION"
+    },
+    {
+      "title": "ペルソナ4 ジ・アルティメット イン マヨナカアリーナ",
+      "bad": "BLJM60442.JPG",
+      "reason": "The file depicts Ultimax cover, not original P4U; use the visually checked Japanese PS3 product photo"
+    },
+    {
+      "title": "METAL GEAR SOLID 4 GUNS OF THE PATRIOTS",
+      "bad": "BLJM67001.JPG",
+      "reason": "The file depicts a bundled limited console pack, not game standard case"
+    },
+    {
+      "title": "METAL GEAR RISING REVENGEANCE",
+      "bad": "BLJM60554.JPG",
+      "reason": "The file depicts Special Edition; user-edition not confirmed"
+    }
+  ],
+  "pending_further_verification": [
+    "PS3 METAL GEAR RISING REVENGEANCE: Japanese standard outer box not yet visually verified",
+    "Remaining console title/edition-specific collector boxes and already supplied Issue inline images are left unchanged"
+  ]
+}
