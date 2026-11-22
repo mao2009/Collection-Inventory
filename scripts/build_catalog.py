@@ -158,6 +158,15 @@ def inventory_item(issue):
         cover = safe_https(edition_urls.get(edition, ""))
         if cover:
             cover_source = "curated"
+        elif edition == "未確認" and "未確認" not in edition_urls:
+            # Newly added edition-specific collector art must not blank the
+            # original shelf-photo record with no confirmed edition. Show the
+            # generic same-title/same-platform reference for that unknown
+            # physical copy only. An explicit empty mapping still suppresses
+            # fallback, and a named unmatched edition is never substituted.
+            cover = reference_cover(platform, title)
+            if cover:
+                cover_source = "libretro"
     elif not cover:
         cover = reference_cover(platform, title)
         if cover:
