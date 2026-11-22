@@ -6,6 +6,39 @@ const GAME_CATEGORY = "ゲームソフト";
 let collection = [];
 const japaneseTitleCollator = new Intl.Collator("ja-JP", { usage: "sort", numeric: true, sensitivity: "base" });
 
+const SHARE_URL = "https://mao2009.github.io/Collection-Inventory/";
+const SHARE_TITLE = "Collection Inventory｜ゲーム・書籍・音楽・映像のコレクション";
+
+function initShareButtons() {
+  const status = $("share-status");
+  $("share-copy").addEventListener("click", async () => {
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(SHARE_URL);
+      status.textContent = "URLをコピーしました";
+    } catch {
+      status.textContent = "コピーできませんでした。ブラウザのアドレスバーからURLをコピーしてください。";
+    }
+  });
+  const nativeButton = $("share-native");
+  if (typeof navigator.share === "function") {
+    nativeButton.hidden = false;
+    nativeButton.addEventListener("click", async () => {
+      try {
+        await navigator.share({
+          title: SHARE_TITLE,
+          text: "所有ゲームや書籍などのコレクション記録",
+          url: SHARE_URL,
+        });
+      } catch (error) {
+        if (error?.name !== "AbortError") {
+          status.textContent = "端末の共有メニューを開けませんでした。共有先のボタンかURLコピーを使ってください。";
+        }
+      }
+    });
+  }
+}
+
 function normalized(value) {
   return String(value ?? "").normalize("NFKC").toLocaleLowerCase("ja-JP");
 }
@@ -195,6 +228,7 @@ function clearFilters() {
 }
 
 async function init() {
+  initShareButtons();
   try {
     const response = await fetch("./data/collection.json", { cache: "no-cache" });
     if (!response.ok) throw new Error("HTTP " + response.status);

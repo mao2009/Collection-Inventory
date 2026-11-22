@@ -36,6 +36,24 @@
       <p class="eyebrow">A PERSONAL GAME ARCHIVE</p>
       <h1>Collection<br><span>Inventory</span></h1>
       <p class="intro">ゲームの版違いも、重複した1本も。<br>手元にあるコレクションを、一点ずつ記録しています。</p>
+      <div class="hero-share" aria-label="このコレクションを共有">
+        <p class="share-caption">SHARE THIS COLLECTION</p>
+        <div class="share-buttons" role="group" aria-label="共有先を選択">
+          <a class="share-button share-line" id="share-line" href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmao2009.github.io%2FCollection-Inventory%2F" target="_blank" rel="noopener noreferrer" aria-label="LINEで共有"><img src="./icons/line.svg" alt="" width="19" height="19" decoding="async"><span>LINE</span></a>
+          <a class="share-button share-x" id="share-x" href="https://x.com/intent/tweet?text=Collection%20Inventory%EF%BD%9C%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BB%E6%9B%B8%E7%B1%8D%E3%83%BB%E9%9F%B3%E6%A5%BD%E3%83%BB%E6%98%A0%E5%83%8F%E3%81%AE%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3&amp;url=https%3A%2F%2Fmao2009.github.io%2FCollection-Inventory%2F" target="_blank" rel="noopener noreferrer" aria-label="Xで共有"><img src="./icons/x.svg" alt="" width="19" height="19" decoding="async"><span>X</span></a>
+          <a class="share-button share-bluesky" id="share-bluesky" href="https://bsky.app/intent/compose?text=Collection%20Inventory%EF%BD%9C%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BB%E6%9B%B8%E7%B1%8D%E3%83%BB%E9%9F%B3%E6%A5%BD%E3%83%BB%E6%98%A0%E5%83%8F%E3%81%AE%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%0Ahttps%3A%2F%2Fmao2009.github.io%2FCollection-Inventory%2F" target="_blank" rel="noopener noreferrer" aria-label="Blueskyで共有"><img src="./icons/bluesky.svg" alt="" width="19" height="19" decoding="async"><span>Bluesky</span></a>
+          <a class="share-button share-facebook" id="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmao2009.github.io%2FCollection-Inventory%2F" target="_blank" rel="noopener noreferrer" aria-label="Facebookで共有"><img src="./icons/facebook.svg" alt="" width="19" height="19" decoding="async"><span>Facebook</span></a>
+          <button class="share-button share-native" id="share-native" type="button" hidden aria-label="端末の共有メニューを開く">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.4 10.8 7.2-4.6M8.4 13.2l7.2 4.6"/></svg>
+            <span>その他</span>
+          </button>
+          <button class="share-button share-copy" id="share-copy" type="button" aria-label="サイトのURLをコピーする">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+            <span>URLをコピー</span>
+          </button>
+        </div>
+        <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+      </div>
       <div class="hero-stats" aria-live="polite">
         <div><span class="stat-number" id="total-count">—</span><span class="stat-label">登録アイテム</span></div>
         <div><span class="stat-number" id="platform-count">—</span><span class="stat-label">プラットフォーム</span></div>

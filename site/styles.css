@@ -134,3 +134,35 @@ footer { max-width: 1200px; margin: auto; padding: 23px 34px; border-top: 1px so
 .placeholder-title { font-weight: 800; font-size: clamp(13px, 1.6vw, 17px); line-height: 1.5; overflow-wrap: anywhere; }
 .placeholder-status { font-size: 10px; color: #66788d; }
 .reference-label { position: absolute; bottom: 8px; right: 8px; font-size: 10px; font-weight: 700; color: #34455e; background: rgba(255,255,255,.91); padding: 2px 6px; border-radius: 4px; }
+
+/* Accessible brand-identifying share links, with locally hosted SVG marks. */
+.hero-share { margin: 0 0 28px; max-width: 1000px; }
+.share-caption { color: #e7bd87; font-size: 11px; font-weight: 800; letter-spacing: .17em; margin: 0 0 10px; }
+.share-buttons { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; }
+.share-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 42px; padding: 9px 14px; border: 1px solid transparent; border-radius: 8px;
+  color: #fff; font-size: 13px; font-weight: 700; line-height: 1.1;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: filter .15s ease, transform .15s ease;
+}
+.share-button:hover { filter: brightness(1.13); }
+.share-button:active { transform: translateY(1px); }
+.share-button:focus-visible { outline: 3px solid #f3ca91; outline-offset: 3px; }
+.share-button[hidden] { display: none; }
+.share-button img, .share-button svg { width: 19px; height: 19px; flex: 0 0 auto; }
+.share-line { background: #06c755; }
+.share-x { background: #000; border-color: #515766; }
+.share-bluesky { background: #1185fe; }
+.share-facebook { background: #0866ff; }
+.share-native, .share-copy { background: #233855; border-color: #59728e; }
+.share-status { color: #dce7fa; font-size: 12px; margin: 8px 0 0; }
+.share-status:empty { display: none; }
+@media (max-width: 710px) {
+  .share-buttons { gap: 8px; }
+  .share-button { padding: 9px 12px; min-height: 44px; }
+  .hero-share { margin-bottom: 25px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .share-button { transition: none; }
+}
