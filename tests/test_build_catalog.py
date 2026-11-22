@@ -1102,6 +1102,77 @@ https://example.org/game.jpg
         self.assertEqual(explicit["cover"], url)
         self.assertEqual(explicit["cover_source"], "issue")
 
+    def test_new_switch2_fc_sfc_and_n64_owner_records_with_exact_japan_boxart(self):
+        expected = (
+            (246, "メタファー：リファンタジオ", "Nintendo Switch 2",
+             "未確認（Nintendo Switch 2版）", "curated",
+             "https://gamerszone.jp/images/upload/2026/06/c097092c5bcb33973e6b5ee738b524dd.jpg"),
+            (247, "スペランカー", "ファミリーコンピュータ",
+             "未確認（日本版）", "libretro", "Spelunker%20%28Japan%29.png"),
+            (248, "ドラえもん ギガゾンビの逆襲", "ファミリーコンピュータ",
+             "未確認（日本版）", "libretro",
+             "Doraemon%20-%20Giga%20Zombie%20no%20Gyakushuu%20%28Japan%29.png"),
+            (249, "じゃりン子チエ ばくだん娘の幸せさがし", "ファミリーコンピュータ",
+             "未確認（日本版）", "libretro",
+             "Jarinko%20Chie%20-%20Bakudan%20Musume%20no%20Shiawase%20Sagashi%20%28Japan%29.png"),
+            (250, "たけしの挑戦状", "ファミリーコンピュータ",
+             "未確認（日本版）", "libretro",
+             "Takeshi%20no%20Chousenjou%20%28Japan%29.png"),
+            (251, "天外魔境ZERO", "スーパーファミコン",
+             "未確認（日本版）", "libretro",
+             "Tengai%20Makyou%20Zero%20%28Japan%29.png"),
+            (252, "スーパーマリオ64", "NINTENDO64",
+             "未確認（初版／振動パック対応版の別未確認）", "libretro",
+             "Super%20Mario%2064%20%28Japan%29.png"),
+        )
+        issues = []
+        for issue_number, title, platform, edition, source, cover_end in expected:
+            issue = self.issue(
+                issue_number,
+                f"- タイトル：{title}\n- 分類：ゲームソフト\n"
+                f"- 機種：{platform}\n- エディション：{edition}\n"
+                + ("- 箱：なし\n- 説明書：なし\n"
+                   if platform in ("ファミリーコンピュータ", "スーパーファミコン")
+                   else "- 箱：未確認\n- 説明書：未確認\n"),
+            )
+            item = inventory_item(issue)
+            self.assertEqual(item["platform"], platform)
+            self.assertEqual(item["edition"], edition)
+            self.assertEqual(item["cover_source"], source)
+            self.assertTrue(item["cover"].endswith(cover_end), title)
+            if platform in ("ファミリーコンピュータ", "スーパーファミコン"):
+                self.assertEqual(item["case"], "なし")
+                self.assertEqual(item["manual"], "なし")
+            else:
+                self.assertEqual(item["case"], "未確認")
+                self.assertEqual(item["manual"], "未確認")
+            self.assertNotEqual(item["reading"], title if title.startswith("ドラえもん") else "")
+            issues.append(issue)
+        items = build(issues)["items"]
+        self.assertEqual(len(items), 7)
+        self.assertEqual({item["id"] for item in items}, {
+            "INV-246", "INV-247", "INV-248", "INV-249",
+            "INV-250", "INV-251", "INV-252",
+        })
+        self.assertEqual(len({item["cover"] for item in items}), 7)
+
+    def test_existing_sfc_wonder_project_j_no_box_no_manual(self):
+        # The existing #191 is updated in place; this is not a new copy.
+        issue = self.issue(
+            191,
+            "- タイトル：ワンダープロジェクトJ 機械の少年ピーノ\n"
+            "- 機種：スーパーファミコン\n"
+            "- エディション：未確認\n"
+            "- ケース・箱：なし（ユーザー申告）\n"
+            "- 説明書：なし（ユーザー申告）\n",
+        )
+        item = inventory_item(issue)
+        self.assertEqual(item["id"], "INV-191")
+        self.assertEqual(item["case"], "なし（ユーザー申告）")
+        self.assertEqual(item["manual"], "なし（ユーザー申告）")
+        self.assertEqual(item["cover_source"], "libretro")
+        self.assertIn("Wonder%20Project%20J", item["cover"])
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
