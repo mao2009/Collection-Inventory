@@ -197,7 +197,7 @@ https://example.org/game.jpg
                 "- 機種：Xbox 360\n"
             ))
             self.assertEqual(item["cover_source"], "curated")
-            self.assertTrue(item["cover"].endswith("/titles/465307DA/artwork/boxart.jpg"))
+            self.assertEqual(item["cover"], "https://pbs.twimg.com/media/E5JScgCWUAoUNdM.png")
 
     def test_issue_image_precedes_supplemental_cover(self):
         item = inventory_item(self.issue(
@@ -457,7 +457,7 @@ https://example.org/game.jpg
             "- エディション：未確認\n",
         ))
         self.assertEqual(item["cover_source"], "curated")
-        self.assertTrue(item["cover"].endswith("/titles/4D5307DF/artwork/boxart.jpg"))
+        self.assertEqual(item["cover"], "https://www.gavas.jp/upload/save_image/14979.jpg")
         self.assertEqual(item["reading"], "ブルードラゴン")
         self.assertEqual(item["platform"], "Xbox 360")
         self.assertEqual(
