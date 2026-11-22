@@ -1,0 +1,377 @@
+{
+  "source": "Steam library screenshot uploaded by the owner on 2026-11-22",
+  "conventions": {
+    "category": "ゲームソフト",
+    "platform": "Steam",
+    "ownership": "Steamライブラリに表示（スクリーンショット確認）",
+    "excluded": [
+      "Lossless Scaling",
+      "KIKI（ツールかゲームか未判別）"
+    ],
+    "notes": "Steamライブラリ表示は購入履歴、継続ライセンス、完全版購入を意味しない。体験版は体験版として記録。"
+  },
+  "records": [
+    {
+      "title": "100% Orange Juice",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Soul Hackers 2",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Persona 4 Golden",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Persona 4 Arena Ultimax",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Persona 5 Strikers",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "7 Days to End with You",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Along the Edge",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "BANANA HELL: mountain of madness",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Besiege",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Beyond: Two Souls",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Borderlands 2",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Breathedge",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Capcom Arcade Stadium",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "CHRONO CROSS: THE RADICAL DREAMERS EDITION",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Crown Champion: Legends of the Arena",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "DARK SOULS III",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Dead Island Riptide Definitive Edition",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Detroit: Become Human",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Devil May Cry 4 Special Edition",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Devil May Cry 5",
+      "screenshot": "8577",
+      "kind": "game"
+    },
+    {
+      "title": "Devil May Cry HD Collection",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "DmC: Devil May Cry",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "ELDEN RING",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "The Elder Scrolls V: Skyrim",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "Endless Legend",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "Fireside Feelings",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "FRENZ RETRIBUTION",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ DIGITAL DEVIL SAGA アバタール・チューナー A's TEST Server完全版",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ ステラデウス 漆黒の精霊",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ ステラデウス 錬金術の時間",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ ペルソナ3 アイギス THE FIRST MISSION",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ 女神異聞録ペルソナ 異空の塔編",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブル",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブルII 始まりの福音",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブルIII 夢幻の英雄",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ 真・女神転生 東京鎮魂歌",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ 真・女神転生-20XX",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "G-MODEアーカイブス+ 魔神転生 blind thinker",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "Etrian Odyssey HD",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "Etrian Odyssey II HD",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "Etrian Odyssey III HD",
+      "screenshot": "8578",
+      "kind": "game"
+    },
+    {
+      "title": "GRANDIA HD Remaster",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "GRANDIA II HD Remaster",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Heavy Rain",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "KEO",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Knightfall: A Daring Journey",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Life is Strange",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "LOOP8: Summer of Gods",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Lost in Anomaly",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Moonlighter",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Paragnosia",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Plunder Panic",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "RAIDOU Remastered: 超力兵団奇譚",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "République",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Sekiro: Shadows Die Twice",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Space Crew: Legendary Edition",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Persona 5 Tactica",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Toy Tinker Simulator",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "Untrusted: Hackers at Large",
+      "screenshot": "8579",
+      "kind": "game"
+    },
+    {
+      "title": "The Caligula Effect: Overdose",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "The Caligula Effect 2",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "CHRONO TRIGGER",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "Persona 3 Portable",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "Persona 3 Reload",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "Persona 4 Revival",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "Persona 5 Royal",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "Persona5: The Phantom X",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "Metaphor: ReFantazio",
+      "screenshot": "8580",
+      "kind": "game"
+    },
+    {
+      "title": "Metaphor: ReFantazio - Prologue Demo",
+      "screenshot": "8580",
+      "kind": "demo"
+    }
+  ],
+  "unresolved": [
+    "Arabian Gali? (8577 row3 center)",
+    "8579 HITMAN series covers (multiple variants)",
+    "8579 Killer7? or another game (row3 center)",
+    "8579 row3 right Japanese title",
+    "8579 row5 left unidentified title",
+    "8579 row6 right title",
+    "8579 row7 left title",
+    "8579 row8 right blue mascot title",
+    "8579 row9 center and right titles",
+    "8579 row10 left and center titles",
+    "8579 row11 center and right titles",
+    "8579 row12 right title",
+    "8579 row13 left and right titles",
+    "8580 row1 left vertical Japanese title",
+    "8580 Persona 4 Revival app status"
+  ]
+}
