@@ -281,9 +281,17 @@ https://example.org/game.jpg
             item = inventory_item(self.issue(180, f"- タイトル：{title}\n- 機種：PlayStation 2\n"))
             self.assertEqual(item["cover_source"], "libretro")
             self.assertTrue(item["cover"].endswith(filename))
+        # Only the PS3 game titled "レイヴスラシル" has its own PS3 cover;
+        # the original PS2 game's plain title must not inherit that image.
         self.assertEqual(
             inventory_item(self.issue(
                 181, "- タイトル：オーディンスフィア\n- 機種：PlayStation 3\n"
+            ))["cover_source"],
+            "",
+        )
+        self.assertEqual(
+            inventory_item(self.issue(
+                182, "- タイトル：オーディンスフィア レイヴスラシル\n- 機種：PlayStation 3\n"
             ))["cover_source"],
             "curated",
         )
