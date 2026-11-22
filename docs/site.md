@@ -102,3 +102,32 @@ Then visit http://localhost:8000/. For offline tests you can pass
   mixed into the SFC three-copy count.
 - All three SFC lots currently use the same *reference jacket image*, which
   does not prove the cartridge lot or the item's physical condition.
+
+## 50音順（標準表示、2026-11-22）
+
+- GitHub Pages の標準並びを管理番号順から **50音順** に変更。
+- `data/title_readings.json` には漢字タイトルや英語・ローマ字タイトルの
+  読みを明示する。その他はタイトル表記で並べる。
+- 各 Issue に `- 読み：カナヨミ` または `- よみ：カナヨミ` を追加した場合は
+  タイトル共通辞書よりそちらを優先。新しい漢字タイトルを追加した際は
+  辞書か Issue へ読みを追加すること。
+- `scripts/build_catalog.py` が公開 JSON に `reading`（公開用のみ）を追加。
+  `site/app.js` は日本語の `Intl.Collator` でこれを並び替える。
+- 機種別表示は機種名→50音順。検索では読み仮名も入力できる。
+- 管理番号は各個体の識別子として維持するが、並び替えの選択肢からは除外。
+  同名同版の別個体は安定して ID 順のタイブレークで表示する。
+
+## 2026-11-22 の棚写真からの追加登録
+
+- 以前 PS2 の登録がメガテン・ペルソナ系に偏っており、写真中段の PS2 ケース
+  27個体と PS3 ケース7個体が抜けていた。Issue #145～#178 を新規作成。
+- 新規タイトルは実際の棚写真で判読できる背表紙から登録し、
+  製品型番・帯・説明書・エディション・箱の完全性は確認済みとしない。
+  同一タイトルの物理的に複数見えるケースは個別Issueにしている。
+- 例：グローランサーII～VI、幻想水滸伝III～V、アナザーセンチュリーズ
+  エピソード、シーマン、スターオーシャン、FRONT MISSION 4、
+  アバタール・チューナー、ペルソナ5、メタルギアなど。
+- 写真だけでは確定できない細い背表紙や版は推測登録しない。
+- PS2 の14タイトルには実在が確認できた Libretro の参考ジャケットを追加。
+  アナザーセンチュリーズエピソード2のスペシャルボーカルバージョンや
+  確定できない版の画像は別版の画像を流用しない。
