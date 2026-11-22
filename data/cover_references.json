@@ -211,6 +211,14 @@
         }
       }
     },
+    "メガドライブ（メガCD）": {
+      "repo": "Sega_-_Mega-CD_-_Sega_CD",
+      "edition_urls": {
+        "真・女神転生": {
+          "日本版（メガCD専用）": "https://raw.githubusercontent.com/libretro-thumbnails/Sega_-_Mega-CD_-_Sega_CD/master/Named_Boxarts/Shin%20Megami%20Tensei%20%28Japan%29.png"
+        }
+      }
+    },
     "PlayStation 2": {
       "repo": "Sony_-_PlayStation_2",
       "images": {
@@ -252,7 +260,8 @@
         },
         "真・女神転生III NOCTURNE": {
           "通常版": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65242.jpg",
-          "デラックスパック": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65241.jpg"
+          "デラックスパック": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65241.jpg",
+          "北米版（Shin Megami Tensei: Nocturne）": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLUS-20911.jpg"
         }
       },
       "urls": {
