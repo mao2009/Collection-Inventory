@@ -154,13 +154,18 @@
     {
       "platform": "PlayStation 3",
       "title": "METAL GEAR SOLID 4 GUNS OF THE PATRIOTS",
-      "url": "https://i.ebayimg.com/images/g/ADcAAOSwGm9aUJyk/s-l1200.jpg"
+      "url": "https://down-th.img.susercontent.com/file/7b2122cc5bd47359c5423fdd1ed31b07"
     },
     {
       "platform": "PlayStation 2",
       "title": "アナザーセンチュリーズ エピソード2",
       "edition": "スペシャルボーカルバージョン",
       "url": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25829.jpg"
+    },
+    {
+      "platform": "PlayStation 3",
+      "title": "METAL GEAR RISING REVENGEANCE",
+      "url": "https://th-test-11.slatic.net/p/7a730b5c6c62a2048803233567771bae.jpg"
     }
   ],
   "north_america_preserved": [
@@ -200,7 +205,6 @@
     }
   ],
   "pending_further_verification": [
-    "PS3 METAL GEAR RISING REVENGEANCE: Japanese standard outer box not yet visually verified",
     "Remaining console title/edition-specific collector boxes and already supplied Issue inline images are left unchanged"
   ]
 }
