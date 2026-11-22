@@ -24,6 +24,7 @@ ALTERNATE_COVERS = {
         "https://cdn.suruga-ya.jp/pics_webp/boxart_m/179004342m.jpg.webp",
     ],
     360: [
+        "https://assets.st-note.com/img/1789284156-en5ySJixfjURWzF4u6lHCTbM.jpg?width=1200",
         "https://images.weserv.nl/?url=megatenwiki.com%2Fimages%2Fthumb%2F4%2F42%2FP2ISM99_Cover.png%2F640px-P2ISM99_Cover.png",
         "https://wsrv.nl/?url=https%3A%2F%2Fmegatenwiki.com%2Fimages%2Fthumb%2F4%2F42%2FP2ISM99_Cover.png%2F640px-P2ISM99_Cover.png",
         "https://i0.wp.com/megatenwiki.com/images/thumb/4/42/P2ISM99_Cover.png/640px-P2ISM99_Cover.png",
