@@ -978,6 +978,71 @@ https://example.org/game.jpg
             self.assertEqual(len({x["cover"] for x in items}), 1)
             self.assertEqual(items[0]["edition"], items[1]["edition"])
 
+    def test_five_new_collector_items_preserve_originals_and_exact_box_images(self):
+        cases = (
+            (237, "偽典・女神転生 東京黙示録",
+             "PC（PC-98／Windows版未確認）",
+             "版未確認（PC-9801/9821版・Windows 95/98版の別は未確認）", ""),
+            (238, "ラジアントヒストリア パーフェクトクロノロジー",
+             "ニンテンドー3DS", "PERFECT EDITION（限定版）",
+             "https://mediaworld.co.jp/cdn/shop/products/cg10220753_dadc7285-08ad-43b5-ab72-edffbb626922.jpg?v=1631173984"),
+            (239, "グローランサーIII", "PlayStation 2",
+             "萌え萌えラッキーパック（限定版）",
+             "https://eccdn.geo-online.co.jp/ec_media_images/0010834-01.jpg"),
+            (240, "世界樹と不思議のダンジョン2", "ニンテンドー3DS",
+             "世界樹の迷宮 10th Anniversary BOX（初回生産限定版）",
+             "https://buy.nojima.co.jp/assets/web/img/product_image/game/nintendo-3ds/5101448.jpg"),
+            (241, "世界樹の迷宮V 長き神話の果て", "ニンテンドー3DS",
+             "コレクターズパック（限定版）",
+             "https://mediaworld.co.jp/cdn/shop/products/cg10220650_6cb34bac-8318-4984-b9aa-393bfd9456fd.jpg?v=1631245427"),
+        )
+        records = []
+        for number, title, platform, edition, expected in cases:
+            item = inventory_item(self.issue(
+                number, f"- タイトル：{title}\n"
+                f"- 機種：{platform}\n- エディション：{edition}\n",
+            ))
+            self.assertEqual(item["id"], f"INV-{number:03d}")
+            self.assertEqual(item["title"], title)
+            self.assertEqual(item["platform"], platform)
+            self.assertEqual(item["edition"], edition)
+            self.assertEqual(item["cover"], expected)
+            self.assertEqual(item["cover_source"], "curated" if expected else "")
+            records.append(item)
+        self.assertEqual(len({item["id"] for item in records}), 5)
+        self.assertEqual(records[0]["reading"], "ギテン メガミテンセイ トウキョウモクシロク")
+        # PC-98 artwork must not be attributed to the unknown Windows/PC-98 edition.
+        self.assertEqual(records[0]["cover"], "")
+        # The first Etrian Mystery Dungeon is a different title; its normal art
+        # cannot be substituted for the second game's 10th Anniversary box.
+        first = inventory_item(self.issue(
+            56, "- タイトル：世界樹と不思議のダンジョン\n"
+            "- 機種：ニンテンドー3DS\n- エディション：未確認\n",
+        ))
+        self.assertNotEqual(first["cover"], records[3]["cover"])
+        # Explicit Issue image URLs must match the curated edition cover.
+        example = inventory_item(self.issue(
+            239, "- タイトル：グローランサーIII\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：萌え萌えラッキーパック（限定版）\n"
+            "- 画像URL：https://eccdn.geo-online.co.jp/ec_media_images/0010834-01.jpg\n",
+        ))
+        self.assertEqual(example["cover"], records[2]["cover"])
+        self.assertEqual(example["cover_source"], "issue")
+        # Adding collector copies must not overwrite older per-issue copies.
+        earlier = self.issue(
+            152, "- タイトル：グローランサーIII\n"
+            "- 機種：PlayStation 2\n- エディション：未確認\n",
+        )
+        newer = self.issue(
+            239, "- タイトル：グローランサーIII\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：萌え萌えラッキーパック（限定版）\n",
+        )
+        results = build([earlier, newer])["items"]
+        self.assertEqual({item["id"] for item in results}, {"INV-152", "INV-239"})
+        self.assertNotEqual(results[0]["edition"], results[1]["edition"])
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
