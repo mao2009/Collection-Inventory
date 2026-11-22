@@ -142,14 +142,24 @@ def inventory_item(issue):
         cover = images[0] if images else ""
     cover = safe_https(cover)
     cover_source = "issue" if cover else ""
-    if not cover:
-        cover = reference_cover(platform_name(first(fields, "機種", "プラットフォーム・対応機種")), title)
-        if cover:
-            cover_source = "libretro"
-    if not cover:
-        cover = supplemental_cover(platform_name(first(fields, "機種", "プラットフォーム・対応機種")), title)
+    platform = platform_name(first(fields, "機種", "プラットフォーム・対応機種"))
+    edition = first(fields, "エディション") or "未確認"
+    edition_urls = REFERENCE_COVERS.get(platform, {}).get("edition_urls", {}).get(title)
+
+    if not cover and edition_urls is not None:
+        # An explicit empty edition mapping means "no matching cover": do not
+        # silently fall back to the wrong edition's generic cover.
+        cover = safe_https(edition_urls.get(edition, ""))
         if cover:
             cover_source = "curated"
+    elif not cover:
+        cover = reference_cover(platform, title)
+        if cover:
+            cover_source = "libretro"
+        else:
+            cover = supplemental_cover(platform, title)
+            if cover:
+                cover_source = "curated"
 
     ownership = first(fields, "所持状態", "所有", "所持")
     if "譲渡・売却済み" in ownership:
@@ -163,8 +173,8 @@ def inventory_item(issue):
         "id": inventory_id,
         "title": title,
         "category": first(fields, "分類", "カテゴリ") or "未分類",
-        "platform": platform_name(first(fields, "機種", "プラットフォーム・対応機種")),
-        "edition": first(fields, "エディション") or "未確認",
+        "platform": platform,
+        "edition": edition,
         "serial": serial or "未確認",
         "ownership": ownership,
         "obi": obi_status(first(fields, "帯")),
