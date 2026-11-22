@@ -295,3 +295,34 @@ Then visit http://localhost:8000/. For offline tests you can pass
 - As usual, all six issues have the "分類: ゲームソフト" property.
   Kana title readings have been registered in data/title_readings.json.
   Serial numbers, inserts, edition and completeness are not inferred.
+
+## PS Vita P4D limited and PS4/3DS box editions (2026-11-22)
+
+- The owned PS Vita \`ペルソナ4 ダンシング・オールナイト\` (#80)
+  is **limited edition** and its obi is **missing** by owner report.
+  The precise edition is still unknown: the publisher also sold the
+  software-oriented \`クレイジー・バリューパック\` and a distinct
+  \`プレミアム・クレイジーボックス\` **with a special PS Vita console**.
+  Do **not** infer the user owns that console bundle. The limited-pack
+  reference cover assigned for #80 is the Crazy Value Pack as an
+  **explicitly provisional candidate**, not a verified match; compare
+  the actual package before finalizing this artwork.
+- PS4 \`キャサリン・フルボディ\` (#213) is the
+  **ダイナマイト・フルボディ BOX** first-press limited edition,
+  reference product code ATS-01942. Its edition reference artwork is
+  from the publisher's promotional site. It is a separate console and
+  physical item from the previously recorded Nintendo Switch edition
+  (#206). The product's standard included goods (soundtrack, art book,
+  download content) are **not** yet physically verified.
+- 3DS \`真・女神転生 DEEP STRANGE JOURNEY\` has an additional
+  **真・女神転生25周年記念スペシャルボックス** first-press limited
+  package (#214), distinct from existing issue #50. The existing
+  copy's edition remains **unknown**, not assumed standard. The new
+  item's box artwork is distinct from the regular game cover and
+  corresponds to this anniversary special box.
+  Published box contents include the \`メガテンマニアクス\` book,
+  a rare soundtrack / memorial arrangement collection, and the game,
+  but their completeness in the user's physical box is unverified.
+- Titles have explicit kana readings for correct gojuon sorting.
+  Edition-specific image mapping must suppress accidental fallback
+  to different editions' boxart.
