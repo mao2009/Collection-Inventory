@@ -467,6 +467,35 @@ https://example.org/game.jpg
             "",
         )
 
+    def test_new_sfc_wonder_project_j_and_shin_momotaro_are_distinct(self):
+        cases = (
+            (
+                191, "ワンダープロジェクトJ 機械の少年ピーノ",
+                "Wonder%20Project%20J%20-%20Kikai%20no%20Shounen%20Pino%20%28Japan%29.png",
+                "ワンダープロジェクトジェイ キカイノショウネンピーノ",
+            ),
+            (
+                192, "新桃太郎伝説",
+                "Shin%20Momotarou%20Densetsu%20%28Japan%29.png",
+                "シンモモタロウデンセツ",
+            ),
+        )
+        issues = []
+        for number, title, file_name, expected_reading in cases:
+            issue = self.issue(
+                number, f"- タイトル：{title}\n"
+                "- 分類：ゲームソフト\n"
+                "- 機種：スーパーファミコン\n"
+                "- エディション：未確認\n",
+            )
+            item = inventory_item(issue)
+            self.assertEqual(item["platform"], "スーパーファミコン")
+            self.assertEqual(item["cover_source"], "libretro")
+            self.assertTrue(item["cover"].endswith(file_name))
+            self.assertEqual(item["reading"], expected_reading)
+            issues.append(issue)
+        self.assertEqual(len(build(issues)["items"]), 2)
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
