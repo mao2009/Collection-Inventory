@@ -1454,6 +1454,11 @@ https://example.org/game.jpg
             (root / "data/title_readings.json").read_text(encoding="utf-8")
         )["readings"]
         self.assertEqual(len(records), 86)
+        pinned = json.loads(
+            (root / "data/steam_verified_appids.json").read_text(encoding="utf-8")
+        )["appids"]
+        self.assertEqual(set(pinned), {record["title"] for record in records})
+        self.assertEqual(len(set(pinned.values())), 86)
         for number, record in enumerate(records, start=262):
             title = record["title"]
             self.assertIn(title, readings)
@@ -1469,6 +1474,9 @@ https://example.org/game.jpg
                 "- 機種：Steam\n- エディション：Steam版（デジタル）\n",
             ))
             self.assertEqual(item["reading"], reading)
+            self.assertEqual(item["cover_source"], "steam", title)
+            self.assertIn(f"/{pinned[title]}/library_600x900.jpg", item["cover"])
+            self.assertIn(f"/{pinned[title]}/header.jpg", item["cover_fallback"])
         # Exact game IDs, not series IDs, must drive Steam image URLs.
         gmode = inventory_item(self.issue(
             294, "- タイトル：G-MODEアーカイブス+ 女神転生外伝 新約ラストバイブル\n"
