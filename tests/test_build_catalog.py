@@ -748,10 +748,10 @@ https://example.org/game.jpg
             80,
             "- タイトル：ペルソナ4 ダンシング・オールナイト\n"
             "- 機種：PlayStation Vita\n"
-            "- エディション：限定版（正式なパック名は未照合）\n"
+            "- エディション：クレイジー・バリューパック\n"
             "- 帯：なし（ユーザー申告）\n",
         ))
-        self.assertEqual(limited["edition"], "限定版（正式なパック名は未照合）")
+        self.assertEqual(limited["edition"], "クレイジー・バリューパック")
         self.assertEqual(limited["obi"], "no")
         self.assertEqual(limited["cover_source"], "curated")
         self.assertTrue(limited["cover"].endswith("/ATS-1506.jpg?v=2"))
@@ -815,6 +815,103 @@ https://example.org/game.jpg
         self.assertNotEqual(original["cover"], special["cover"])
         self.assertEqual(original["platform"], "ニンテンドー3DS")
         self.assertEqual(special["reading"], "シンメガミテンセイ ディープストレンジジャーニー")
+
+    def test_ps2_nocturne_standard_and_deluxe_reference_images_are_separate(self):
+        title = "真・女神転生III NOCTURNE"
+        cases = (
+            (1, "通常版", "Nocturne%20%28Japan%2C%20Asia%29.png"),
+            (216, "デラックスパック", "Nocturne%20%28Japan%29%20%28Deluxe%20Pack%29.png"),
+        )
+        urls = []
+        for issue_number, edition, suffix in cases:
+            item = inventory_item(self.issue(
+                issue_number, f"- タイトル：{title}\n"
+                "- 機種：PlayStation 2\n" + f"- エディション：{edition}\n"
+            ))
+            self.assertEqual(item["cover_source"], "curated")
+            self.assertTrue(item["cover"].endswith(suffix), edition)
+            urls.append(item["cover"])
+        self.assertNotEqual(urls[0], urls[1])
+        # Historical Issue #1 includes an inline reference image, which has
+        # higher precedence than a catalog fallback. It must now be normal art.
+        historical = inventory_item(self.issue(
+            1,
+            f"- タイトル：{title}\n- 機種：PlayStation 2\n"
+            "- エディション：通常版\n"
+            "![normal](https://raw.githubusercontent.com/libretro-thumbnails/"
+            "Sony_-_PlayStation_2/master/Named_Boxarts/"
+            "Shin%20Megami%20Tensei%20III%20-%20Nocturne"
+            "%20%28Japan%2C%20Asia%29.png)\n",
+        ))
+        self.assertEqual(historical["cover_source"], "issue")
+        self.assertEqual(historical["cover"], urls[0])
+
+    def test_new_limited_box_art_and_platforms(self):
+        cases = (
+            (217, "メタファー：リファンタジオ", "PlayStation 5",
+             "アトラスブランド35thアニバーサリーエディション", "/s-l1200.jpg"),
+            (218, "ペルソナ3 リロード", "PlayStation 5",
+             "PERSONA3 RELOAD LIMITED BOX", "set_id=880000500F"),
+            (219, "ペルソナ5", "PlayStation 4",
+             "20thアニバーサリー・エディション", "/s-l500.jpg"),
+            (220, "ペルソナ5 ザ・ロイヤル", "PlayStation 4",
+             "ストレートフラッシュ・エディション", "600x600.webp"),
+            (221, "ペルソナ5 スクランブル ザ ファントム ストライカーズ", "PlayStation 4",
+             "オタカラBOX", "700x700.jpg?v=1614071482"),
+            (223, "ユニコーンオーバーロード", "Nintendo Switch",
+             "モナークエディション", "cg10463028.jpg?v=1709881994"),
+            (224, "真・女神転生V", "Nintendo Switch",
+             "禁断のナホビノBOX", "forbidden-nahobido-box-limited-edition-switch-japan-rpg-atlusnintendo.jpg"),
+            (226, "幻影異聞録♯FE", "Wii U",
+             "Fortissimo Edition", "/5092405.jpg"),
+            (227, "ソウルハッカーズ2", "PlayStation 5",
+             "25thアニバーサリーエディション", "1078002052333135_02_8697w.jpeg"),
+            (228, "ペルソナダンシング デラックス・ツインプラス", "PlayStation Vita",
+             "デラックス・ツインプラス", "promo-image.jpg?t=1721772920286"),
+            (229, "真・女神転生III NOCTURNE HD REMASTER", "PlayStation 4",
+             "現実魔界化BOX", "00000008252288_A01.jpg?sr.dh=600&sr.dw=600&sr.jqh=60&sr.mat=1"),
+        )
+        issues = []
+        for number, title, platform, edition, suffix in cases:
+            issue = self.issue(
+                number, f"- タイトル：{title}\n"
+                "- 分類：ゲームソフト\n"
+                + f"- 機種：{platform}\n- エディション：{edition}\n",
+            )
+            item = inventory_item(issue)
+            self.assertEqual(item["category"], "ゲームソフト")
+            self.assertEqual(item["platform"], platform)
+            self.assertEqual(item["edition"], edition)
+            self.assertEqual(item["cover_source"], "curated", title)
+            self.assertTrue(item["cover"].endswith(suffix), title)
+            self.assertNotEqual(item["reading"], title if title.startswith("真・") else "")
+            issues.append(issue)
+        self.assertEqual(len(build(issues)["items"]), len(cases))
+
+    def test_limited_box_obi_pairs_have_distinct_ids_and_shared_art(self):
+        cases = (
+            ("ペルソナ5 スクランブル ザ ファントム ストライカーズ",
+             "PlayStation 4", "オタカラBOX", 221, 222),
+            ("真・女神転生V", "Nintendo Switch", "禁断のナホビノBOX", 224, 225),
+            ("真・女神転生III NOCTURNE HD REMASTER",
+             "PlayStation 4", "現実魔界化BOX", 229, 230),
+        )
+        for title, platform, edition, yes_id, no_id in cases:
+            issues = [
+                self.issue(
+                    issue_id, f"- タイトル：{title}\n"
+                    + f"- 機種：{platform}\n"
+                    + f"- エディション：{edition}\n"
+                    + f"- 帯：{obi}\n",
+                )
+                for issue_id, obi in ((yes_id, "あり"), (no_id, "なし"))
+            ]
+            items = build(issues)["items"]
+            self.assertEqual(len(items), 2)
+            self.assertEqual(len({x["id"] for x in items}), 2)
+            self.assertEqual({x["obi"] for x in items}, {"yes", "no"})
+            self.assertEqual(len({x["cover"] for x in items}), 1)
+            self.assertEqual(items[0]["edition"], items[1]["edition"])
 
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(

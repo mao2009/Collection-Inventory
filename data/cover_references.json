@@ -97,8 +97,11 @@
           "PlayStation Vita the Best": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00563.png"
         },
         "ペルソナ4 ダンシング・オールナイト": {
-          "限定版（正式なパック名は未照合）": "https://st.cdjapan.co.jp/pictures/l/10/13/ATS-1506.jpg?v=2",
-          "通常版": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00364.png"
+          "通常版": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PSVita/PCSG00364.png",
+          "クレイジー・バリューパック": "https://st.cdjapan.co.jp/pictures/l/10/13/ATS-1506.jpg?v=2"
+        },
+        "ペルソナダンシング デラックス・ツインプラス": {
+          "デラックス・ツインプラス": "https://now.estarland.com/images/products/9/78209/Nintendo-Switch-Persona-Dancing-Deluxe-Twin-Plus-Limited-Edition-promo-image.jpg?t=1721772920286"
         }
       }
     },
@@ -201,6 +204,11 @@
       "repo": "Nintendo_-_Wii_U",
       "images": {
         "スプラトゥーン": "Splatoon (Japan) (Rev 2).png"
+      },
+      "edition_urls": {
+        "幻影異聞録♯FE": {
+          "Fortissimo Edition": "https://buy.nojima.co.jp/assets/web/img/product_image/game/game-console/5092405.jpg"
+        }
       }
     },
     "PlayStation 2": {
@@ -241,6 +249,10 @@
           "初回限定版": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25042.jpg",
           "通常版": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25043.jpg",
           "アトラス・ベストコレクション": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65144.jpg"
+        },
+        "真・女神転生III NOCTURNE": {
+          "通常版": "https://raw.githubusercontent.com/libretro-thumbnails/Sony_-_PlayStation_2/master/Named_Boxarts/Shin%20Megami%20Tensei%20III%20-%20Nocturne%20%28Japan%2C%20Asia%29.png",
+          "デラックスパック": "https://raw.githubusercontent.com/libretro-thumbnails/Sony_-_PlayStation_2/master/Named_Boxarts/Shin%20Megami%20Tensei%20III%20-%20Nocturne%20%28Japan%29%20%28Deluxe%20Pack%29.png"
         }
       },
       "urls": {
@@ -281,6 +293,14 @@
         "十三機兵防衛圏": "https://item-shopping.c.yimg.jp/i/f/digitalisland_4984995905259",
         "真・女神転生V Vengeance": "https://item-shopping.c.yimg.jp/i/f/rd-lohaco_rj15719",
         "RAIDOU Remastered: 超力兵団奇譚": "https://baseec-img-mng.akamaized.net/images/item/origin/beab1151f056d00ba8d3aba74970ab0b.jpg"
+      },
+      "edition_urls": {
+        "ユニコーンオーバーロード": {
+          "モナークエディション": "https://mediaworld.co.jp/cdn/shop/files/cg10463028.jpg?v=1709881994"
+        },
+        "真・女神転生V": {
+          "禁断のナホビノBOX": "https://tokyogamestory.com/34781-large_default/shin-megami-tensei-v-forbidden-nahobido-box-limited-edition-switch-japan-rpg-atlusnintendo.jpg"
+        }
       }
     },
     "ゲームボーイカラー": {
@@ -295,6 +315,33 @@
       "edition_urls": {
         "キャサリン・フルボディ": {
           "ダイナマイト・フルボディ BOX（初回生産限定版）": "https://fullbody.jp/resources/img/sp/shopguide/v5_limited_84aa156dcf9070d72966b2c8e9289ee5.png"
+        },
+        "ペルソナ5": {
+          "20thアニバーサリー・エディション": "https://i.ebayimg.com/images/g/wW0AAeSwRyhonBok/s-l500.jpg"
+        },
+        "ペルソナ5 ザ・ロイヤル": {
+          "ストレートフラッシュ・エディション": "https://www.classic-gameshop.com/image/cachewebp/catalog/uploads/345519a88b1c8a2d2799c669fccf5177-600x600.webp"
+        },
+        "ペルソナ5 スクランブル ザ ファントム ストライカーズ": {
+          "オタカラBOX": "https://gameline.ph/cdn/shop/products/P5LE_4c0622be-0236-4db1-bead-e578b1d3b29b_700x700.jpg?v=1614071482"
+        },
+        "真・女神転生III NOCTURNE HD REMASTER": {
+          "現実魔界化BOX": "https://image.biccamera.com/img/00000008252288_A01.jpg?sr.dh=600&sr.dw=600&sr.jqh=60&sr.mat=1"
+        }
+      }
+    },
+    "PlayStation 5": {
+      "urls": {},
+      "images": {},
+      "edition_urls": {
+        "メタファー：リファンタジオ": {
+          "アトラスブランド35thアニバーサリーエディション": "https://i.ebayimg.com/images/g/NvsAAOSwrlhnadZq/s-l1200.jpg"
+        },
+        "ペルソナ3 リロード": {
+          "PERSONA3 RELOAD LIMITED BOX": "https://i.ebayimg.com/00/s/MTYwMFgxNTU2/z/WAcAAOSwDyRlvLWl/%24_57.JPG?set_id=880000500F"
+        },
+        "ソウルハッカーズ2": {
+          "25thアニバーサリーエディション": "https://ec.treasure-f.com/images/1078002052333135/1500/1078002052333135_02_8697w.jpeg"
         }
       }
     }
