@@ -819,8 +819,8 @@ https://example.org/game.jpg
     def test_ps2_nocturne_standard_and_deluxe_reference_images_are_separate(self):
         title = "真・女神転生III NOCTURNE"
         cases = (
-            (1, "通常版", "Nocturne%20%28Japan%2C%20Asia%29.png"),
-            (216, "デラックスパック", "Nocturne%20%28Japan%29%20%28Deluxe%20Pack%29.png"),
+            (1, "通常版", "/SLPM-65242.jpg"),
+            (216, "デラックスパック", "/SLPM-65241.jpg"),
         )
         urls = []
         for issue_number, edition, suffix in cases:
@@ -832,16 +832,16 @@ https://example.org/game.jpg
             self.assertTrue(item["cover"].endswith(suffix), edition)
             urls.append(item["cover"])
         self.assertNotEqual(urls[0], urls[1])
+        self.assertEqual(urls[0], "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65242.jpg")
+        self.assertEqual(urls[1], "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65241.jpg")
         # Historical Issue #1 includes an inline reference image, which has
         # higher precedence than a catalog fallback. It must now be normal art.
         historical = inventory_item(self.issue(
             1,
             f"- タイトル：{title}\n- 機種：PlayStation 2\n"
             "- エディション：通常版\n"
-            "![normal](https://raw.githubusercontent.com/libretro-thumbnails/"
-            "Sony_-_PlayStation_2/master/Named_Boxarts/"
-            "Shin%20Megami%20Tensei%20III%20-%20Nocturne"
-            "%20%28Japan%2C%20Asia%29.png)\n",
+            "![normal](https://raw.githubusercontent.com/xlenore/ps2-covers/"
+            "main/covers/default/SLPM-65242.jpg)\n",
         ))
         self.assertEqual(historical["cover_source"], "issue")
         self.assertEqual(historical["cover"], urls[0])
