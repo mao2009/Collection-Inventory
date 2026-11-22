@@ -265,3 +265,33 @@ Then visit http://localhost:8000/. For offline tests you can pass
 - Added missing kana readings for proper Japanese 50-on sorting.
   Tests now check both repaired PC Engine categories and the six new
   item/platform/cover mappings.
+
+## Switch shelf photograph and Game Boy Color Card Summoner (2026-11-22)
+
+- A new Nintendo Switch platform group has been added, populated from the
+  **five separately visible physical Switch package spines** in the owner's
+  photograph: "キャサリン・フルボディ for Nintendo Switch" (#206),
+  "幻影異聞録♯FE Encore" (#207), "十三機兵防衛圏" (#208),
+  "真・女神転生V Vengeance" (#209), and
+  "RAIDOU Remastered: 超力兵団奇譚" (#210).
+- The thick Catherine package may have different packaging, but no edition
+  or completeness claim is made merely from the side view. The five items
+  each count as one owned physical copy. This photograph itself is not
+  stored in the repository.
+- Switch titles have separate verified **Japanese Nintendo Switch package**
+  reference images from retailer/price-comparison pages (Geo Online,
+  Kakaku.com, Yahoo Shopping and other exact-title resources). These are
+  linked images rather than photos of the owner's actual cases, and
+  are not to be used for other platforms or editions.
+- "RAIDOU Remastered" is the **Nintendo Switch** version, distinct from
+  the original PlayStation 2 "葛葉ライドウ対超力兵団" (#131) and from a
+  Nintendo Switch 2 edition. "真・女神転生V Vengeance" must not be
+  mistaken for "真・女神転生V" without the Vengeance subtitle.
+- The owner also explicitly requested "真・女神転生トレーディングカード
+  カードサマナー" (#211). The correct console is **Game Boy Color**
+  (専用ソフト), not a physical trading-card product or Game Boy Advance
+  game. Its boxart is the platform/title-matched Japan file from
+  libretro-thumbnails / Nintendo_-_Game_Boy_Color.
+- As usual, all six issues have the "分類: ゲームソフト" property.
+  Kana title readings have been registered in data/title_readings.json.
+  Serial numbers, inserts, edition and completeness are not inferred.

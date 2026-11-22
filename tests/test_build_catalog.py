@@ -663,6 +663,86 @@ https://example.org/game.jpg
         self.assertNotEqual(gba["platform"], sfc["platform"])
         self.assertNotEqual(gba["cover"], sfc["cover"])
 
+    def test_photo_verified_nintendo_switch_shelf_catalog_entries(self):
+        cases = (
+            (206, "キャサリン・フルボディ for Nintendo Switch",
+             "/ec_media_images/5150726-01.jpg",
+             "キャサリン フルボディ フォーニンテンドースイッチ"),
+            (207, "幻影異聞録♯FE Encore",
+             "/images/productimage/fullscale/K0001187541.jpg",
+             "ゲンエイイブンロク シャープエフイー アンコール"),
+            (208, "十三機兵防衛圏",
+             "/i/f/digitalisland_4984995905259",
+             "ジュウサンキヘイボウエイケン"),
+            (209, "真・女神転生V Vengeance",
+             "/i/f/rd-lohaco_rj15719",
+             "シンメガミテンセイ5 ヴェンジェンス"),
+            (210, "RAIDOU Remastered: 超力兵団奇譚",
+             "/beab1151f056d00ba8d3aba74970ab0b.jpg",
+             "ライドウ リマスタード チョウリキヘイダンキタン"),
+        )
+        issues = []
+        for number, title, suffix, reading in cases:
+            issue = self.issue(
+                number,
+                f"- タイトル：{title}\n"
+                "- 分類：ゲームソフト\n"
+                "- 機種：Nintendo Switch\n"
+                "- エディション：未確認\n",
+            )
+            item = inventory_item(issue)
+            self.assertEqual(item["category"], "ゲームソフト")
+            self.assertEqual(item["platform"], "Nintendo Switch")
+            self.assertEqual(item["reading"], reading)
+            self.assertEqual(item["cover_source"], "curated")
+            self.assertTrue(item["cover"].endswith(suffix), title)
+            self.assertEqual(item["id"], f"INV-{number:03}")
+            issues.append(issue)
+        self.assertEqual(len(build(issues)["items"]), 5)
+
+    def test_card_summoner_is_game_boy_color_game_not_card_merchandise(self):
+        issue = self.issue(
+            211,
+            "- タイトル：真・女神転生トレーディングカード カードサマナー\n"
+            "- 分類：ゲームソフト\n"
+            "- 機種：ゲームボーイカラー\n"
+            "- エディション：未確認\n",
+        )
+        item = inventory_item(issue)
+        self.assertEqual(item["category"], "ゲームソフト")
+        self.assertEqual(item["platform"], "ゲームボーイカラー")
+        self.assertEqual(item["cover_source"], "libretro")
+        self.assertIn("Nintendo_-_Game_Boy_Color", item["cover"])
+        self.assertTrue(item["cover"].endswith(
+            "/Shin%20Megami%20Tensei%20Trading%20Card%20-%20Card%20Summoner%20%28Japan%29.png"
+        ))
+        self.assertEqual(
+            item["reading"],
+            "シンメガミテンセイ トレーディングカード カードサマナー",
+        )
+
+    def test_switch_raido_is_not_ps2_original_and_vengeance_is_not_base_v(self):
+        raido = inventory_item(self.issue(
+            210, "- タイトル：RAIDOU Remastered: 超力兵団奇譚\n"
+                 "- 機種：Nintendo Switch\n"
+        ))
+        original = inventory_item(self.issue(
+            131, "- タイトル：デビルサマナー 葛葉ライドウ対超力兵団\n"
+                 "- 機種：PlayStation 2\n"
+        ))
+        self.assertNotEqual(raido["platform"], original["platform"])
+        self.assertNotEqual(raido["cover"], original["cover"])
+        vengeance = inventory_item(self.issue(
+            209, "- タイトル：真・女神転生V Vengeance\n"
+                 "- 機種：Nintendo Switch\n"
+        ))
+        base_game = inventory_item(self.issue(
+            299, "- タイトル：真・女神転生V\n"
+                 "- 機種：Nintendo Switch\n"
+        ))
+        self.assertNotEqual(vengeance["title"], base_game["title"])
+        self.assertNotEqual(vengeance["cover"], base_game["cover"])
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
