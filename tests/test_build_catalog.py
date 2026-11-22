@@ -423,6 +423,50 @@ https://example.org/game.jpg
         self.assertEqual(item["edition"], "Limited Box（数量限定セット）")
         self.assertEqual(item["platform"], "PlayStation 3")
 
+    def test_nine_standard_and_deluxe_are_separate_owned_copies(self):
+        cases = (
+            (81, "通常版（スタンドアローン版）",
+             "Shin%20Megami%20Tensei%20-%20NINE%20%28Japan%29.png"),
+            (188, "限定デラックスパック", "m9000003newfront.jpg"),
+        )
+        issues = []
+        images = set()
+        for number, edition, image_name in cases:
+            issue = self.issue(
+                number,
+                "- タイトル：真・女神転生 NINE\n"
+                "- 分類：ゲームソフト\n"
+                "- 機種：Xbox\n"
+                + f"- エディション：{edition}\n",
+            )
+            item = inventory_item(issue)
+            self.assertEqual(item["edition"], edition)
+            self.assertEqual(item["cover_source"], "curated")
+            self.assertTrue(item["cover"].endswith(image_name))
+            self.assertEqual(item["reading"], "シンメガミテンセイ ナイン")
+            images.add(item["cover"])
+            issues.append(issue)
+        self.assertEqual(len(images), 2)
+        self.assertEqual(len(build(issues)["items"]), 2)
+
+    def test_blue_dragon_x360_reference_cover_and_kana(self):
+        item = inventory_item(self.issue(
+            189,
+            "- タイトル：ブルードラゴン\n"
+            "- 機種：Xbox 360\n"
+            "- エディション：未確認\n",
+        ))
+        self.assertEqual(item["cover_source"], "curated")
+        self.assertTrue(item["cover"].endswith("/titles/4D5307DF/artwork/boxart.jpg"))
+        self.assertEqual(item["reading"], "ブルードラゴン")
+        self.assertEqual(item["platform"], "Xbox 360")
+        self.assertEqual(
+            inventory_item(self.issue(
+                190, "- タイトル：ブルードラゴン\n- 機種：Xbox\n"
+            ))["cover"],
+            "",
+        )
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"

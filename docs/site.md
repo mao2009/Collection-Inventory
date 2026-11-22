@@ -175,3 +175,24 @@ Then visit http://localhost:8000/. For offline tests you can pass
   physical contents remain to be audited.
 - Corresponding kana title readings have been added to preserve
   the site's default Japanese gojuon sort.
+
+## Original Xbox SMT NINE editions and Xbox 360 Blue Dragon (2026-11-22)
+
+- Xbox \`真・女神転生 NINE\`: two owned retail variants, **standard
+  stand-alone edition** (Issue #81, reference product code M90-1) and
+  **limited Deluxe Pack** (Issue #188, reference product code M90-3).
+  Keep one Issue per physical product. Edition-specific reference images
+  use different art (standard case vs. outer deluxe box).
+- Deluxe Pack bonus items such as the Maria figure, binder, and ID card
+  are **product specifications**, not verified completeness of the
+  owner's physical set. Do not infer these extras were included in the
+  user's copy or are still present.
+- Xbox 360 \`ブルードラゴン\` (Issue #189) is one separately owned
+  game; the Japanese regular-edition product reference is A7J-00001,
+  while its reference image uses Xbox 360 Title ID 4D5307DF from
+  x360db. The user's actual package edition remains unverified.
+- \`ブルードラゴン\` gets a kana sort key and the Xbox NINE title
+  retains its existing kana key. The exact console and edition are
+  matched before displaying a cover.
+- Reference cover photographs belong to their external publishers /
+  original hosts; none are a photograph of the owner's actual items.
