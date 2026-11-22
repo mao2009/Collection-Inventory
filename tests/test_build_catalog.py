@@ -63,6 +63,35 @@ https://example.org/game.jpg
         self.assertEqual(item["platform"], "セガサターン")
         self.assertEqual(item["ownership"], "所有")
 
+    def test_merchandise_does_not_inherit_game_boxart(self):
+        # The same title/platform may exist as a game and as merchandise.
+        # Auto-cover suggestions are for software, not posters/steelbooks.
+        for category in ("ポスター", "スチールブック"):
+            body = (
+                "### タイトル\n\n真・女神転生 STRANGE JOURNEY\n\n"
+                f"### カテゴリ\n\n{category}\n\n"
+                "### プラットフォーム・対応機種\n\nニンテンドーDS\n\n"
+                "### 所持状態\n\n所有\n"
+            )
+            item = inventory_item(self.issue(380, body, labels=[]))
+            self.assertEqual(item["category"], category)
+            self.assertEqual(item["cover"], "")
+            self.assertEqual(item["cover_source"], "")
+
+    def test_merchandise_explicit_photo_remains_available(self):
+        body = (
+            "### タイトル\n\nメタファー：リファンタジオ\n\n"
+            "### カテゴリ\n\nポスター\n\n"
+            "### エディション\n\nメタルポスター\n\n"
+            "### 所持状態\n\n所有\n\n"
+            "### 画像URL（任意）\n\nhttps://example.org/actual-metal-poster.jpg\n"
+        )
+        item = inventory_item(self.issue(381, body, labels=[]))
+        self.assertEqual(item["category"], "ポスター")
+        self.assertEqual(item["edition"], "メタルポスター")
+        self.assertEqual(item["cover"], "https://example.org/actual-metal-poster.jpg")
+        self.assertEqual(item["cover_source"], "issue")
+
     def test_non_inventory_and_pull_request_excluded(self):
         self.assertIsNone(inventory_item(self.issue(4, "Bug report", title="Website bug", labels=[])))
         issue = self.issue(4, "- 管理番号：INV-004\n- タイトル：X")
