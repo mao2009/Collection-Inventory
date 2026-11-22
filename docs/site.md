@@ -85,3 +85,20 @@ Then visit http://localhost:8000/. For offline tests you can pass
 - Reference images for each edition map explicitly to the corresponding serial in
   `xlenore/ps2-covers`; they do not establish that the owner's physical discs have
   those serial numbers. Issue-to-physical-copy matching remains to be verified.
+
+## SFC inventory corrections and manufacturing lots (2026-11-22)
+
+- `魔神転生II` was incorrectly inferred from a shelf photo. The owner confirmed
+  it is **not owned**; Issue #102 is closed without the `所有` label, preserving
+  the correction in the issue history.
+- The correct owned SFC title is `ラストバイブルIII` (Issue #143). Its
+  verified external Libretro reference cover is `Last Bible III (Japan).png`.
+- SFC `真・女神転生II` consists of **three physical copies**: initial
+  production lot (Issue #98), second lot (Issue #141), and third lot (Issue
+  #142). The issue's `ロット` field records the claimed lot, and
+  `エディション` mirrors it for current website display; manufacturing lot
+  is not equivalent to a retail edition. PCB/label verification is not recorded.
+- The two separately inventoried PlayStation copies (#15 and #16) must not be
+  mixed into the SFC three-copy count.
+- All three SFC lots currently use the same *reference jacket image*, which
+  does not prove the cartridge lot or the item's physical condition.

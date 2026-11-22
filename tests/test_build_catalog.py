@@ -219,6 +219,56 @@ https://example.org/game.jpg
         self.assertEqual(item["cover_source"], "issue")
         self.assertEqual(item["cover"], "https://example.org/actual.jpg")
 
+    def test_sfc_shin_megami_tensei_ii_owns_three_separate_lots(self):
+        lot_cases = (
+            (98, "初期ロット"),
+            (141, "2次ロット"),
+            (142, "3次ロット"),
+        )
+        issues = [
+            self.issue(
+                number,
+                "- タイトル：真・女神転生II\n"
+                "- 分類：ゲームソフト\n"
+                "- 機種：スーパーファミコン\n"
+                + f"- エディション：{lot}\n- ロット：{lot}\n",
+            )
+            for number, lot in lot_cases
+        ]
+        exported = build(issues)["items"]
+        self.assertEqual(len(exported), 3)
+        self.assertEqual({item["edition"] for item in exported}, {x[1] for x in lot_cases})
+        self.assertEqual({item["platform"] for item in exported}, {"スーパーファミコン"})
+        self.assertEqual({item["id"] for item in exported}, {"INV-098", "INV-141", "INV-142"})
+        self.assertEqual(len({item["cover"] for item in exported}), 1)
+        self.assertEqual(exported[0]["cover_source"], "libretro")
+
+    def test_sfc_last_bible_iii_uses_verified_reference_cover(self):
+        item = inventory_item(self.issue(
+            143,
+            "- タイトル：ラストバイブルIII\n"
+            "- 分類：ゲームソフト\n"
+            "- 機種：スーパーファミコン\n"
+            "- 所持：所有中（ユーザー申告）\n",
+        ))
+        self.assertEqual(item["title"], "ラストバイブルIII")
+        self.assertEqual(item["platform"], "スーパーファミコン")
+        self.assertTrue(item["cover"].endswith("/Last%20Bible%20III%20%28Japan%29.png"))
+        self.assertEqual(item["cover_source"], "libretro")
+
+    def test_sfc_misidentified_majin_tensei_ii_excluded_after_retraction(self):
+        item = self.issue(
+            102,
+            "- 旧登録タイトル：魔神転生II\n"
+            "- 機種：スーパーファミコン\n"
+            "- 所有：未所持\n"
+            "- 正しく所持しているタイトル：ラストバイブルIII\n",
+            title="[未所持・誤認訂正] 魔神転生II（スーパーファミコン）",
+            labels=[],
+        )
+        self.assertIsNone(inventory_item(item))
+        self.assertEqual(build([item])["items"], [])
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
