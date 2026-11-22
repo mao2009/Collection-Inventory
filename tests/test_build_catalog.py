@@ -385,6 +385,47 @@ https://example.org/game.jpg
         self.assertEqual(len([item for item in items if item["title"] == "FRONT MISSION 4"]), 2)
         self.assertEqual(len({item["id"] for item in items}), 6)
 
+    def test_bofv_ico_limited_and_psp_titles_get_exact_platform_covers(self):
+        cases = (
+            (183, "ブレス オブ ファイアV ドラゴンクォーター", "PlayStation 2",
+             "/ps2-covers/main/covers/default/SLPM-65196.jpg",
+             "ブレスオブファイア5 ドラゴンクォーター"),
+            (184, "ICO/ワンダと巨像 Limited Box", "PlayStation 3",
+             "/PS3/BCJS30073.JPG", "イコ ワンダトキョゾウ リミテッドボックス"),
+            (185, "Another Century's Episode Portable", "PSP",
+             "/Covers/PSP/ULJS00322.png", "アナザーセンチュリーズエピソード ポータブル"),
+            (186, "機動戦士ガンダム ギレンの野望 アクシズの脅威V", "PSP",
+             "/Covers/PSP/ULJS00178.png",
+             "キドウセンシガンダム ギレンノヤボウ アクシズノキョウイ5"),
+        )
+        issues = []
+        for number, title, platform, suffix, reading in cases:
+            issue = self.issue(
+                number,
+                f"- タイトル：{title}\\n- 分類：ゲームソフト\\n- 機種：{platform}\\n"
+            )
+            # Convert escaped separators in this source string into newline
+            # characters before passing the synthetic Issue to the parser.
+            issue["body"] = issue["body"].replace("\\\\n", "\\n")
+            item = inventory_item(issue)
+            self.assertEqual(item["cover_source"], "curated")
+            self.assertTrue(item["cover"].endswith(suffix), title)
+            self.assertEqual(item["reading"], reading)
+            issues.append(issue)
+        self.assertEqual(len(build(issues)["items"]), 4)
+
+    def test_ico_limited_box_is_one_set_not_two_separate_copies(self):
+        item = inventory_item(self.issue(
+            184,
+            "- タイトル：ICO/ワンダと巨像 Limited Box\\n"
+            "- 機種：PlayStation 3\\n"
+            "- エディション：Limited Box（数量限定セット）\\n"
+            "- 個体：限定セット1箱\\n",
+        ))
+        self.assertEqual(item["title"], "ICO/ワンダと巨像 Limited Box")
+        self.assertEqual(item["edition"], "Limited Box（数量限定セット）")
+        self.assertEqual(item["platform"], "PlayStation 3")
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
