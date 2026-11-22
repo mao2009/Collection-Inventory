@@ -43,16 +43,16 @@
       </div>
       <div class="filter-row">
         <div class="filter-group">
-          <label for="platform">機種</label>
-          <select id="platform"><option value="">すべての機種</option></select>
-        </div>
-        <div class="filter-group">
           <label for="category">カテゴリ</label>
           <select id="category"><option value="">すべてのカテゴリ</option></select>
         </div>
-        <div class="filter-group">
+        <div class="filter-group" id="platform-filter" hidden>
+          <label for="platform">機種</label>
+          <select id="platform" disabled><option value="">すべての機種</option></select>
+        </div>
+        <div class="filter-group" id="obi-filter" hidden>
           <label for="obi">帯の状態</label>
-          <select id="obi">
+          <select id="obi" disabled>
             <option value="">すべて</option>
             <option value="yes">帯あり</option>
             <option value="no">帯なし</option>
@@ -63,7 +63,7 @@
           <label for="sort">並び替え</label>
           <select id="sort">
             <option value="reading" selected>50音順（標準）</option>
-            <option value="platform">機種別・50音順</option>
+            <option id="sort-platform-option" value="platform" hidden disabled>機種別・50音順</option>
           </select>
         </div>
       </div>
