@@ -457,3 +457,22 @@ in GitHub Issues take priority over the curated fallback mappings.
 - Issue #240 is definitively the Nintendo 3DS `世界樹と不思議のダンジョン2`
   `世界樹の迷宮 10th Anniversary BOX`; remove provisional wording.
   No issue duplication or physical-copy count change is warranted.
+
+## 2026-11-22: provisional PS2 Growlanser II Deluxe Pack candidate
+
+- Issue #244 records one additional owner-reported limited PS2 `グローランサー`
+  copy, provisionally matched to `グローランサーII` `デラックスパック`
+  based on the owner's `2かな` response to a visual three-edition comparison.
+  The owner has not confirmed the actual box in hand, so the edition field
+  explicitly retains `（推定）` and the Issue is flagged as provisional.
+- The product existed: Japanese PS2 `SLPS-20105`, 2001-07-26. Manufacturer
+  included booklet, bandana and collectible cards; completeness in the owner's
+  physical copy remains unknown.
+- An actual **sepia deluxe outer-box face** image
+  `https://www.gavas.jp/upload/save_image/11465.jpg` is curated. Never
+  substitute the orange standard disc-case artwork as the deluxe outer box.
+- Existing shelf-photo `グローランサーII` Issue #151 remains unchanged and
+  unverified, even though later physical reconciliation could show two records
+  refer to the same physical object. `グローランサーIII` limited pack #239
+  is an entirely different game and record. Do not claim a confirmed complete
+  inventory count before examining the physical boxes.
