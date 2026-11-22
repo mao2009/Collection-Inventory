@@ -1272,6 +1272,61 @@ https://example.org/game.jpg
         self.assertEqual({x["cover"] for x in items}, {switch_url})
         self.assertEqual({x["cover_source"] for x in items}, {"curated"})
 
+    def test_ps4_and_switch_nocturne_hd_standard_copies_added_without_overwriting_limited_or_loose(self):
+        title = "真・女神転生III NOCTURNE HD REMASTER"
+        cases = [
+            (259, "PlayStation 4", [229, 230, 255],
+             "https://mediaworld.co.jp/cdn/shop/files/cg10442053_6aa84820-f8b3-4db8-aa9b-76878f6c69ab.jpg?v=1792771661&width=1000"),
+            (260, "Nintendo Switch", [256, 257],
+             "https://item-shopping.c.yimg.jp/i/f/media9_4984995903996"),
+        ]
+        new_items = []
+        for number, platform, older, cover in cases:
+            item = inventory_item(self.issue(
+                number, f"- タイトル：{title}\n"
+                f"- 機種：{platform}\n"
+                "- エディション：通常版\n"
+                "- ケース・箱：未確認\n"
+                "- 説明書：未確認\n",
+            ))
+            self.assertEqual(item["id"], f"INV-{number:03d}")
+            self.assertEqual(item["platform"], platform)
+            self.assertEqual(item["edition"], "通常版")
+            self.assertEqual(item["cover"], cover)
+            self.assertEqual(item["cover_source"], "curated")
+            self.assertEqual(item["case"], "未確認")
+            self.assertEqual(item["manual"], "未確認")
+            for old in older:
+                self.assertNotEqual(item["id"], f"INV-{old:03d}")
+            new_items.append(item)
+        self.assertEqual(len(new_items), 2)
+
+        # Verify counts by physical inventory issue, not by game/edition.
+        issues = []
+        for number, platform, edition in [
+            (229, "PlayStation 4", "現実魔界化BOX"),
+            (230, "PlayStation 4", "現実魔界化BOX"),
+            (255, "PlayStation 4", "未確認（箱説なし）"),
+            (259, "PlayStation 4", "通常版"),
+            (256, "Nintendo Switch", "未確認（箱説なし）"),
+            (257, "Nintendo Switch", "未確認（箱説なし）"),
+            (260, "Nintendo Switch", "通常版"),
+        ]:
+            issues.append(self.issue(
+                number, f"- タイトル：{title}\n"
+                f"- 機種：{platform}\n- エディション：{edition}\n",
+            ))
+        items = build(issues)["items"]
+        self.assertEqual(len(items), 7)
+        self.assertEqual(len({x["id"] for x in items}), 7)
+        self.assertEqual(sum(x["platform"] == "PlayStation 4" for x in items), 4)
+        self.assertEqual(sum(x["platform"] == "Nintendo Switch" for x in items), 3)
+        ps4_box = [x for x in items if x["platform"] == "PlayStation 4" and x["edition"] == "現実魔界化BOX"]
+        self.assertEqual(len(ps4_box), 2)
+        self.assertNotEqual(ps4_box[0]["cover"], new_items[0]["cover"])
+        loose = [x for x in items if x["edition"] == "未確認（箱説なし）"]
+        self.assertEqual(len(loose), 3)
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
