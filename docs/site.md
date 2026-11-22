@@ -224,3 +224,14 @@ Then visit http://localhost:8000/. For offline tests you can pass
   "真・女神転生IV" (Issue #48) and its Japanese base-game jacket.
 - All artwork is external *reference artwork*, not photographed owned items.
   Image file existence and platform/title matching were verified.
+
+## DS Caduceus Best and Famicom Sanma no Meitantei (2026-11-22)
+
+- Nintendo DS `超執刀 カドゥケウス` (Issue #44) is the **アトラス ベスト コレクション** release, not the original retail cover.
+  Its 2007-04-26 Best reissue has the same `NTR-P-AKDJ` identifier as the regular edition; edition identification cannot rely on this product code alone.
+  The dedicated Best cover reference uses the photographed box image from the corresponding Best retail listing. The image includes the Best logo and is not a photograph of the owner's own package.
+  An unknown/standard edition must not silently reuse this Best cover or vice versa.
+- Family Computer `さんまの名探偵` (Issue #197) is a newly declared owned item.
+  The spoken request was interpreted as this title; the issue notes that the transcription-based title can be corrected if the user intended a different game.
+  A title-exact Japan boxart reference from Libretro is used; package contents and version remain unverified.
+- The new Famicom title is included in `data/title_readings.json` for default gojuon sorting.

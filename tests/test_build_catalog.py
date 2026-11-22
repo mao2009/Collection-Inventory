@@ -555,6 +555,43 @@ https://example.org/game.jpg
         ))
         self.assertNotEqual(final["cover"], original["cover"])
 
+    def test_ds_caduceus_atlus_best_has_edition_specific_art(self):
+        item = inventory_item(self.issue(
+            44,
+            "- タイトル：超執刀 カドゥケウス\n"
+            "- 分類：ゲームソフト\n"
+            "- 機種：ニンテンドーDS\n"
+            "- エディション：アトラス ベスト コレクション\n",
+        ))
+        self.assertEqual(item["edition"], "アトラス ベスト コレクション")
+        self.assertEqual(item["cover_source"], "curated")
+        self.assertEqual(item["cover"],
+            "https://item-shopping.c.yimg.jp/i/n/media-world_10202011001")
+        self.assertEqual(item["reading"], "チョウシットウ カドゥケウス")
+        standard = inventory_item(self.issue(
+            244,
+            "- タイトル：超執刀 カドゥケウス\n"
+            "- 機種：ニンテンドーDS\n"
+            "- エディション：通常版\n",
+        ))
+        self.assertNotEqual(standard["cover"], item["cover"])
+        self.assertEqual(standard["cover"], "")
+
+    def test_famicom_sanma_no_meitantei_art_and_gojuon(self):
+        item = inventory_item(self.issue(
+            197,
+            "- タイトル：さんまの名探偵\n"
+            "- 分類：ゲームソフト\n"
+            "- 機種：ファミリーコンピュータ\n"
+            "- エディション：未確認\n",
+        ))
+        self.assertEqual(item["cover_source"], "libretro")
+        self.assertTrue(item["cover"].endswith(
+            "/Sanma%20no%20Meitantei%20%28Japan%29.png"
+        ))
+        self.assertEqual(item["reading"], "サンマノメイタンテイ")
+        self.assertEqual(item["platform"], "ファミリーコンピュータ")
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
