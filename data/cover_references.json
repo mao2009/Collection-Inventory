@@ -53,7 +53,9 @@
       "urls": {
         "ロックマンDASH 鋼の冒険心": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05030.png",
         "ロックマンDASH2 エピソード2 大いなる遺産": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05037.png",
-        "真・女神転生 デビルサマナー": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05053.png"
+        "真・女神転生 デビルサマナー": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05053.png",
+        "Another Century's Episode Portable": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJS00322.png",
+        "機動戦士ガンダム ギレンの野望 アクシズの脅威V": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJS00178.png"
       },
       "edition_urls": {
         "ペルソナ3 ポータブル": {
@@ -151,7 +153,8 @@
         "機動戦士ガンダム ターゲットインサイト": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJS10002.JPG",
         "ゴッド・オブ・ウォーIII": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS37001.JPG",
         "ゴッド・オブ・ウォー コレクション": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60200.JPG",
-        "トゥームレイダー": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60557.JPG"
+        "トゥームレイダー": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BLJM60557.JPG",
+        "ICO/ワンダと巨像 Limited Box": "https://raw.githubusercontent.com/SvenGDK/PSMT-Covers/main/PS3/BCJS30073.JPG"
       }
     },
     "Wii": {
@@ -209,6 +212,9 @@
           "通常版": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPS-25043.jpg",
           "アトラス・ベストコレクション": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65144.jpg"
         }
+      },
+      "urls": {
+        "ブレス オブ ファイアV ドラゴンクォーター": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-65196.jpg"
       }
     },
     "PlayStation": {

@@ -154,3 +154,24 @@ Then visit http://localhost:8000/. For offline tests you can pass
   full Muramasa package title, Tomb Raider and P4G to retain proper 50-on sort.
 - The Wii version `朧村正` (#120) remains an independent owned physical
   copy and keeps its separate reference image.
+
+## Four additional shelf-inventory titles (2026-11-22)
+
+- Issue #183 — PS2 `ブレス オブ ファイアV ドラゴンクォーター`;
+  reference regular-edition code `SLPM-65196`. The owner's exact edition
+  is **unverified**; do not infer this is the standard rather than a Best copy.
+- Issue #184 — PS3 **`ICO/ワンダと巨像 Limited Box`** (`BCJS-30073`).
+  **One physical boxed set is one inventory item**. The set's published
+  contents include the PS3 HD remasters of ICO and Shadow of the Colossus
+  and a special booklet/digital-code benefits. Contents and code state
+  of the owner's copy are *not verified*.
+- Issue #185 — PSP `Another Century's Episode Portable`, reference
+  product code `ULJS-00322`.
+- Issue #186 — PSP `機動戦士ガンダム ギレンの野望 アクシズの脅威V`,
+  reference product code `ULJS-00178`. Do not confuse the PSP edition
+  with the PlayStation 2 edition.
+- Images are separately verified as existing reference-cover resources,
+  not photographs of the owner's actual packaging. Edition details and
+  physical contents remain to be audited.
+- Corresponding kana title readings have been added to preserve
+  the site's default Japanese gojuon sort.
