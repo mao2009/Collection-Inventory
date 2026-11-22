@@ -22,6 +22,7 @@ body:
         - 周辺機器
         - CD・音楽
         - 書籍
+        - スチールブック
         - その他
     validations:
       required: true
