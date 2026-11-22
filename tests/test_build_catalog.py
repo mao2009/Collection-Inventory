@@ -95,6 +95,33 @@ https://example.org/game.jpg
         self.assertEqual(data["タイトル"], "クロノ・クロス")
         self.assertEqual(data["管理番号"], "INV-013")
 
+    def test_curated_reference_cover_used_when_issue_has_none(self):
+        item = inventory_item(self.issue(
+            38,
+            "- タイトル：真・女神転生 STRANGE JOURNEY\\n"
+            "- 機種：ニンテンドーDS\\n"
+        ))
+        self.assertEqual(item["cover_source"], "libretro")
+        self.assertIn("Nintendo_-_Nintendo_DS", item["cover"])
+        self.assertTrue(item["cover"].endswith("Shin%20Megami%20Tensei%20-%20Strange%20Journey%20%28Japan%29.png"))
+
+    def test_explicit_issue_cover_takes_precedence(self):
+        item = inventory_item(self.issue(
+            38,
+            "- タイトル：真・女神転生 STRANGE JOURNEY\\n"
+            "- 機種：ニンテンドーDS\\n"
+            "- 画像URL：https://example.org/my-cover.png\\n"
+        ))
+        self.assertEqual(item["cover_source"], "issue")
+        self.assertEqual(item["cover"], "https://example.org/my-cover.png")
+
+    def test_unknown_game_is_not_given_wrong_artwork(self):
+        item = inventory_item(self.issue(
+            225, "- タイトル：架空のタイトル\\n- 機種：PSP\\n"
+        ))
+        self.assertEqual(item["cover"], "")
+        self.assertEqual(item["cover_source"], "")
+
 
 if __name__ == "__main__":
     unittest.main()
