@@ -149,7 +149,7 @@ def inventory_item(issue):
     if not cover:
         cover = supplemental_cover(platform_name(first(fields, "機種", "プラットフォーム・対応機種")), title)
         if cover:
-            cover_source = "psmt"
+            cover_source = "curated"
 
     ownership = first(fields, "所持状態", "所有", "所持")
     if "譲渡・売却済み" in ownership:
