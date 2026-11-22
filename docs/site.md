@@ -75,3 +75,13 @@ Then visit http://localhost:8000/. For offline tests you can pass
 - Explicit `画像URL` values entered in Issues always have the highest priority.
 - The mapping of individual Issue numbers to physical copies is provisional
   until the owner confirms which actual case matches each entry.
+
+## 魔剣爻 edition references (PS2)
+
+- Three separate owned copies are tracked: first limited edition (`SLPS-25042`, Issue #34),
+  standard edition (`SLPS-25043`, Issue #129), and Atlus Best Collection
+  (`SLPM-65144`, Issue #139).
+- **Atlus Best Collection is not PlayStation 2 the Best.**
+- Reference images for each edition map explicitly to the corresponding serial in
+  `xlenore/ps2-covers`; they do not establish that the owner's physical discs have
+  those serial numbers. Issue-to-physical-copy matching remains to be verified.
