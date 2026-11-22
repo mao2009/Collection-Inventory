@@ -196,3 +196,14 @@ Then visit http://localhost:8000/. For offline tests you can pass
   matched before displaying a cover.
 - Reference cover photographs belong to their external publishers /
   original hosts; none are a photograph of the owner's actual items.
+
+## Two additional SFC items (2026-11-22)
+
+- Issue #191: `ワンダープロジェクトJ 機械の少年ピーノ` (Super Famicom).
+- Issue #192: `新桃太郎伝説` (Super Famicom).
+- Both are separately owned copies reported by the owner, with edition,
+  physical packaging, cartridge, and extras currently unverified.
+- Verified-by-existence Libretro `Named_Boxarts` reference images for both
+  titles were added; these are not photographs of the owner's physical games.
+- Both titles have kana readings in `data/title_readings.json` so the
+  site's Japanese 50-on sorting is preserved.
