@@ -54,6 +54,13 @@
         "ロックマンDASH 鋼の冒険心": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05030.png",
         "ロックマンDASH2 エピソード2 大いなる遺産": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05037.png",
         "真・女神転生 デビルサマナー": "https://raw.githubusercontent.com/andiweli/hexflow-covers/main/Covers/PSP/ULJM05053.png"
+      },
+      "edition_urls": {
+        "ペルソナ3 ポータブル": {
+          "初回版": "https://raw.githubusercontent.com/libretro-thumbnails/Sony_-_PlayStation_Portable/master/Named_Boxarts/Persona%203%20Portable%20%28Japan%29.png",
+          "通常版": "https://raw.githubusercontent.com/libretro-thumbnails/Sony_-_PlayStation_Portable/master/Named_Boxarts/Persona%203%20Portable%20%28Japan%29.png",
+          "PSP the Best": ""
+        }
       }
     },
     "PlayStation Vita": {
@@ -163,6 +170,17 @@
         "ラジアータ ストーリーズ": "Radiata Stories (Japan).png",
         "魔剣爻": "Maken Shao (Japan).png",
         "デビルサマナー 葛葉ライドウ対超力兵団": "Devil Summoner - Kuzunoha Raidou tai Chouriki Heidan (Japan).png"
+      },
+      "edition_urls": {
+        "ペルソナ3 フェス": {
+          "通常版（単独起動版）": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-66690.jpg",
+          "アペンド版": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-66689.jpg",
+          "PlayStation 2 the Best": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-74277.jpg"
+        },
+        "ペルソナ4": {
+          "通常版": "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/SLPM-66978.jpg",
+          "PlayStation 2 the Best": ""
+        }
       }
     },
     "PlayStation": {
