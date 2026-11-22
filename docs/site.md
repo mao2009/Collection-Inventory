@@ -339,10 +339,12 @@ physically distinct copies even when the cover image is the same.
   プレミアム・クレイジーボックス is resolved by the owner's statement.
 - **PS2 #1 and #216**: \`真・女神転生III NOCTURNE\` standard and
   deluxe pack are two owned products. Correct the former's inline
-  issue image to the standard Japanese/Asian package art. The new
-  deluxe Issue uses the separately identified \`(Deluxe Pack)\`
-  reference artwork. The game-disc code \`SLPM-65241\` alone cannot
-  distinguish these packaging editions. Existing TSUTAYA and PS2 the
+  issue image to the Japanese standard blue Demi-fiend cover
+  (\`SLPM-65242\`). The Deluxe Pack uses the black outer-box cover
+  (\`SLPM-65241\`). The previously selected Libretro URLs resolved to
+  the same European \`Lucifer's Call\` cover despite their Japan
+  filename labels. Both edition URLs now point to verified distinct
+  images in \`xlenore/ps2-covers\`. Existing TSUTAYA and PS2 the
   Best copies are unaffected.
 - **PS5 #217**: \`メタファー：リファンタジオ\` Atlus Brand
   35th Anniversary Edition (physical package).
