@@ -52,9 +52,13 @@ Then visit http://localhost:8000/. For offline tests you can pass
   empty) for an on-card reference badge. No image files are copied.
 - Some PS3 and PS Vita titles with no Libretro artwork are mapped to verified
   serial/title-ID images in [SvenGDK/PSMT-Covers](https://github.com/SvenGDK/PSMT-Covers)
-  through explicit `urls` entries. They have `cover_source=psmt` and display
+  through explicit `urls` entries. They have `cover_source=curated` and display
   the same 参考画像 badge. IDs describe the reference image, **not a verified
   serial number or physical edition of the owned game**.
+- Other verified exact-title mappings use [x360db](https://github.com/xenia-manager/x360db)
+  (Xbox 360 title ID, `boxart.jpg`) and
+  [HexFlow-Covers](https://github.com/andiweli/hexflow-covers)
+  (PSP game serial, `Covers/PSP/*.png`).
 - Reference images are always selected by exact platform and exact title;
   they are never chosen from a different console or inferred edition.
 - Libretro artwork is linked from `raw.githubusercontent.com/libretro-thumbnails`;
