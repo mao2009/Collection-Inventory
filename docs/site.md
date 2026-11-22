@@ -382,3 +382,17 @@ and real-case serials are not verified. Third-party retailer product
 pictures may change or break over time. Gojuon readings are maintained
 in \`data/title_readings.json\`, and catalog tests assert the identity,
 edition-specific art and obi-count invariants.
+
+
+## 2026-11-22: PS4 / PS5 limited-box cover alignment
+
+The collector site displays the **Japanese physical limited-edition outer box**
+when an exact matching cover reference exists, rather than promotional layouts
+showing the contents of the box or an unrelated standard-edition sleeve.
+For PS4 Catherine Full Body Dynamite Full Body BOX and PS5 Metaphor Atlus
+35th Anniversary Edition, use explicitly matched front-facing outer-box images.
+Other existing PS4 / PS5 limited edition mappings remain edition-specific.
+The corresponding Issues' explicit image URLs must match the curated mappings
+because the Issue URL takes precedence during catalog export.
+These images are external references, not photographs of the owner's copies;
+obi and accessory-completeness states remain independently tracked.
