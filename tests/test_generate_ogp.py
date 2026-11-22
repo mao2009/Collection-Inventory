@@ -48,7 +48,7 @@ class OGPTests(unittest.TestCase):
                 self.assertFalse(permitted_url(url))
 
     def test_uses_actual_cover_images_and_falls_back(self):
-        primary = "https://raw.githubusercontent.com/example/main.jpg"
+        primary = "https://raw.githubusercontent.com/example/cover.jpg"
         backup = "https://shared.fastly.steamstatic.com/backup.jpg"
         records = [owned(217, "A"), {**owned(4, "B"), "cover_fallback": backup}]
         asked = []
