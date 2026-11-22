@@ -9,7 +9,7 @@ class CatalogTests(unittest.TestCase):
             "number": number,
             "title": title,
             "body": body,
-            "labels": [{"name": label} for label in (labels or ["所有"])],
+            "labels": [{"name": label} for label in (labels if labels is not None else ["所有"])],
         }
 
     def test_original_issue(self):
