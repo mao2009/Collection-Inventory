@@ -1327,6 +1327,67 @@ https://example.org/game.jpg
         loose = [x for x in items if x["edition"] == "未確認（箱説なし）"]
         self.assertEqual(len(loose), 3)
 
+    def test_steam_screenshot_game_only_manifest(self):
+        # The Steam source is a library screenshot, not a Steam purchase/
+        # entitlement API. Do not infer transaction status from the image.
+        import json
+        from pathlib import Path
+        manifest = json.loads(
+            (Path(__file__).resolve().parent.parent /
+             "data/steam_screenshot_import_20261122.json").read_text(encoding="utf-8")
+        )
+        records = manifest["records"]
+        self.assertEqual(len(records), 69)
+        self.assertEqual(len([r for r in records if r["kind"] == "demo"]), 1)
+        self.assertEqual(len([r for r in records if r["kind"] == "game"]), 68)
+        self.assertEqual(len({r["title"] for r in records}), 69)
+        self.assertEqual(len([r for r in records if r["title"].startswith("G-MODEアーカイブス+")]), 11)
+        for item in records:
+            self.assertIn(item["screenshot"], {"8577", "8578", "8579", "8580"})
+            self.assertTrue(item["title"])
+            self.assertNotIn(item["title"], {"Lossless Scaling", "KIKI"})
+        titles = {r["title"] for r in records}
+        for title in (
+            "G-MODEアーカイブス+ 真・女神転生-20XX",
+            "G-MODEアーカイブス+ 魔神転生 blind thinker",
+            "Persona 3 Reload",
+            "Persona 5 Royal",
+            "Metaphor: ReFantazio",
+            "Metaphor: ReFantazio - Prologue Demo",
+            "RAIDOU Remastered: 超力兵団奇譚",
+        ):
+            self.assertIn(title, titles)
+
+        # Each game is a distinct digital library entry, separate from an
+        # existing console or physical copy of the same title.
+        demo_title = "Metaphor: ReFantazio - Prologue Demo"
+        demo = inventory_item(self.issue(
+            330,
+            f"- タイトル：{demo_title}\n"
+            "- 分類：ゲームソフト\n"
+            "- 機種：Steam\n"
+            "- エディション：Steam版（体験版）\n"
+            "- ケース・箱：対象外（デジタル版）\n"
+            "- 説明書：紙媒体は対象外\n",
+        ))
+        self.assertEqual(demo["platform"], "Steam")
+        self.assertEqual(demo["edition"], "Steam版（体験版）")
+        self.assertEqual(demo["case"], "対象外（デジタル版）")
+        self.assertEqual(demo["manual"], "紙媒体は対象外")
+        self.assertEqual(demo["cover"], "")
+
+        physical = self.issue(217,
+            "- タイトル：メタファー：リファンタジオ\n"
+            "- 機種：PlayStation 5\n"
+            "- エディション：アトラスブランド35thアニバーサリーエディション\n")
+        steam = self.issue(329,
+            "- タイトル：Metaphor: ReFantazio\n"
+            "- 機種：Steam\n- エディション：Steam版（デジタル）\n")
+        items = build([physical, steam])["items"]
+        self.assertEqual(len(items), 2)
+        self.assertEqual({x["id"] for x in items}, {"INV-217", "INV-329"})
+        self.assertEqual({x["platform"] for x in items}, {"PlayStation 5", "Steam"})
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
