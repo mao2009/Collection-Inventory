@@ -702,3 +702,17 @@ North American release.
 - Remaining uncertain sale-edition pack art is not guessed. The audit
   includes the unresolved list so future box-photo checks do not
   reverse correct Japanese/US region handling.
+
+## 2026-11-22: Xbox 360 Japanese cover verification follow-up
+
+Visual review of the `xenia-manager/x360db` generic `boxart.jpg`
+assets showed they represented English-language overseas editions for
+four **Japanese-owned Xbox 360** titles, not merely alternative image
+providers. These are replaced with Japanese package artwork:
+`アーマード・コア フォーアンサー`, `ロストオデッセイ`,
+`ペルソナ4 ジ・アルティメット イン マヨナカアリーナ`,
+and `ブルードラゴン`. The exact source/old/new URL pairs are logged in
+`data/japanese_console_cover_audit_20261122.json`, in the
+`corrected_unregioned_art` section. Some sources show clean box fronts
+rather than full console-spine scans, but each is the Japanese design.
+The records and US-release exception (PS2 Nocturne #235) are unchanged.

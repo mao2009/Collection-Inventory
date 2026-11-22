@@ -206,5 +206,35 @@
   ],
   "pending_further_verification": [
     "Remaining console title/edition-specific collector boxes and already supplied Issue inline images are left unchanged"
+  ],
+  "corrected_unregioned_art": [
+    {
+      "platform": "Xbox 360",
+      "title": "アーマード・コア フォーアンサー",
+      "old": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/465307DA/artwork/boxart.jpg",
+      "new": "https://pbs.twimg.com/media/E5JScgCWUAoUNdM.png",
+      "reason": "x360db's boxart.jpg displayed an English-language overseas case; replaced with visually confirmed Japanese regional design"
+    },
+    {
+      "platform": "Xbox 360",
+      "title": "ロストオデッセイ",
+      "old": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/4D5307FA/artwork/boxart.jpg",
+      "new": "https://i.ebayimg.com/images/g/B34AAOSwHuZmQKeN/s-l1200.jpg",
+      "reason": "x360db's boxart.jpg displayed an English-language overseas case; replaced with visually confirmed Japanese regional design"
+    },
+    {
+      "platform": "Xbox 360",
+      "title": "ペルソナ4 ジ・アルティメット イン マヨナカアリーナ",
+      "old": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/453907D2/artwork/boxart.jpg",
+      "new": "https://storage.moegirl.org.cn/moegirl/commons/5/57/Xbox_360_JP_-_Persona_4_Arena.jpg%21/fw/800/watermark/url/L21vZWdpcmwvd2F0ZXJtYXJrLnBuZw%3D%3D/align/southeast/margin/10x10/opacity/50?v=20191029084344",
+      "reason": "x360db's boxart.jpg displayed an English-language overseas case; replaced with visually confirmed Japanese regional design"
+    },
+    {
+      "platform": "Xbox 360",
+      "title": "ブルードラゴン",
+      "old": "https://raw.githubusercontent.com/xenia-manager/x360db/main/titles/4D5307DF/artwork/boxart.jpg",
+      "new": "https://www.gavas.jp/upload/save_image/14979.jpg",
+      "reason": "x360db's boxart.jpg displayed an English-language overseas case; replaced with visually confirmed Japanese regional design"
+    }
   ]
 }
