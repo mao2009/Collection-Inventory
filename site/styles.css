@@ -53,7 +53,8 @@ a { color: inherit; }
 }
 .search-wrap input { font-size: 15px; }
 .search-wrap input:focus, .filter-group select:focus { outline: 2px solid #8a9dc0; }
-.filter-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
+.filter-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 14px; margin-top: 16px; }
+.filter-group[hidden] { display: none; }
 .result-bar { margin: 22px 0 16px; gap: 15px; }
 .result-bar p { font-size: 13px; color: #535f72; margin: 0; font-weight: 700; }
 .reset-button, .empty button { border: 0; background: transparent; color: #425b83; font-weight: 700; font-size: 12px; }
