@@ -743,6 +743,79 @@ https://example.org/game.jpg
         self.assertNotEqual(vengeance["title"], base_game["title"])
         self.assertNotEqual(vengeance["cover"], base_game["cover"])
 
+    def test_vita_persona4_dancing_limited_and_no_obi(self):
+        limited = inventory_item(self.issue(
+            80,
+            "- タイトル：ペルソナ4 ダンシング・オールナイト\n"
+            "- 機種：PlayStation Vita\n"
+            "- エディション：限定版（正式なパック名は未照合）\n"
+            "- 帯：なし（ユーザー申告）\n",
+        ))
+        self.assertEqual(limited["edition"], "限定版（正式なパック名は未照合）")
+        self.assertEqual(limited["obi"], "no")
+        self.assertEqual(limited["cover_source"], "curated")
+        self.assertTrue(limited["cover"].endswith("/ATS-1506.jpg?v=2"))
+        self.assertEqual(limited["reading"], "ペルソナ4 ダンシングオールナイト")
+        normal = inventory_item(self.issue(
+            280,
+            "- タイトル：ペルソナ4 ダンシング・オールナイト\n"
+            "- 機種：PlayStation Vita\n"
+            "- エディション：通常版\n",
+        ))
+        self.assertNotEqual(normal["cover"], limited["cover"])
+        self.assertTrue(normal["cover"].endswith("/PSVita/PCSG00364.png"))
+
+    def test_ps4_catherine_dynamite_full_body_box(self):
+        item = inventory_item(self.issue(
+            213,
+            "- タイトル：キャサリン・フルボディ\n"
+            "- 分類：ゲームソフト\n"
+            "- 機種：PlayStation 4\n"
+            "- エディション：ダイナマイト・フルボディ BOX（初回生産限定版）\n",
+        ))
+        self.assertEqual(item["category"], "ゲームソフト")
+        self.assertEqual(item["platform"], "PlayStation 4")
+        self.assertEqual(item["cover_source"], "curated")
+        self.assertTrue(item["cover"].endswith(
+            "/v5_limited_84aa156dcf9070d72966b2c8e9289ee5.png"
+        ))
+        self.assertEqual(item["reading"], "キャサリン フルボディ")
+        switch = inventory_item(self.issue(
+            206,
+            "- タイトル：キャサリン・フルボディ for Nintendo Switch\n"
+            "- 機種：Nintendo Switch\n",
+        ))
+        self.assertNotEqual(switch["cover"], item["cover"])
+
+    def test_ds3_deep_strange_journey_special_box_is_separate(self):
+        title = "真・女神転生 DEEP STRANGE JOURNEY"
+        issues = [
+            self.issue(50,
+                f"- タイトル：{title}\n"
+                "- 機種：ニンテンドー3DS\n"
+                "- エディション：未確認\n"),
+            self.issue(214,
+                f"- タイトル：{title}\n"
+                "- 機種：ニンテンドー3DS\n"
+                "- エディション：真・女神転生25周年記念スペシャルボックス（初回生産限定版）\n"),
+        ]
+        items = build(issues)["items"]
+        self.assertEqual(len(items), 2)
+        original, special = items
+        self.assertEqual(original["cover_source"], "curated")
+        self.assertTrue(original["cover"].endswith(
+            "/Shin%20Megami%20Tensei%20-%20Deep%20Strange%20Journey%20%28Japan%29.png"
+        ))
+        self.assertEqual(special["cover_source"], "curated")
+        self.assertTrue(special["cover"].endswith("/storage/product/10130126/00.webp"))
+        self.assertEqual(
+            special["edition"],
+            "真・女神転生25周年記念スペシャルボックス（初回生産限定版）",
+        )
+        self.assertNotEqual(original["cover"], special["cover"])
+        self.assertEqual(original["platform"], "ニンテンドー3DS")
+        self.assertEqual(special["reading"], "シンメガミテンセイ ディープストレンジジャーニー")
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
