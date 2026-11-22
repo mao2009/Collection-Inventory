@@ -32,6 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test image dependency
+        run: python3 -m pip install "Pillow>=11,<13"
       - name: Resolve Steam cover IDs for review
         run: python3 scripts/resolve_steam_covers.py --report
       - run: python3 -m unittest discover -s tests -v
@@ -52,6 +57,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install OGP renderer and Japanese fonts
+        run: |
+          python3 -m pip install "Pillow>=11,<13"
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
+
       - name: Resolve Steam cover IDs for published artwork
         run: python3 scripts/resolve_steam_covers.py
 
@@ -59,6 +73,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 scripts/build_catalog.py
+
+      - name: Render Open Graph sharing preview from owned games
+        run: python3 scripts/generate_ogp.py --input site/data/collection.json --output site/ogp.png
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
