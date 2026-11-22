@@ -16,6 +16,24 @@ from PIL import Image, UnidentifiedImageError
 
 # The covers have been checked against the photographed spines and book titles.
 BOOK_ISSUES = {359, 360, 361, 362, 363}
+# Prefer independently identified book cover art at image CDNs where possible.
+# The original megatenwiki host returns 403 to GitHub Actions.
+ALTERNATE_COVERS = {
+    359: [
+        "https://cdn.suruga-ya.jp/database/pics_webp/game/179004342.jpg.webp",
+        "https://cdn.suruga-ya.jp/pics_webp/boxart_m/179004342m.jpg.webp",
+    ],
+    360: [
+        "https://images.weserv.nl/?url=megatenwiki.com%2Fimages%2Fthumb%2F4%2F42%2FP2ISM99_Cover.png%2F640px-P2ISM99_Cover.png",
+        "https://wsrv.nl/?url=https%3A%2F%2Fmegatenwiki.com%2Fimages%2Fthumb%2F4%2F42%2FP2ISM99_Cover.png%2F640px-P2ISM99_Cover.png",
+        "https://i0.wp.com/megatenwiki.com/images/thumb/4/42/P2ISM99_Cover.png/640px-P2ISM99_Cover.png",
+        "https://cdn.suruga-ya.jp/database/pics_webp/game/179002888.jpg.webp",
+        "https://cdn.suruga-ya.jp/pics_webp/boxart_m/179002888m.jpg.webp",
+    ],
+    363: [
+        "https://cdn.suruga-ya.jp/pics_webp/boxart_m/179011722m.jpg.webp",
+    ],
+}
 MAX_DOWNLOAD_BYTES = 8 * 1024 * 1024
 IMAGE_LIMIT = (680, 1000)
 USER_AGENT = "Mozilla/5.0 (compatible; CollectionInventoryCoverCache/1.0)"
@@ -70,12 +88,18 @@ def update_catalog(catalog_path: Path, site_dir: Path) -> None:
         url = item.get("cover", "")
         if not url:
             raise ValueError(f"Issue #{issue_number} is missing a cover URL")
-        try:
-            image_bytes = encode_jpeg(fetch_image(url))
-        except (OSError, ValueError, UnidentifiedImageError) as error:
-            raise RuntimeError(
-                f"Issue #{issue_number}: cannot download and verify {url}: {error}"
-            ) from error
+        image_bytes = None
+        failures = []
+        for candidate in [*ALTERNATE_COVERS.get(issue_number, []), url]:
+            try:
+                image_bytes = encode_jpeg(fetch_image(candidate))
+                print(f"Downloaded Issue #{issue_number} cover from: {candidate}", flush=True)
+                break
+            except (OSError, ValueError, UnidentifiedImageError) as error:
+                failures.append(f"{candidate}: {type(error).__name__}: {error}")
+                print(f"Image unavailable for Issue #{issue_number}: {candidate}: {error}", flush=True)
+        if image_bytes is None:
+            raise RuntimeError(f"Issue #{issue_number}: no usable cover. " + "; ".join(failures))
         local_name = f"{issue_number}.jpg"
         (covers_dir / local_name).write_bytes(image_bytes)
         item["cover"] = f"./covers/books/{local_name}"
