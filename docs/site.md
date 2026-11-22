@@ -326,3 +326,57 @@ Then visit http://localhost:8000/. For offline tests you can pass
 - Titles have explicit kana readings for correct gojuon sorting.
   Edition-specific image mapping must suppress accidental fallback
   to different editions' boxart.
+
+## 2026-11-22: limited-box collector inventory and obi variants
+
+The owner's follow-up explicitly establishes **one Issue per physical
+package**, and separates different retail editions, platforms and
+physically distinct copies even when the cover image is the same.
+
+- **PS Vita #80**: \`ペルソナ4 ダンシング・オールナイト\` is the
+  **クレイジー・バリューパック, obi missing**. It does not include
+  a PS Vita console. The prior ambiguity with the console-bundled
+  プレミアム・クレイジーボックス is resolved by the owner's statement.
+- **PS2 #1 and #216**: \`真・女神転生III NOCTURNE\` standard and
+  deluxe pack are two owned products. Correct the former's inline
+  issue image to the standard Japanese/Asian package art. The new
+  deluxe Issue uses the separately identified \`(Deluxe Pack)\`
+  reference artwork. The game-disc code \`SLPM-65241\` alone cannot
+  distinguish these packaging editions. Existing TSUTAYA and PS2 the
+  Best copies are unaffected.
+- **PS5 #217**: \`メタファー：リファンタジオ\` Atlus Brand
+  35th Anniversary Edition (physical package).
+- **PS5 #218**: \`ペルソナ3 リロード\` PERSONA3 RELOAD LIMITED BOX.
+- **PS4 #219**: \`ペルソナ5\` 20th Anniversary Edition.
+- **PS4 #220**: \`ペルソナ5 ザ・ロイヤル\`
+  ストレートフラッシュ・エディション.
+- **PS4 #221 and #222**: \`ペルソナ5 スクランブル ザ
+  ファントム ストライカーズ\` オタカラBOX, one **with obi** and
+  one **without obi**. Both are genuine separate physical inventory
+  records and intentionally share the same *product reference* artwork.
+- **Switch #223**: \`ユニコーンオーバーロード\` モナークエディション.
+- **Switch #224 and #225**: \`真・女神転生V\`
+  禁断のナホビノBOX, one **with obi** and one **without obi**.
+  These are not the \`真・女神転生V Vengeance\` already recorded in
+  Switch Issue #209.
+- **Wii U #226**: \`幻影異聞録♯FE\` Fortissimo Edition,
+  interpreted as the *game software limited edition*, not the separate
+  Wii U **console bundle**. Nintendo Switch \`Encore\` #207
+  remains an independent owned title.
+- **PS5 #227**: \`ソウルハッカーズ2\` 25th Anniversary Edition,
+  the physical limited box, not a digital-only bundle.
+- **PS Vita #228**: \`ペルソナダンシング デラックス・ツインプラス\`,
+  **with obi**, one limited physical two-game collection (P3D and P5D),
+  not two separately owned game packages.
+- **PS4 #229 and #230**: \`真・女神転生III NOCTURNE HD REMASTER\`
+  現実魔界化BOX, one **with obi** and one **without obi**.
+  These are distinct from the original PS2 \`NOCTURNE\`.
+
+All items are classified as games. All listed bonus goods (figures,
+soundtracks, artbooks, download codes and other accessories) describe the
+manufacturer's edition only; completeness in the owner's actual boxes is
+**not verified**. Edition-specific cover references are external images,
+and real-case serials are not verified. Third-party retailer product
+pictures may change or break over time. Gojuon readings are maintained
+in \`data/title_readings.json\`, and catalog tests assert the identity,
+edition-specific art and obi-count invariants.
