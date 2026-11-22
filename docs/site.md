@@ -416,3 +416,32 @@ obi and accessory-completeness states remain independently tracked.
   `data/cover_references.json`; both entry points must agree. Each Issue
   remains a distinct physical item, with all condition/extra/obi details
   unverified unless the owner separately confirms them.
+
+## 2026-11-22: five additional Megami Tensei / Atlus collector records
+
+Issue numbers #237-#241 are **five additional physical items**, distinct from
+previous shelf-photo inventory records. Owner-reported existence is not proof
+of accessory completeness.
+
+- #237: `偽典・女神転生 東京黙示録`, PC edition unknown: PC-9801/9821
+  (1997) and Windows 95/98 (1999) had differing packages. Keep the platform
+  and edition explicitly unresolved; leave the cover image empty rather than
+  attach an incorrect PC-98 or Windows reference. Reference serials are not
+  asserted as the owner's copy.
+- #238: `ラジアントヒストリア パーフェクトクロノロジー`, Nintendo 3DS
+  `PERFECT EDITION（限定版）`. Previous DS #47 and 3DS #64 remain intact.
+- #239: PS2 `グローランサーIII`, `萌え萌えラッキーパック（限定版）`,
+  distinct from existing #152. Reference product serial `SLPM-62107`.
+- #240: 3DS `世界樹と不思議のダンジョン2`, `世界樹の迷宮 10th Anniversary
+  BOX（初回生産限定版）`. User called it `世界一の不思議なダンジョン` and
+  omitted the sequel number. The official manufacturer collector BOX is the
+  second title, not first title #56. Previous title-2 #57 remains intact.
+  Edition identification is provisional until the owner validates the sequel.
+- #241: 3DS `世界樹の迷宮V 長き神話の果て`,
+  `コレクターズパック（限定版）`, distinct from #52.
+
+Each 3DS/PS2 limited edition has a dedicated reference image URL featuring
+the corresponding special outer box; some third-party product images also
+show accessories alongside the box. Do not treat them as scanned single
+front-cover art or owner-supplied photographs. Edition-specific image URLs
+in GitHub Issues take priority over the curated fallback mappings.
