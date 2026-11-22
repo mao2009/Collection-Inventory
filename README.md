@@ -1,5 +1,8 @@
 # Collection Inventory
 
+**[公開コレクションサイト](https://mao2009.github.io/Collection-Inventory/)** — 検索・機種別絞り込み・版違いの確認ができます。GitHub Issuesを正本とし、GitHub Actionsで静的サイトを更新します。詳細は [サイト運用手順](docs/site.md) を参照してください。
+
+
 GitHubのみで運用する個人コレクション台帳。ゲームソフト・ゲーム機・CD・書籍・周辺機器などを管理します。
 
 ## 所持品一覧（36点）
