@@ -981,8 +981,9 @@ https://example.org/game.jpg
     def test_five_new_collector_items_preserve_originals_and_exact_box_images(self):
         cases = (
             (237, "偽典・女神転生 東京黙示録",
-             "PC（PC-98／Windows版未確認）",
-             "版未確認（PC-9801/9821版・Windows 95/98版の別は未確認）", ""),
+             "Windows",
+             "Windows 95/98版（1999年）",
+             "https://cdn-ak.f.st-hatena.com/images/fotolife/t/tmurana/20250315/20250315084011.jpg"),
             (238, "ラジアントヒストリア パーフェクトクロノロジー",
              "ニンテンドー3DS", "PERFECT EDITION（限定版）",
              "https://mediaworld.co.jp/cdn/shop/products/cg10220753_dadc7285-08ad-43b5-ab72-edffbb626922.jpg?v=1631173984"),
@@ -1007,12 +1008,34 @@ https://example.org/game.jpg
             self.assertEqual(item["platform"], platform)
             self.assertEqual(item["edition"], edition)
             self.assertEqual(item["cover"], expected)
-            self.assertEqual(item["cover_source"], "curated" if expected else "")
+            self.assertEqual(item["cover_source"], "curated")
             records.append(item)
         self.assertEqual(len({item["id"] for item in records}), 5)
         self.assertEqual(records[0]["reading"], "ギテン メガミテンセイ トウキョウモクシロク")
-        # PC-98 artwork must not be attributed to the unknown Windows/PC-98 edition.
-        self.assertEqual(records[0]["cover"], "")
+        # The confirmed Windows 95/98 edition must show its own box art,
+        # not the distinct PC-98 edition or an image-free placeholder.
+        self.assertEqual(records[0]["cover"], "https://cdn-ak.f.st-hatena.com/images/fotolife/t/tmurana/20250315/20250315084011.jpg")
+        self.assertEqual(records[0]["platform"], "Windows")
+        self.assertEqual(records[0]["edition"], "Windows 95/98版（1999年）")
+        # The original PC-98 edition must not inherit the Windows-only cover.
+        pc98 = inventory_item(self.issue(
+            999, "- タイトル：偽典・女神転生 東京黙示録\n"
+            "- 機種：PC-9801/9821\n"
+            "- エディション：PC-98版\n",
+        ))
+        self.assertNotEqual(pc98["cover"], records[0]["cover"])
+        self.assertEqual(pc98["cover"], "")
+        # GitHub Issue #237 explicitly supplies the same Windows-art URL.
+        explicit_win = inventory_item(self.issue(
+            237, "- タイトル：偽典・女神転生 東京黙示録\n"
+            "- 機種：Windows\n"
+            "- エディション：Windows 95/98版（1999年）\n"
+            "- 製品型番（資料上）：2071301\n"
+            "- 画像URL：" + "https://cdn-ak.f.st-hatena.com/images/fotolife/t/tmurana/20250315/20250315084011.jpg" + "\n",
+        ))
+        self.assertEqual(explicit_win["cover"], records[0]["cover"])
+        self.assertEqual(explicit_win["cover_source"], "issue")
+        self.assertEqual(explicit_win["serial"], "2071301")
         # The first Etrian Mystery Dungeon is a different title; its normal art
         # cannot be substituted for the second game's 10th Anniversary box.
         first = inventory_item(self.issue(
