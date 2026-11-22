@@ -23,6 +23,7 @@ body:
         - CD・音楽
         - 書籍
         - スチールブック
+        - ポスター
         - その他
     validations:
       required: true
