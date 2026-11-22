@@ -857,16 +857,16 @@ https://example.org/game.jpg
             "main/covers/default/SLUS-20911.jpg"
         )
         mega = inventory_item(self.issue(
-            234, "- タイトル：真・女神転生\\n"
-            "- 機種：メガドライブ（メガCD）\\n"
-            "- エディション：日本版（メガCD専用）\\n"
-            "- 製品型番（資料上）：T-44044\\n",
+            234, "- タイトル：真・女神転生\n"
+            "- 機種：メガドライブ（メガCD）\n"
+            "- エディション：日本版（メガCD専用）\n"
+            "- 製品型番（資料上）：T-44044\n",
         ))
         us = inventory_item(self.issue(
-            235, "- タイトル：真・女神転生III NOCTURNE\\n"
-            "- 機種：PlayStation 2\\n"
-            "- エディション：北米版（Shin Megami Tensei: Nocturne）\\n"
-            "- 製品型番（資料上）：SLUS-20911\\n",
+            235, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：北米版（Shin Megami Tensei: Nocturne）\n"
+            "- 製品型番（資料上）：SLUS-20911\n",
         ))
         self.assertEqual(mega["platform"], "メガドライブ（メガCD）")
         self.assertEqual(mega["serial"], "T-44044")
@@ -880,27 +880,27 @@ https://example.org/game.jpg
 
         # GitHub Issue image URLs take precedence and must match the edition.
         explicit = inventory_item(self.issue(
-            235, "- タイトル：真・女神転生III NOCTURNE\\n"
-            "- 機種：PlayStation 2\\n"
-            "- エディション：北米版（Shin Megami Tensei: Nocturne）\\n"
-            + "- 画像URL：" + us_nocturne_url + "\\n",
+            235, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：北米版（Shin Megami Tensei: Nocturne）\n"
+            + "- 画像URL：" + us_nocturne_url + "\n",
         ))
         self.assertEqual(explicit["cover"], us_nocturne_url)
         self.assertEqual(explicit["cover_source"], "issue")
 
         jp_standard = inventory_item(self.issue(
-            1, "- タイトル：真・女神転生III NOCTURNE\\n"
-            "- 機種：PlayStation 2\\n- エディション：通常版\\n",
+            1, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n- エディション：通常版\n",
         ))
         jp_deluxe = inventory_item(self.issue(
-            216, "- タイトル：真・女神転生III NOCTURNE\\n"
-            "- 機種：PlayStation 2\\n- エディション：デラックスパック\\n",
+            216, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n- エディション：デラックスパック\n",
         ))
         all_items = build([
-            self.issue(1, "- タイトル：真・女神転生III NOCTURNE\\n"),
-            self.issue(216, "- タイトル：真・女神転生III NOCTURNE\\n"),
-            self.issue(234, "- タイトル：真・女神転生\\n"),
-            self.issue(235, "- タイトル：真・女神転生III NOCTURNE\\n"),
+            self.issue(1, "- タイトル：真・女神転生III NOCTURNE\n"),
+            self.issue(216, "- タイトル：真・女神転生III NOCTURNE\n"),
+            self.issue(234, "- タイトル：真・女神転生\n"),
+            self.issue(235, "- タイトル：真・女神転生III NOCTURNE\n"),
         ])["items"]
         self.assertEqual(len(all_items), 4)
         self.assertEqual(len({item["id"] for item in all_items}), 4)
