@@ -63,3 +63,15 @@ Then visit http://localhost:8000/. For offline tests you can pass
   they are never chosen from a different console or inferred edition.
 - Libretro artwork is linked from `raw.githubusercontent.com/libretro-thumbnails`;
   external hosting and original image rights remain with the respective providers.
+
+## Edition-specific artwork
+
+- `edition_urls` overrides generic per-title cover references when the Issue's edition is known.
+- For Persona 3 FES, the standard, append, and PlayStation 2 the Best cover references
+  use their individual serials. The source is reference artwork, not a verified physical scan.
+- For Persona 3 Portable and Persona 4, an empty URL for an edition (such as an
+  unavailable Best cover) intentionally displays the placeholder instead of a
+  misleading standard-edition cover.
+- Explicit `画像URL` values entered in Issues always have the highest priority.
+- The mapping of individual Issue numbers to physical copies is provisional
+  until the owner confirms which actual case matches each entry.
