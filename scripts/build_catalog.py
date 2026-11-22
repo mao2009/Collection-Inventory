@@ -194,7 +194,7 @@ def inventory_item(issue):
         "serial": serial or "未確認",
         "ownership": ownership,
         "obi": obi_status(first(fields, "帯")),
-        "case": first(fields, "ケース") or "未確認",
+        "case": first(fields, "ケース", "ケース・箱", "箱") or "未確認",
         "manual": first(fields, "説明書") or "未確認",
         "disc": first(fields, "ディスク", "ディスク状態") or "未確認",
         "tested": first(fields, "動作確認") or "未確認",

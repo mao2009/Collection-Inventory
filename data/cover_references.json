@@ -162,7 +162,11 @@
       "images": {
         "デジタル・デビル物語 女神転生": "Digital Devil Story - Megami Tensei (Japan).png",
         "デジタル・デビル物語 女神転生II": "Digital Devil Story - Megami Tensei II (Japan).png",
-        "さんまの名探偵": "Sanma no Meitantei (Japan).png"
+        "さんまの名探偵": "Sanma no Meitantei (Japan).png",
+        "スペランカー": "Spelunker (Japan).png",
+        "ドラえもん ギガゾンビの逆襲": "Doraemon - Giga Zombie no Gyakushuu (Japan).png",
+        "じゃりン子チエ ばくだん娘の幸せさがし": "Jarinko Chie - Bakudan Musume no Shiawase Sagashi (Japan).png",
+        "たけしの挑戦状": "Takeshi no Chousenjou (Japan).png"
       }
     },
     "スーパーファミコン": {
@@ -176,7 +180,8 @@
         "魔神転生II": "Majin Tensei II - Spiral Nemesis (Japan).png",
         "ラストバイブルIII": "Last Bible III (Japan).png",
         "ワンダープロジェクトJ 機械の少年ピーノ": "Wonder Project J - Kikai no Shounen Pino (Japan).png",
-        "新桃太郎伝説": "Shin Momotarou Densetsu (Japan).png"
+        "新桃太郎伝説": "Shin Momotarou Densetsu (Japan).png",
+        "天外魔境ZERO": "Tengai Makyou Zero (Japan).png"
       }
     },
     "PlayStation 3": {
@@ -307,7 +312,8 @@
     "NINTENDO64": {
       "repo": "Nintendo_-_Nintendo_64",
       "images": {
-        "ワンダープロジェクトJ2 コルロの森のジョゼット": "Wonder Project J2 - Koruro no Mori no Jozet (Japan).png"
+        "ワンダープロジェクトJ2 コルロの森のジョゼット": "Wonder Project J2 - Koruro no Mori no Jozet (Japan).png",
+        "スーパーマリオ64": "Super Mario 64 (Japan).png"
       }
     },
     "Nintendo Switch": {
@@ -373,6 +379,13 @@
       "edition_urls": {
         "偽典・女神転生 東京黙示録": {
           "Windows 95/98版（1999年）": "https://cdn-ak.f.st-hatena.com/images/fotolife/t/tmurana/20250315/20250315084011.jpg"
+        }
+      }
+    },
+    "Nintendo Switch 2": {
+      "edition_urls": {
+        "メタファー：リファンタジオ": {
+          "未確認（Nintendo Switch 2版）": "https://gamerszone.jp/images/upload/2026/06/c097092c5bcb33973e6b5ee738b524dd.jpg"
         }
       }
     }
