@@ -476,3 +476,31 @@ in GitHub Issues take priority over the curated fallback mappings.
   refer to the same physical object. `グローランサーIII` limited pack #239
   is an entirely different game and record. Do not claim a confirmed complete
   inventory count before examining the physical boxes.
+
+## 2026-11-22: Nintendo Switch 2, loose FC/SFC games and Super Mario 64
+
+- #246: `メタファー：リファンタジオ` on **Nintendo Switch 2** is an
+  additional owned game, separate from PS5 anniversary-box #217. Japanese
+  Switch 2 release: 2026-11-12 (Atlus). Its *retail physical* packaging
+  is a game-key card, but the owner has not confirmed their copy's physical
+  versus download medium, so retain edition `未確認（Nintendo Switch 2版）`
+  and use the retail box art as an identification reference only.
+- #247-#250: four Japanese **Famicom** titles (Spelunker; Doraemon:
+  Giga Zombie no Gyakushuu; Jarinko Chie: Bakudan Musume no Shiawase
+  Sagashi; Takeshi no Chousenjou), all **cartridge-only**. Both box and
+  instruction manual are explicitly absent by owner report.
+- #251: Super Famicom `天外魔境ZERO`, also cartridge-only, no box and
+  no instruction manual.
+- #191: existing Super Famicom `ワンダープロジェクトJ 機械の少年ピーノ`
+  **updated** to no box, no manual, cartridge-only. Do not make a new
+  ownership Issue for this already cataloged physical copy.
+- #252: NINTENDO64 `スーパーマリオ64`, newly owned, edition
+  (first release vs rumble pack) not yet determined; **box and manual
+  status unknown** because the owner's box/manual statement only applies
+  to Famicom and Super Famicom games.
+- Box-art reference images are the correct Japanese releases; their
+  presence in the collection viewer does **not** imply that the owner's
+  loose cartridges include boxes. The exporter's `case` field now reads
+  `ケース`, `ケース・箱`, or `箱`, so the reported absent boxes
+  are represented correctly in the site data without rewriting older
+  Issue field conventions.
