@@ -161,6 +161,37 @@ https://example.org/game.jpg
         self.assertEqual(item["cover_source"], "issue")
         self.assertEqual(item["cover"], "https://example.org/owned.jpg")
 
+    def test_persona_fes_append_cover_is_not_standard(self):
+        common = "- タイトル：ペルソナ3 フェス\n- 機種：PlayStation 2\n"
+        normal = inventory_item(self.issue(123, common + "- エディション：通常版（単独起動版）\n"))
+        append = inventory_item(self.issue(124, common + "- エディション：アペンド版\n"))
+        best = inventory_item(self.issue(125, common + "- エディション：PlayStation 2 the Best\n"))
+        self.assertTrue(normal["cover"].endswith("/SLPM-66690.jpg"))
+        self.assertTrue(append["cover"].endswith("/SLPM-66689.jpg"))
+        self.assertTrue(best["cover"].endswith("/SLPM-74277.jpg"))
+        self.assertEqual(len({normal["cover"], append["cover"], best["cover"]}), 3)
+
+    def test_persona_best_without_verified_art_does_not_fall_back(self):
+        for title, platform, edition in (
+            ("ペルソナ4", "PlayStation 2", "PlayStation 2 the Best"),
+            ("ペルソナ3 ポータブル", "PSP", "PSP the Best"),
+        ):
+            item = inventory_item(self.issue(
+                136, f"- タイトル：{title}\n- 機種：{platform}\n- エディション：{edition}\n"
+            ))
+            self.assertEqual(item["cover"], "")
+            self.assertEqual(item["cover_source"], "")
+
+    def test_persona_explicit_issue_cover_takes_precedence_over_edition_art(self):
+        item = inventory_item(self.issue(
+            124,
+            "- タイトル：ペルソナ3 フェス\n- 機種：PlayStation 2\n"
+            "- エディション：アペンド版\n"
+            "- 画像URL：https://example.org/actual-append.jpg\n"
+        ))
+        self.assertEqual(item["cover"], "https://example.org/actual-append.jpg")
+        self.assertEqual(item["cover_source"], "issue")
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
