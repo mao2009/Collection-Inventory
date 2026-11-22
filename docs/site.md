@@ -662,3 +662,43 @@ Owner-requested UI and catalog corrections:
 - GitHub Actions resolves Steam metadata before exporting the public
   collection JSON. It also exercises resolver output on pull request builds
   to surface unresolvable titles without depending on user Steam credentials.
+
+## 2026-11-22: Japanese console-box-art corrections and missing-art completion
+
+Console collection browsing previously fell back to several
+`(USA)` Libretro box-art filenames, especially on PSP, PS Vita,
+Dreamcast, Xbox 360 and PlayStation 3. That was incorrect for
+**Japanese physical releases**. Owner instruction: prefer the proper
+Japanese release and its exact *edition*; do not change the owner's
+North American release.
+
+- The audit is recorded in
+  `data/japanese_console_cover_audit_20261122.json` with **7** direct
+  overseas-region-to-Japan corrections and **24** additional previously
+  missing Japanese titles/edition references.
+- Most new references use product-serial-specific Japanese PS2/PS3/PSP
+  game cover scans from the xlenore, SvenGDK and andiweli public
+  external-cover repositories. Where matching product scans were not
+  available, explicitly checked Japanese-language/CERO box imagery
+  from catalogues or secondhand listings was used. Those third-party
+  assets are external references, not photographs of the user's copies.
+- Keep the **PS2 North American `Shin Megami Tensei: Nocturne`**
+  (Issue #235, `SLUS-20911`) unchanged. Japanese PS2 regular
+  (`SLPM-65242`) and deluxe outer box (`SLPM-65241`) remain
+  separate. Explicit owner-entered Issue images, limited-edition
+  box photos, special variants, and `PSP the Best`'s intentionally
+  unmapped cover are not overridden.
+- Be cautious about filename inference: a nominal PS2 serial
+  `SLPM-65450` resolves to **探偵学園Q**, not FRONT MISSION 4;
+  `SLPS-01355` resolves to **FOX JUNCTION**, not ブシドーブレード弐.
+  Likewise, PSP/PS3 sequel/special/collector art must not be used
+  for a different installment. Audit negative cases preserve these.
+- Some early Issue bodies include authoritative inline Japanese
+  URLs; the catalog has always prioritized Issue `画像URL` or the
+  first embedded Markdown cover over config, so merely changing
+  a fallback should not silently replace an explicitly identified
+  item. For all other records without explicit cover URLs, the
+  Japanese title+platform mappings fill the card image when possible.
+- Remaining uncertain sale-edition pack art is not guessed. The audit
+  includes the unresolved list so future box-photo checks do not
+  reverse correct Japanese/US region handling.

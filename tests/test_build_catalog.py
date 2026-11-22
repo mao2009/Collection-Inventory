@@ -1529,6 +1529,105 @@ https://example.org/game.jpg
         self.assertIn('.item-card:focus-visible', css)
         self.assertIn('item.cover_fallback', js)
 
+    def test_japanese_console_box_art_region_audit_and_north_american_exception(self):
+        import json
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent
+        data = json.loads(
+            (root / "data/japanese_console_cover_audit_20261122.json")
+            .read_text(encoding="utf-8"))
+        from scripts.build_catalog import REFERENCE_COVERS
+        fixes = data["corrected_foreign_art"]
+        additions = data["filled_missing_art"]
+        self.assertEqual(len(fixes), 7)
+        self.assertGreaterEqual(len(additions), 24)
+        self.assertEqual({(entry["platform"], entry["title"]) for entry in fixes}.__len__(), 7)
+        for platform, group in REFERENCE_COVERS.items():
+            if platform in ("Steam", "Windows"):
+                continue
+            for title, filename in group.get("images", {}).items():
+                self.assertNotIn("(USA)", filename, (platform, title))
+                self.assertNotIn("(Europe)", filename, (platform, title))
+        for fix in fixes:
+            platform, title, url = fix["platform"], fix["title"], fix["new"]
+            group = REFERENCE_COVERS[platform]
+            self.assertNotIn(title, group.get("images", {}))
+            self.assertEqual(group.get("urls", {}).get(title), url)
+            item = inventory_item(self.issue(
+                1200, f"- タイトル：{title}\n"
+                f"- 機種：{platform}\n- エディション：未確認\n",
+            ))
+            # If an explicitly named collector edition takes priority,
+            # never replace that edition with a standard Japan cover.
+            if not group.get("edition_urls", {}).get(title):
+                self.assertEqual(item["cover"], url, (platform, title))
+                self.assertEqual(item["cover_source"], "curated")
+        for addition in additions:
+            platform, title, url = (
+                addition["platform"], addition["title"], addition["url"]
+            )
+            group = REFERENCE_COVERS[platform]
+            if "edition" in addition:
+                edition = addition["edition"]
+                self.assertEqual(group["edition_urls"][title][edition], url)
+            else:
+                edition = "未確認"
+                self.assertEqual(group.get("urls", {}).get(title), url)
+            item = inventory_item(self.issue(
+                1201, f"- タイトル：{title}\n"
+                f"- 機種：{platform}\n- エディション：{edition}\n",
+            ))
+            self.assertEqual(item["cover"], url, (platform, title, edition))
+        # The ONLY explicitly North American physical collection issue is
+        # PS2 Nocturne #235. The Japanese standard and deluxe still differ.
+        na = data["north_america_preserved"]
+        self.assertEqual([row["issue"] for row in na], [235])
+        north_american = inventory_item(self.issue(
+            235, "- タイトル：真・女神転生III NOCTURNE\n"
+            "- 機種：PlayStation 2\n"
+            "- エディション：北米版（Shin Megami Tensei: Nocturne）\n"
+            f"- 画像URL：{na[0]['url']}\n",
+        ))
+        self.assertIn("/SLUS-20911.jpg", north_american["cover"])
+        self.assertEqual(north_american["cover_source"], "issue")
+        edition_covers = REFERENCE_COVERS["PlayStation 2"]["edition_urls"][
+            "真・女神転生III NOCTURNE"
+        ]
+        self.assertIn("/SLPM-65242.jpg", edition_covers["通常版"])
+        self.assertIn("/SLPM-65241.jpg", edition_covers["デラックスパック"])
+        self.assertEqual(
+            edition_covers["北米版（Shin Megami Tensei: Nocturne）"],
+            na[0]["url"],
+        )
+
+    def test_japan_box_art_does_not_copy_mismatched_game_or_limited_box(self):
+        from scripts.build_catalog import REFERENCE_COVERS
+        ps2 = REFERENCE_COVERS["PlayStation 2"]
+        self.assertIn("/SLPM-65443.jpg", ps2["urls"]["FRONT MISSION 4"])
+        self.assertNotIn("SLPM-65450", ps2["urls"]["FRONT MISSION 4"])
+        self.assertIn(
+            "/SLPS-25829.jpg",
+            ps2["edition_urls"]["アナザーセンチュリーズ エピソード2"][
+                "スペシャルボーカルバージョン"],
+        )
+        self.assertIn(
+            "/SLPM-65209.jpg",
+            ps2["urls"]["スターオーシャン Till the End of Time"],
+        )
+        self.assertIn(
+            "/SLPM-65438.jpg",
+            ps2["urls"]["スターオーシャン Till the End of Time ディレクターズカット"],
+        )
+        self.assertNotEqual(
+            ps2["urls"]["スターオーシャン Till the End of Time"],
+            ps2["urls"]["スターオーシャン Till the End of Time ディレクターズカット"],
+        )
+        ps3 = REFERENCE_COVERS["PlayStation 3"]
+        self.assertNotIn("BLJM67001.JPG", ps3["urls"]["METAL GEAR SOLID 4 GUNS OF THE PATRIOTS"])
+        self.assertNotIn("BLJM60554.JPG", ps3["urls"]["METAL GEAR RISING REVENGEANCE"])
+        self.assertNotIn("BLJM60442.JPG", ps3["urls"]["ペルソナ4 ジ・アルティメット イン マヨナカアリーナ"])
+        self.assertIn("/BLJM61209.JPG", ps3["urls"]["ペルソナ4 ジ・アルティマックス ウルトラスープレックスホールド"])
+
     def test_unknown_game_is_not_given_wrong_artwork(self):
         item = inventory_item(self.issue(
             225, "- タイトル：架空のタイトル\n- 機種：PSP\n"
